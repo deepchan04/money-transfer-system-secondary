@@ -1,0 +1,124 @@
+<app-navbar></app-navbar>
+
+
+<div class="bg">
+  <div class="add-bank-container">
+    <mat-card>
+
+      <ng-container *ngIf="!success; else successTpl">
+        <div class="form-wrapper">
+          <!-- Left Side: Form Fields -->
+          <div class="form-section">
+            <h2>Link Bank Account</h2>
+
+            <div *ngIf="errorMessage" class="error-box">
+              {{ errorMessage }}
+            </div>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Account Number</mat-label>
+              <input matInput type="text" [(ngModel)]="accountNumber" name="accountNumber">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Account Password</mat-label>
+              <input matInput type="password" [(ngModel)]="accountPassword" name="accountPassword">
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" [disabled]="!vpaId || !accountNumber || !accountPassword"
+              (click)="linkBank()" class="white-c">
+              Link Account
+            </button>
+          </div>
+
+          <!-- Right Side: Information Panel -->
+          <div class="info-section">
+            <div class="info-content">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <line x1="2" y1="10" x2="22" y2="10"/>
+                </svg>
+              </div>
+              
+              <h3>Quick & Secure Setup</h3>
+              <p class="tagline">Add your account in seconds to access our professional and smart UI dashboard</p>
+
+              <div class="steps">
+                <div class="step">
+                  <span class="step-number">1</span>
+                  <div class="step-text">
+                    <strong>Enter Details</strong>
+                    <p>Provide your account number and secure password</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <span class="step-number">2</span>
+                  <div class="step-text">
+                    <strong>Instant Verification</strong>
+                    <p>We securely verify your account credentials</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <span class="step-number">3</span>
+                  <div class="step-text">
+                    <strong>Start Managing</strong>
+                    <p>Access your dashboard and manage transactions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="security-note">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Bank-level encryption ensures your data is always protected
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #successTpl>
+        <div class="success-container">
+          <!-- Loading State -->
+          <div *ngIf="isLoading" class="loading-state">
+            <div class="spinner"></div>
+            <h2>Processing Request</h2>
+            <p>Please wait while we link your bank account...</p>
+          </div>
+
+          <!-- Success State with Countdown -->
+          <div *ngIf="!isLoading" class="success-state">
+            <div class="success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            
+            <h2>Bank Account Linked</h2>
+            <p class="success-message">Your bank account has been successfully connected to your dashboard.</p>
+            
+            <div class="redirect-info">
+              <p>Redirecting to dashboard in <span class="countdown">{{ countdown }}</span> seconds...</p>
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="progressWidth"></div>
+              </div>
+            </div>
+
+            <button mat-raised-button color="primary" routerLink="/dashboard" class="white-c">
+              Go to Dashboard Now
+            </button>
+          </div>
+        </div>
+      </ng-template>
+
+    </mat-card>
+  </div>
+</div>
+
+
+

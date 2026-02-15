@@ -1,0 +1,239 @@
+<app-navbar></app-navbar>
+
+<div class="cont">
+
+
+<div class="dashboard-container">
+
+  <!-- Header -->
+  <section class="dashboard-header">
+    
+    <!-- Account Inactive Message -->
+    <ng-container *ngIf="!isAccountActive">
+      <mat-card class="account-status-card">
+        <mat-icon class="status-icon">warning</mat-icon>
+        <h2>Account Access Restricted</h2>
+        <p class="status-message">{{ getStatusMessage() }}</p>
+        <p class="support-info">Contact our support team for immediate assistance with your account status.</p>
+      </mat-card>
+    </ng-container>
+
+    <!-- Normal Dashboard for Active Users -->
+    <ng-container *ngIf="isAccountActive ">      
+
+      <h2 *ngIf="hasBankAccount" class="center-al over">Current Month Overview</h2>
+
+      <ng-container *ngIf="hasBankAccount; else noBank">
+        <h1 class="center-al">₹{{ currentMonthSpent | number }}</h1>
+        
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <a class="action-card" routerLink="/check-balance">
+            <mat-icon>account_balance_wallet</mat-icon>
+            <span class="action-label">Check Balance</span>
+            <span class="action-desc">View available funds</span>
+          </a>
+          
+          <a class="action-card" routerLink="/send-money">
+            <mat-icon>send</mat-icon>
+            <span class="action-label">Send Money</span>
+            <span class="action-desc">Transfer to any UPI ID</span>
+          </a>
+
+          <a class="action-card" routerLink="/transactions">
+            <mat-icon>receipt_long</mat-icon>
+            <span class="action-label">All Transactions</span>
+            <span class="action-desc">Complete history</span>
+          </a>
+
+          <a *ngIf="!hasBankAccount" class="action-card" routerLink="/add-bank">
+            <mat-icon>add_card</mat-icon>
+            <span class="action-label">Manage Banks</span>
+            <span class="action-desc">Link new accounts</span>
+          </a>
+        </div>
+      </ng-container>
+
+      <ng-template #noBank>
+        <div class="info-banner">
+          <mat-icon>info</mat-icon>
+          <p>Link your bank account to start sending and receiving money instantly through UPI.</p>
+        </div>
+
+        <p class="no-bank-text center-al">
+          Connect your bank account in seconds to unlock instant payments
+        </p>
+
+        <div class="flex">
+          <button mat-raised-button color="primary" routerLink="/add-bank" class="add-bank-acc">
+            <mat-icon>add_card</mat-icon>
+            Link Bank Account
+          </button>
+        </div>
+      </ng-template>
+    </ng-container>
+  </section>
+
+  <!-- Only show dashboard content if account is active -->
+  <ng-container *ngIf="hasBankAccount && isAccountActive">
+
+    <!-- Stats Overview -->
+    <section class="stats-overview">
+      <mat-card class="stat-card">
+        <div class="stat-label">Total Transactions</div>
+        <div class="stat-value">{{ allTransactions.length }}</div>
+        <div class="stat-change">This month</div>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <div class="stat-label">Successful Payments</div>
+        <div class="stat-value">{{ getSuccessfulCount() }}</div>
+        <div class="stat-change positive">
+          <mat-icon>trending_up</mat-icon>
+          {{ getSuccessRate() }}% success rate
+        </div>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <div class="stat-label">Avg. Transaction</div>
+        <div class="stat-value">₹{{ getAverageTransaction() }}</div>
+        <div class="stat-change">Based on last 10</div>
+      </mat-card>
+    </section>
+
+    <!-- Insights Cards -->
+    <section class="charts">
+
+      <!-- Show charts only if there are transactions -->
+      <ng-container *ngIf="allTransactions.length > 0 && moneySent; else noTransactionsCharts">
+        <!-- Pie Chart -->
+        <mat-card class="pie-card">
+          <h3>Spending Categories</h3>
+
+          <div class="pie" [style.background]="
+          'conic-gradient(' +
+          spendingBreakdown[0].color + ' 0% ' + spendingBreakdown[0].value + '%, ' +
+          spendingBreakdown[1].color + ' ' + spendingBreakdown[0].value + '% ' +
+          (spendingBreakdown[0].value + spendingBreakdown[1].value) + '%, ' +
+          spendingBreakdown[2].color + ' ' +
+          (spendingBreakdown[0].value + spendingBreakdown[1].value) + '% 100%)'
+        ">
+          </div>
+
+          <div class="legend">
+            <div *ngFor="let item of spendingBreakdown">
+              <span class="dot" [style.background]="item.color"></span>
+              {{ item.label }} ({{ item.value }}%)
+            </div>
+          </div>
+        </mat-card>
+
+        <!-- Monthly Bar Chart -->
+        <mat-card class="bar-card">
+          <h3>Spending Trend</h3>
+          <div class="chart-info">
+            <mat-icon>insights</mat-icon>
+            <span>Last 8 months of transaction activity</span>
+          </div>
+
+          <div class="chart">
+            <div class="bar" *ngFor="let item of monthlySpending">
+
+              <!-- BAR AREA -->
+              <div class="bar-area">
+                <div class="fill" [style.height.px]="getBarHeight(item.amount)">
+                  <span class="amount-label">₹{{ (item.amount / 1000).toFixed(1) }}K</span>
+                </div>
+              </div>
+
+              <!-- LABEL -->
+              <span class="month">{{ item.month }}</span>
+            </div>
+          </div>
+        </mat-card>
+      </ng-container>
+
+      <!-- No Transactions State -->
+      <ng-template #noTransactionsCharts>
+        <mat-card class="no-transactions-chart-state">
+          <mat-icon>insights</mat-icon>
+          <h3>Transaction Analytics Awaiting</h3>
+          <p>Make your first transaction to view transaction charts and analysis</p>
+          <div class="chart-preview">
+            <div class="preview-icon">
+              <mat-icon>pie_chart</mat-icon>
+              <mat-icon>bar_chart</mat-icon>
+            </div>
+          </div>
+        </mat-card>
+      </ng-template>
+
+    </section>
+
+
+    <!-- Transactions -->
+    <section class="transactions">
+      <mat-card>
+        <div class="table-header">
+          <h3>Recent Activity</h3>
+          <button mat-button color="primary" routerLink="/transactions">
+            View complete history
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+
+        <div *ngIf="isLoading" class="loading-state">
+          <mat-icon>hourglass_empty</mat-icon>
+          <p>Loading your transactions...</p>
+        </div>
+
+        <div *ngIf="!isLoading && transactions.length === 0" class="empty-state">
+          <mat-icon>inbox</mat-icon>
+          <p>No transactions yet</p>
+          <small>Your payment activity will appear here</small>
+        </div>
+
+        <table mat-table [dataSource]="transactions" *ngIf="!isLoading && transactions.length > 0">
+
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let row">{{ row.date }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let row">{{ row.description }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <td mat-cell *matCellDef="let row" 
+                [class.credit-amount]="row.type === 'credit'"
+                [class.debit-amount]="row.type === 'debit'">
+              {{ row.type === 'credit' ? '+' : '-' }}{{ row.amount }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let row">
+              <span [class.status-success]="row.status === 'SUCCESS'"
+                    [class.status-failed]="row.status === 'FAILED'"
+                    [class.status-pending]="row.status === 'PENDING'">
+                {{ row.status }}
+              </span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+      </mat-card>
+    </section>
+
+  </ng-container>
+
+</div>
+
+</div>

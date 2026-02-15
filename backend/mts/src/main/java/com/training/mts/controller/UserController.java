@@ -1,0 +1,47 @@
+package com.training.mts.controller;
+
+import com.training.mts.dto.GetAllUsersRequest;
+import com.training.mts.exceptions.AccountNotLinkedException;
+import com.training.mts.exceptions.IncorrectPasswordException;
+import com.training.mts.model.User;
+import com.training.mts.service.UserServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/users")
+public class UserController {
+
+
+    private UserServiceImpl userService;
+
+    public UserController(UserServiceImpl userService){
+        this.userService = userService;
+    }
+
+
+    @GetMapping("/getbalance")
+    public ResponseEntity<Double> getBalance(@RequestParam String vpaId, @RequestParam String password) throws AccountNotLinkedException, IncorrectPasswordException {
+        return new ResponseEntity<>(userService.getBankBalance(vpaId,password), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/findByPhone")
+    public ResponseEntity<User> getUser(@RequestParam String phoneNumber) {
+        return new ResponseEntity<>(userService.getUserByPhoneNumber(phoneNumber),HttpStatus.OK);
+    }
+    @GetMapping("/getusers")
+    public ResponseEntity<List<GetAllUsersRequest>> getUsers() {
+        return new ResponseEntity<>(userService.getAllUsers(),HttpStatus.OK);
+    }
+    @GetMapping("/getvpa")
+    public ResponseEntity<String> getVpa(@RequestParam String phone) {
+        return new ResponseEntity<>(userService.getVpaId(phone),HttpStatus.OK);
+    }
+
+
+}
+

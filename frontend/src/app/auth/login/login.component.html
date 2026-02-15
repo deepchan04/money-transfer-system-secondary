@@ -1,0 +1,44 @@
+<mat-card class="auth-card">
+  <h2>Welcome Back</h2>
+
+  <div *ngIf="errorMessage" class="error-box">
+    <mat-icon>error_outline</mat-icon>
+    <span>{{ errorMessage }}</span>
+  </div>
+
+  <form (ngSubmit)="login()">
+    <mat-form-field appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input 
+        matInput 
+        type="tel" 
+        [(ngModel)]="phoneNumber" 
+        name="phoneNumber"
+        placeholder="Enter 10-digit phone number"
+        maxlength="10"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input 
+        matInput 
+        type="password" 
+        [(ngModel)]="password" 
+        name="password"
+        placeholder="Enter password"
+        required
+      />
+    </mat-form-field>
+
+    <button 
+      mat-raised-button 
+      color="primary" 
+      type="submit"
+      [disabled]="!phoneNumber || !password"
+    >
+      Login
+    </button>
+  </form>
+</mat-card>

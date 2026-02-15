@@ -1,0 +1,21 @@
+use mts;
+INSERT INTO bank_account (account_number, account_password, balance, version) VALUES
+('ACC1001', '123456', 50000.00, 1),
+('ACC1012', 'starlight_22', 15700.00, 1),
+('ACC1013', 'ocean_breeze', 2100.50, 1),
+('ACC1014', 'forest_run', 890.00, 1),
+('ACC1015', 'mountain_high', 45000.75, 1),
+('ACC1016', 'desert_sun', 125.00, 1),
+('ACC1017', 'city_lights', 6300.20, 1),
+('ACC1018', 'winter_chill', 92100.00, 1),
+('ACC1019', 'spring_bloom', 340.55, 1),
+('ACC1020', 'autumn_leaf', 11200.00, 1),
+('ACC1021', 'summer_heat', 5600.40, 1);
+INSERT INTO user (name, email, phone_number, password, role)
+VALUES (
+    'Deepak', 
+    'admin@mts.com', 
+    '9840774662', 
+    '$2a$10$ExYGNT2kI20ML.BCFYpoHuhsnhRGNqNuQQeTwcQy2919Lth3.ocG.',
+    'ROLE_ADMIN'
+);

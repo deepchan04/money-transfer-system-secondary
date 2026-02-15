@@ -1,0 +1,218 @@
+<app-navbar></app-navbar>
+
+<div class="bg">
+  <div class="send-container">
+    <mat-card>
+
+      <!-- SUCCESS STATE -->
+      <ng-container *ngIf="isSuccess">
+        <div class="success-container">
+          <!-- Loading State -->
+          <div *ngIf="isProcessing" class="loading-state" @fadeIn>
+            <div class="spinner"></div>
+            <h2>Processing Payment</h2>
+            <p>Please wait while we process your transaction...</p>
+          </div>
+
+          <!-- Success State with Countdown -->
+          <div *ngIf="!isProcessing" class="success-state" @fadeIn>
+            <div class="success-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            
+            <h2>Payment Successful</h2>
+            <p class="success-message">₹{{ amount }} sent to {{ selectedUser?.name }}</p>
+            
+            <div class="transaction-details">
+              <div class="detail-row" *ngIf="description">
+                <span class="label">Description:</span>
+                <span class="value">{{ description }}</span>
+              </div>
+              <div class="detail-row" *ngIf="selectedTag">
+                <span class="label">Category:</span>
+                <span class="value">{{ selectedTag }}</span>
+              </div>
+              <div class="detail-row" *ngIf="transactionId">
+                <span class="label">Transaction ID:</span>
+                <span class="value">{{ transactionId }}</span>
+              </div>
+            </div>
+            
+            <div class="redirect-info">
+              <p>Redirecting to dashboard in <span class="countdown">{{ countdown }}</span> seconds...</p>
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="progressWidth"></div>
+              </div>
+            </div>
+
+            <button mat-raised-button color="primary" routerLink="/dashboard" class="white-c">
+              Go to Dashboard Now
+            </button>
+
+            <button mat-stroked-button (click)="resetForm()" class="secondary-btn">
+              Send Another Payment
+            </button>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- PAYMENT FLOW -->
+      <ng-container *ngIf="!isSuccess">
+        <div class="form-wrapper">
+          <!-- Left Side: Form Fields -->
+          <div class="form-section">
+            <h2>Send Money</h2>
+
+            <div *ngIf="errorMessage" class="error-box">
+              {{ errorMessage }}
+            </div>
+
+            <!-- USER SEARCH -->
+            <mat-form-field appearance="outline">
+              <mat-label>Send to</mat-label>
+              <input 
+                matInput 
+                [(ngModel)]="searchQuery"  
+                (ngModelChange)="onSearchChange()" 
+                [matAutocomplete]="auto"
+                placeholder="Search by name, VPA, or phone"
+                autocomplete="off">
+            </mat-form-field>
+
+            <mat-autocomplete 
+              #auto="matAutocomplete" 
+              (optionSelected)="onUserSelected($event.option.value)">
+              <mat-option *ngFor="let user of filteredUsers" [value]="user">
+                <div class="user-option black-c">
+                  <strong>{{ user.name }}</strong>
+                  <small>{{ user.vpaId || 'No VPA' }} • {{ user.phoneNumber }}</small>
+                </div>
+              </mat-option>
+              
+              <mat-option *ngIf="filteredUsers.length === 0 && searchQuery && searchQuery.trim()" disabled>
+                <div class="no-results">
+                  No users found matching "{{ searchQuery }}"
+                </div>
+              </mat-option>
+            </mat-autocomplete>
+
+            <!-- AMOUNT -->
+            <div *ngIf="selectedUser" @fadeIn>
+              <mat-form-field appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput type="number" [(ngModel)]="amount" placeholder="Enter amount">
+                <span matPrefix>₹&nbsp;</span>
+              </mat-form-field>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <div *ngIf="amount" @fadeIn>
+              <mat-form-field appearance="outline">
+                <mat-label>Description (optional)</mat-label>
+                <input matInput [(ngModel)]="description" placeholder="What's this for?">
+              </mat-form-field>
+
+              <!-- TAG SELECTION -->
+              <div class="tags">
+                <span class="tag-label">Category</span>
+                <mat-chip-listbox>
+                  <mat-chip-option 
+                    *ngFor="let tag of tags" 
+                    [selected]="selectedTag === tag" 
+                    (click)="selectedTag = tag">
+                    <span class="white-c">{{ tag }}</span>
+                    
+                  </mat-chip-option>
+                </mat-chip-listbox>
+              </div>
+            </div>
+
+            <!-- PASSWORD -->
+            <div *ngIf="amount" @fadeIn>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input class="white-c"
+                  matInput 
+                  type="password" 
+                  [(ngModel)]="password"
+                  placeholder="Enter your password (min 6 characters)">
+                <mat-hint *ngIf="password && password.length < 6" class="password-hint">
+                  Password must be at least 6 characters
+                </mat-hint>
+              </mat-form-field>
+            </div>
+
+            <!-- PAY BUTTON -->
+            <button 
+              mat-raised-button 
+              color="primary" 
+              *ngIf="password && password.length >= 6 && !isProcessing" 
+              (click)="makePayment()"
+              class="white-c">
+              Pay ₹{{ amount }}
+            </button>
+
+            <!-- PROCESSING -->
+            <div *ngIf="isProcessing" class="processing" @fadeIn>
+              <mat-progress-spinner diameter="40" mode="indeterminate">
+              </mat-progress-spinner>
+              <p>Processing payment…</p>
+            </div>
+          </div>
+
+          <!-- Right Side: Information Panel -->
+          <div class="info-section">
+            <div class="info-content">
+              <div class="info-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23"></line>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </div>
+              
+              <h3>Fast & Secure Transfers</h3>
+              <p class="tagline">Send money instantly to anyone with our secure payment system</p>
+
+              <div class="steps">
+                <div class="step">
+                  <span class="step-number">1</span>
+                  <div class="step-text">
+                    <strong>Select Recipient</strong>
+                    <p>Search and choose who you want to send money to</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <span class="step-number">2</span>
+                  <div class="step-text">
+                    <strong>Enter Amount</strong>
+                    <p>Specify the amount and add an optional note</p>
+                  </div>
+                </div>
+
+                <div class="step">
+                  <span class="step-number">3</span>
+                  <div class="step-text">
+                    <strong>Confirm & Send</strong>
+                    <p>Enter your password and complete the transfer</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="security-note">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                All transactions are encrypted and secured with industry-standard protocols
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </mat-card>
+  </div>
+</div>

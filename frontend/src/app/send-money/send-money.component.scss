@@ -1,0 +1,522 @@
+.bg {
+  background: rgba(21, 36, 71, 0.95);
+  height: 100%;
+}
+
+.send-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+  margin-top: 0;
+}
+
+mat-card {
+  padding: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 
+    0 1px 0 rgba(71, 85, 105, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(71, 85, 105, 0.15);
+
+  .form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .form-section {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(15, 23, 42, 1);
+    border-right: 1px solid rgba(71, 85, 105, 0.15);
+
+    @media (max-width: 768px) {
+      border-right: none;
+      border-bottom: 1px solid rgba(71, 85, 105, 0.15);
+      padding: 2rem;
+    }
+
+    h2 {
+      color: white; /* Set text color to white */
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0 0 1.5rem 0;
+      text-align: left;
+    }
+
+    .error-box {
+      background-color: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 8px;
+      color: #fca5a5;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      text-align: left;
+    }
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1.25rem;
+
+      ::ng-deep {
+        .mat-mdc-form-field-focus-overlay {
+          background-color: rgba(148, 163, 184, 0.05);
+        }
+
+        .mat-mdc-text-field-wrapper {
+          background-color: rgba(30, 41, 59, 0.5);
+        }
+
+        .mat-mdc-form-field-flex {
+          border-radius: 8px;
+        }
+
+        label {
+          color: white !important; /* Change label color to white */
+        }
+
+        input {
+          color: white; /* Ensure input text is white */
+        }
+
+        .mat-mdc-notch-piece {
+          border-color: rgba(71, 85, 105, 0.4) !important;
+        }
+
+        &.mat-focused {
+          .mat-mdc-notch-piece {
+            border-color: #3b82f6 !important;
+          }
+        }
+
+        .mat-mdc-form-field-hint {
+          color: #94a3b8;
+        }
+      }
+    }
+
+    .tags {
+      margin-bottom: 1.5rem;
+      text-align: left;
+
+      .tag-label {
+        display: block;
+        font-size: 0.875rem;
+        color: white; /* Ensure label is white */
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
+
+      ::ng-deep {
+        mat-chip-listbox {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          color: white; /* All chip text is white */
+        }
+
+        mat-chip-option {
+          background: rgba(30, 41, 59, 0.6);
+          color: white; /* Chip text white */
+          border: 1px solid rgba(71, 85, 105, 0.3);
+          border-radius: 8px;
+          font-size: 0.875rem;
+          padding: 0.5rem 1rem;
+          transition: all 0.2s;
+
+          &:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(71, 85, 105, 0.5);
+          }
+
+          &.mat-mdc-chip-selected {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border-color: transparent;
+          }
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      height: 48px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white; /* Button text white */
+      margin-top: 1rem;
+      
+      &:disabled {
+        background: rgba(71, 85, 105, 0.3);
+        color: rgba(148, 163, 184, 0.5);
+      }
+
+      &:not(:disabled):hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+    }
+
+    .processing {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+
+      p {
+        font-weight: 500;
+        color: white; /* Text inside processing section is white */
+        margin: 0;
+      }
+
+      ::ng-deep {
+        .mat-mdc-progress-spinner circle {
+          stroke: #3b82f6;
+        }
+      }
+    }
+
+    .password-hint {
+      color: #fca5a5 !important;
+      font-size: 0.75rem !important;
+    }
+  }
+
+  .info-section {
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 768px) {
+      padding: 2rem;
+    }
+
+    .info-content {
+      max-width: 380px;
+
+      .info-icon {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+
+        svg {
+          color: white;
+        }
+      }
+
+      h3 {
+        color: white; /* Make h3 text white */
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0 0 0.75rem 0;
+      }
+
+      .tagline {
+        color: white; /* Tagline text white */
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0 0 2rem 0;
+      }
+
+      .steps {
+        margin-bottom: 2rem;
+
+        .step {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1.5rem;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .step-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white; /* Step number text white */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+            margin-right: 1rem;
+          }
+
+          .step-text {
+            flex: 1;
+
+            strong {
+              color: white; /* Step text white */
+              font-size: 0.95rem;
+              display: block;
+              margin-bottom: 0.25rem;
+            }
+
+            p {
+              color: white; /* Step description text white */
+              font-size: 0.875rem;
+              line-height: 1.5;
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .security-note {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid rgba(71, 85, 105, 0.3);
+        border-radius: 8px;
+        padding: 0.875rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: white; /* Security note text white */
+        font-size: 0.875rem;
+        line-height: 1.5;
+
+        svg {
+          color: #3b82f6;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+
+// Success Container Styles
+.success-container {
+  padding: 4rem 3rem;
+  text-align: center;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 3rem 2rem;
+  }
+
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border: 4px solid rgba(59, 130, 246, 0.2);
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    h2 {
+      color: white; /* Loading state text white */
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      color: white; /* Loading state description text white */
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  .success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 500px;
+    width: 100%;
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.3));
+      border: 2px solid rgba(59, 130, 246, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: scaleIn 0.5s ease-out;
+
+      svg {
+        color: #3b82f6;
+      }
+    }
+
+    h2 {
+      color: white; /* Heading text white */
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .success-message {
+      color: white; /* Success message text white */
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .transaction-details {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(71, 85, 105, 0.3);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 0.5rem;
+
+      .detail-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .label {
+          color: white; /* Label text white */
+          font-size: 0.875rem;
+        }
+
+        .value {
+          color: white; /* Value text white */
+          font-size: 0.875rem;
+          font-weight: 500;
+          text-align: right;
+          max-width: 60%;
+          word-break: break-word;
+        }
+      }
+    }
+
+    .redirect-info {
+      width: 100%;
+      margin-top: 1rem;
+
+      p {
+        color: white; /* Countdown text white */
+        font-size: 0.95rem;
+        margin: 0 0 1rem 0;
+
+        .countdown {
+          color: white; /* Countdown timer text white */
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 4px;
+        background: rgba(71, 85, 105, 0.3);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #3b82f6, #2563eb);
+          border-radius: 2px;
+          transition: width 1s linear;
+        }
+      }
+    }
+
+    button {
+      min-width: 200px;
+      height: 48px;
+      font-size: 1rem;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+
+      &.white-c {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white; /* Button text white */
+
+        &:hover {
+          background: linear-gradient(135deg, #2563eb, #1d4ed8);
+          box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+      }
+
+      &.secondary-btn {
+        background: transparent;
+        color: white; /* Text white */
+        border: 1px solid rgba(71, 85, 105, 0.4);
+
+        &:hover {
+          background: rgba(30, 41, 59, 0.4);
+          border-color: rgba(71, 85, 105, 0.6);
+          color: white; /* Hover text white */
+        }
+      }
+    }
+  }
+}
+
+// Autocomplete Styles
+::ng-deep {
+  .mat-mdc-autocomplete-panel {
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    border-radius: 8px;
+    margin-top: 8px;
+
+    .mat-mdc-option {
+      color: white; /* Autocomplete text white */
+
+      &:hover {
+        background: rgba(30, 41, 59, 0.6);
+      }
+
+      &.mat-mdc-option-active {
+        background: rgba(30, 41, 59, 0.4);
+      }
+    }
+  }
+}
+
+.white-c {
+  color: white;
+}
+
+.black-c{
+  color: black;
+}

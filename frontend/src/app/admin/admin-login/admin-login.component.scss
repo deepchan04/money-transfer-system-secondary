@@ -1,0 +1,318 @@
+:host {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(239, 68, 68, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(220, 38, 38, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.go-back {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    transition: all 0.2s ease;
+    min-width: auto;
+
+    &:hover {
+      background: rgba(30, 41, 59, 0.8);
+      color: #ffffff;
+      border-color: rgba(71, 85, 105, 0.5);
+    }
+  }
+
+.auth-card {
+  width: 420px;
+  max-width: calc(100vw - 2rem);
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: rgba(51, 65, 85, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.4);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  z-index: 1;
+
+  > button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #ffffff;
+    border-radius: 8px;
+    background: rgba(30, 41, 59, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(71, 85, 105, 0.3);
+    transition: all 0.2s ease;
+    min-width: auto;
+
+    &:hover {
+      background: rgba(30, 41, 59, 0.8);
+      color: #ffffff;
+      border-color: rgba(71, 85, 105, 0.5);
+    }
+  }
+
+  h2 {
+    margin-bottom: 0.5rem;
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .admin-subtitle {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+  }
+
+  .error-box {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1.25rem;
+
+    ::ng-deep {
+      // Input field styling
+      .mat-mdc-text-field-wrapper {
+        background: rgba(15, 23, 42, 0.6);
+        border-radius: 8px;
+      }
+
+      .mat-mdc-form-field-focus-overlay {
+        background: transparent;
+      }
+
+      // Label styling
+      .mat-mdc-floating-label {
+        color: #ffffff !important;
+      }
+
+      .mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+        color: #ffffff !important;
+      }
+
+      // Input text
+      .mat-mdc-input-element {
+        color: #ffffff !important;
+        caret-color: #ef4444;
+        
+        &::placeholder {
+          color: transparent !important;
+        }
+      }
+
+      // Outline styling
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: rgba(71, 85, 105, 0.5) !important;
+      }
+
+      // Focused outline - Red for admin
+      .mat-mdc-form-field.mat-focused {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: #ef4444 !important;
+          border-width: 2px !important;
+        }
+      }
+
+      // Hover outline
+      .mat-mdc-form-field:hover:not(.mat-focused) {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: rgba(71, 85, 105, 0.7) !important;
+        }
+      }
+    }
+  }
+
+  button[color="warn"] {
+    width: 100%;
+    height: 48px;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: none;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+      box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      background: rgba(71, 85, 105, 0.4);
+      color: #64748b;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    width: calc(100vw - 2rem);
+    padding: 2rem 1.5rem;
+
+    > button {
+      top: 1rem;
+      right: 1rem;
+      padding: 0.4rem 0.875rem;
+      font-size: 0.8125rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .admin-subtitle {
+      font-size: 0.8125rem;
+    }
+  }
+
+  
+}
+
+
+
+
+.info-section {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.info-card {
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(71, 85, 105, 0.3);
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(239, 68, 68, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .info-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    line-height: 1.5;
+  }
+}
+
+.footer-note {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(71, 85, 105, 0.3);
+  text-align: center;
+
+  p {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-style: italic;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-section {
+    gap: 0.75rem;
+  }
+
+  .info-card {
+    padding: 1rem;
+
+    .info-icon {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 0.9375rem;
+    }
+
+    p {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .footer-note p {
+    font-size: 0.6875rem;
+  }
+}

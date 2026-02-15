@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<div class="bg">
+
+
+<div class="profile-container">
+
+  <!-- Profile Header Card -->
+  <div class="profile-header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="avatar-section">
+        <div class="avatar">
+          <span class="initials">{{ getInitials() }}</span>
+          <div class="avatar-ring"></div>
+        </div>
+        <div class="user-info">
+          <h1>{{ user.name }}</h1>
+          <p class="vpa-id">
+            <mat-icon>alternate_email</mat-icon>
+            {{ user.vpa?.vpaId }}
+          </p>
+        </div>
+      </div>
+      <div class="status-badge" [ngClass]="getStatusColor()">
+        <mat-icon>{{ user.appStatus === 'ACTIVE' ? 'verified' : user.appStatus === 'LOCKED' ? 'lock' : 'cancel' }}</mat-icon>
+        <span>{{ getStatusText() }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Info Grid -->
+  <div class="info-grid">
+    
+    <!-- Contact Information -->
+    <mat-card class="info-card">
+      <div class="card-header">
+        <mat-icon>contacts</mat-icon>
+        <h3>Contact Information</h3>
+      </div>
+      <div class="info-items">
+        <div class="info-item">
+          <div class="item-icon">
+            <mat-icon>email</mat-icon>
+          </div>
+          <div class="item-content">
+            <span class="item-label">Email Address</span>
+            <p class="item-value">{{ user.email }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="item-icon">
+            <mat-icon>phone</mat-icon>
+          </div>
+          <div class="item-content">
+            <span class="item-label">Phone Number</span>
+            <p class="item-value">+91 {{ user.phoneNumber }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <!-- Payment Details -->
+    <mat-card class="info-card">
+      <div class="card-header">
+        <mat-icon>account_balance</mat-icon>
+        <h3>Payment Details</h3>
+      </div>
+      <div class="info-items">
+        <div class="info-item">
+          <div class="item-icon">
+            <mat-icon>account_balance_wallet</mat-icon>
+          </div>
+          <div class="item-content">
+            <span class="item-label">UPI ID</span>
+            <p class="item-value upi-id">{{ user.vpa?.vpaId }}</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="item-icon">
+            <mat-icon>credit_card</mat-icon>
+          </div>
+          <div class="item-content">
+            <span class="item-label">Linked Account</span>
+            <p class="item-value account-number">{{ getMaskedAccountNumber() }}</p>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+  </div>
+
+  <!-- Account Status Card -->
+  <mat-card class="status-card" [ngClass]="getStatusColor()">
+    <div class="status-content">
+      <mat-icon class="status-icon">
+        {{ user.appStatus === 'ACTIVE' ? 'check_circle' : user.appStatus === 'LOCKED' ? 'lock_clock' : 'error' }}
+      </mat-icon>
+      <div class="status-info">
+        <h3>Account Status</h3>
+        <p *ngIf="user.appStatus === 'ACTIVE'">Your account is active and fully operational. You can send and receive payments without any restrictions.</p>
+        <p *ngIf="user.appStatus === 'LOCKED'">Your account is temporarily locked. Please contact support to resolve this issue.</p>
+        <p *ngIf="user.appStatus === 'CLOSED'">Your account has been closed. Contact support for more information.</p>
+        <p *ngIf="!user.appStatus || user.appStatus === 'PENDING'">Your account is pending verification. Please complete the verification process.</p>
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+</div>

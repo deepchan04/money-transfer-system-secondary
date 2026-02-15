@@ -1,0 +1,20 @@
+<div class="auth-container">
+  <button mat-button (click)="goHome()" class="white-f">
+      Back to Home
+  </button>
+  <div class="auth-toggle">
+    <button mat-button [class.active]="mode === 'login'" (click)="switchTo('login')" class="white-f">
+      Login
+    </button>
+
+    <button mat-button [class.active]="mode === 'signup'" (click)="switchTo('signup')" class="white-f">
+      Sign Up
+    </button>
+
+    <!-- New Back to Home Button -->
+    
+  </div>
+
+  <app-login *ngIf="mode === 'login'"></app-login>
+  <app-signup *ngIf="mode === 'signup'" (signupSuccess)="switchTo('login')"></app-signup>
+</div>
