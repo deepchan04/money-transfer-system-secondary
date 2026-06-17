@@ -33,14 +33,16 @@ public class TransactionServiceImpl implements TransactionService{
     private PasswordEncoder passwordEncoder;
     private TransactionFailServiceImpl tFail;
     private RewardService rewardService;
+    private final EmailServiceImpl emailServiceImpl;
 
-    public TransactionServiceImpl(TransactionFailServiceImpl tFail, PasswordEncoder passwordEncoder, TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository, RewardService rewardService) {
+    public TransactionServiceImpl(TransactionFailServiceImpl tFail, PasswordEncoder passwordEncoder, TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository, RewardService rewardService, EmailServiceImpl emailServiceImpl) {
         this.transactionRepository = transactionRepository;
         this.bankAccountService = bankAccountService;
         this.vpaRepository = vpaRepository;
         this.passwordEncoder = passwordEncoder;
         this.tFail = tFail;
         this.rewardService = rewardService;
+        this.emailServiceImpl = emailServiceImpl;
     }
 
     @Transactional
@@ -94,6 +96,8 @@ public class TransactionServiceImpl implements TransactionService{
 
         Transaction savedTx = saveTransactionRecord(key, payer, payee, request.getAmount(), request.getNote(), request.getTransactionType());
         rewardService.awardPointsForTransaction(savedTx);
+        emailServiceImpl.sendEmail(payer.getEmail(), "MTS APP","You have performed a transfer");
+        emailServiceImpl.sendEmail(payee.getEmail(), "MTS APP", "You have received money");
 
         return new TransactionDTO(savedTx);
 
