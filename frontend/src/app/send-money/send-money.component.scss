@@ -77,7 +77,7 @@ mat-card {
         }
 
         .mat-mdc-text-field-wrapper {
-          background-color: rgba(30, 41, 59, 0.5);
+          background-color: rgba(30, 41, 59, 0.82);
         }
 
         .mat-mdc-form-field-flex {
@@ -85,11 +85,33 @@ mat-card {
         }
 
         label {
-          color: white !important; /* Change label color to white */
+          color: #e2e8f0 !important;
         }
 
         input {
-          color: white; /* Ensure input text is white */
+          color: #f8fafc !important;
+          caret-color: #f8fafc !important;
+        }
+
+        input::placeholder {
+          color: #94a3b8 !important;
+          opacity: 1 !important;
+        }
+
+        .mdc-floating-label {
+          color: #cbd5e1 !important;
+        }
+
+        &.mat-focused .mdc-floating-label {
+          color: #bfdbfe !important;
+        }
+
+        .mat-mdc-input-element {
+          color: #f8fafc !important;
+        }
+
+        .mat-mdc-input-element::selection {
+          background: rgba(96, 165, 250, 0.35);
         }
 
         .mat-mdc-notch-piece {
@@ -106,6 +128,72 @@ mat-card {
           color: #94a3b8;
         }
       }
+    }
+
+    .user-option {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0.2rem;
+      width: 100%;
+
+      strong {
+        font-weight: 700;
+        color: #f8fafc;
+        display: block;
+        line-height: 1.2;
+      }
+
+      small {
+        color: #bfdbfe;
+        font-size: 0.85rem;
+        display: block;
+        line-height: 1.2;
+      }
+    }
+
+    .search-field-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .search-field {
+      margin-bottom: 0.35rem;
+    }
+
+    .search-results {
+      margin: 0;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(71, 85, 105, 0.35);
+      border-radius: 14px;
+      padding: 0.35rem;
+      box-shadow: 0 14px 32px rgba(2, 6, 23, 0.35);
+    }
+
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      min-height: 4.5rem;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.18s ease, transform 0.18s ease;
+
+      &:hover {
+        background: rgba(30, 41, 59, 0.9);
+        transform: translateY(-1px);
+      }
+    }
+
+    .no-results {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      padding: 0.9rem 1rem;
+      text-align: left;
     }
 
     .tags {
@@ -486,28 +574,6 @@ mat-card {
           border-color: rgba(71, 85, 105, 0.6);
           color: white; /* Hover text white */
         }
-      }
-    }
-  }
-}
-
-// Autocomplete Styles
-::ng-deep {
-  .mat-mdc-autocomplete-panel {
-    background: rgba(15, 23, 42, 0.98);
-    border: 1px solid rgba(71, 85, 105, 0.3);
-    border-radius: 8px;
-    margin-top: 8px;
-
-    .mat-mdc-option {
-      color: white; /* Autocomplete text white */
-
-      &:hover {
-        background: rgba(30, 41, 59, 0.6);
-      }
-
-      &.mat-mdc-option-active {
-        background: rgba(30, 41, 59, 0.4);
       }
     }
   }

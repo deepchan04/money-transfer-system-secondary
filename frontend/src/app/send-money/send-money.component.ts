@@ -6,7 +6,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -25,7 +25,7 @@ import { take } from 'rxjs/operators';
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatAutocompleteModule,
+    MatIconModule,
     MatProgressSpinnerModule,
     MatChipsModule,
     RouterModule
@@ -50,6 +50,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   description = '';
   selectedTag = '';
   password = '';
+  showPassword = false;
   errorMessage = '';
   currentUser: any = null;
 
@@ -118,7 +119,14 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   onSearchChange() {
     console.log('Search query:', this.searchQuery);
 
-    // If search is empty, don't show any users in dropdown
+    if (this.selectedUser) {
+      const selectedLabel = `${this.selectedUser.name} (${this.selectedUser.vpaId || this.selectedUser.phoneNumber})`;
+      if (this.searchQuery !== selectedLabel) {
+        this.selectedUser = null;
+      }
+    }
+
+    // If search is empty, don't show any users in results
     if (!this.searchQuery || !this.searchQuery.trim()) {
       this.filteredUsers = [];
       this.selectedUser = null;
@@ -129,9 +137,9 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
 
     // Filter users based on name, phoneNumber, or vpaId
     this.filteredUsers = this.allUsers.filter(user => {
-      const nameMatch = user.name?.toLowerCase().includes(query);
-      const phoneMatch = user.phoneNumber?.includes(query);
-      const vpaMatch = user.vpaId?.toLowerCase().includes(query);
+      const nameMatch = user.name?.toLowerCase().startsWith(query);
+      const phoneMatch = user.phoneNumber?.startsWith(query);
+      const vpaMatch = user.vpaId?.toLowerCase().startsWith(query);
 
       return nameMatch || phoneMatch || vpaMatch;
     });
@@ -143,6 +151,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     this.selectedUser = user;
     // Set the search query to display the selected user
     this.searchQuery = `${user.name} (${user.vpaId || user.phoneNumber})`;
+    this.filteredUsers = [];
     console.log('Selected user:', user);
   }
 

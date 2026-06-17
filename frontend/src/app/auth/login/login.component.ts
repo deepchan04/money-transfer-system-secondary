@@ -28,6 +28,7 @@ export class LoginComponent {
   phoneNumber = '';
   password = '';
   errorMessage = '';
+  showPassword = false;
 
   constructor(private postService: PostService, private router: Router) { }
 

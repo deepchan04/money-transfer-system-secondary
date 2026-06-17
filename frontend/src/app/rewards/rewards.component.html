@@ -1,0 +1,158 @@
+<app-navbar></app-navbar>
+
+<div class="rewards-page">
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-container">
+    <div class="loader-ring"></div>
+    <p>Loading your rewards...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && errorMessage" class="error-state">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <ng-container *ngIf="!isLoading && !errorMessage">
+
+    <!-- Hero Points Banner -->
+    <section class="rewards-hero">
+      <div class="hero-bg-particles">
+        <div class="particle" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="points-display">
+          <div class="points-icon">
+            <mat-icon>stars</mat-icon>
+          </div>
+          <div class="points-info">
+            <div class="points-label">YOUR REWARD POINTS</div>
+            <div class="points-value">{{ rewardStatus?.rewardPoints ?? 0 }}</div>
+            <div class="points-subtext">
+              {{ rewardStatus?.totalPointsEarned ?? 0 }} total points earned
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress to next card -->
+        <div class="progress-section">
+          <div class="progress-header">
+            <span class="progress-label">Progress to next scratchcard</span>
+            <span class="progress-fraction">{{ (rewardStatus?.totalPointsEarned ?? 0) % 10 }}/10 pts</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" [style.width.%]="progressToNextCard"></div>
+          </div>
+          <p class="progress-hint" *ngIf="pointsToNextCard < 10">
+            <mat-icon>bolt</mat-icon>
+            Earn <strong>{{ pointsToNextCard }} more point{{ pointsToNextCard > 1 ? 's' : '' }}</strong> to unlock your next reward!
+          </p>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="rewards-stats">
+          <div class="stat-chip">
+            <mat-icon>card_giftcard</mat-icon>
+            <span>{{ rewardStatus?.unscratchedCount ?? 0 }} unscratched</span>
+          </div>
+          <div class="stat-chip scratched">
+            <mat-icon>check_circle</mat-icon>
+            <span>{{ rewardStatus?.scratchedCount ?? 0 }} revealed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div class="how-it-works">
+        <h4><mat-icon>info</mat-icon> How to earn rewards</h4>
+        <ul>
+          <li>Send <strong>₹100+</strong> to any UPI ID</li>
+          <li>Earn <strong>1 point per ₹100</strong> (max 20 pts/transaction)</li>
+          <li>Each new recipient earns points <strong>once per day</strong></li>
+          <li>Every <strong>10 points</strong> unlocks a new scratchcard!</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Unscratched Cards -->
+    <section class="cards-section" *ngIf="unscratchedCards.length > 0">
+      <h2 class="section-title">
+        <mat-icon>redeem</mat-icon>
+        Scratch & Win
+        <span class="section-badge">{{ unscratchedCards.length }}</span>
+      </h2>
+
+      <div class="cards-grid">
+        <div
+          class="scratch-card unscratched"
+          *ngFor="let card of unscratchedCards"
+          (click)="openScratchDialog(card)"
+          id="scratch-card-{{ card.id }}"
+        >
+          <div class="card-shine"></div>
+          <div class="card-inner">
+            <div class="gift-icon-wrap">
+              <mat-icon class="gift-icon">redeem</mat-icon>
+            </div>
+            <div class="card-label">SCRATCH HERE</div>
+            <div class="card-sublabel">Tap to reveal your reward</div>
+            <div class="scratch-prompt">
+              <mat-icon>touch_app</mat-icon>
+            </div>
+          </div>
+          <div class="card-date">Unlocked {{ formatDate(card.createdAt) }}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Empty state — no cards at all -->
+    <section class="empty-state-section"
+      *ngIf="scratchCards.length === 0">
+      <div class="empty-card">
+        <div class="empty-icon-ring">
+          <mat-icon>card_giftcard</mat-icon>
+        </div>
+        <h3>No rewards yet</h3>
+        <p>Send money to others to start earning points and unlock scratchcards!</p>
+        <button mat-raised-button routerLink="/send-money" id="empty-send-money-btn">
+          <mat-icon>send</mat-icon>
+          Send Money Now
+        </button>
+      </div>
+    </section>
+
+    <!-- Scratched Cards -->
+    <section class="cards-section scratched-section" *ngIf="scratchedCards.length > 0">
+      <h2 class="section-title muted">
+        <mat-icon>history</mat-icon>
+        Revealed Rewards
+        <span class="section-badge muted">{{ scratchedCards.length }}</span>
+      </h2>
+
+      <div class="cards-grid">
+        <div
+          class="scratch-card revealed"
+          *ngFor="let card of scratchedCards"
+          [style.--brand-color]="getBrandColor(card.couponCode)"
+        >
+          <div class="brand-icon-wrap">
+            <mat-icon>{{ getBrandIcon(card.couponCode) }}</mat-icon>
+          </div>
+          <div class="revealed-title">{{ card.title }}</div>
+          <div class="revealed-desc">{{ card.description }}</div>
+          <div class="coupon-code-row">
+            <span class="coupon-code">{{ card.couponCode }}</span>
+            <button mat-icon-button class="copy-btn" (click)="copyCode(card.couponCode)"
+              matTooltip="Copy code" id="copy-code-{{ card.id }}">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+          <div class="card-date muted">Scratched {{ formatDate(card.scratchedAt ?? '') }}</div>
+        </div>
+      </div>
+    </section>
+
+  </ng-container>
+</div>

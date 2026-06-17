@@ -182,12 +182,7 @@
           </button>
         </div>
 
-        <div *ngIf="isLoading" class="loading-state">
-          <mat-icon>hourglass_empty</mat-icon>
-          <p>Loading your transactions...</p>
-        </div>
-
-        <div *ngIf="!isLoading && transactions.length === 0" class="empty-state">
+        <div *ngIf="transactions.length === 0" class="empty-state">
           <mat-icon>inbox</mat-icon>
           <p>No transactions yet</p>
           <small>Your payment activity will appear here</small>

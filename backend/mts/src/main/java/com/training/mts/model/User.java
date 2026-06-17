@@ -96,6 +96,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(columnDefinition = "int default 0")
+    private Integer rewardPoints = 0;
+
+    @Column(columnDefinition = "int default 0")
+    private Integer totalPointsEarned = 0;
+
     public Role getRole() {
         return role;
     }
@@ -103,6 +109,23 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+
+    public Integer getRewardPoints() {
+        return rewardPoints != null ? rewardPoints : 0;
+    }
+
+    public void setRewardPoints(Integer rewardPoints) {
+        this.rewardPoints = rewardPoints;
+    }
+
+    public Integer getTotalPointsEarned() {
+        return totalPointsEarned != null ? totalPointsEarned : 0;
+    }
+
+    public void setTotalPointsEarned(Integer totalPointsEarned) {
+        this.totalPointsEarned = totalPointsEarned;
+    }
+
 
     @Override
     public String toString() {

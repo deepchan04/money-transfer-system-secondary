@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { Router, RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
@@ -20,7 +21,8 @@ import { take } from 'rxjs/operators';
     NavbarComponent,
     MatCardModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   templateUrl: './add-bank.component.html',
   styleUrls: ['./add-bank.component.scss']
@@ -33,6 +35,7 @@ export class AddBankComponent implements OnInit, OnDestroy {
   responseMessage = '';
   errorMessage = '';
   isLoading = false;
+  showAccountPassword = false;
   countdown = 5;
   progressWidth = 0;
   private countdownSubscription?: Subscription;

@@ -113,6 +113,46 @@
         border-color: rgba(248, 113, 113, 0.3);
       }
     }
+
+  .rewards-btn {
+  color: #fbbf24 !important;
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+
+  position: relative;
+  overflow: visible;
+  padding-right: 24px !important; // reserve space for badge
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
+  } 
+
+
+  &::before {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  }
+
+  &:hover {
+    background: rgba(251, 191, 36, 0.12) !important;
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #fcd34d !important;
+
+    mat-icon {
+      transform: scale(1.15) rotate(-10deg);
+    }
+  }
+
+  &.router-link-active {
+    background: rgba(251, 191, 36, 0.12);
+    border-color: rgba(251, 191, 36, 0.3);
+  }
+}
   }
 }
 
@@ -256,3 +296,5 @@
     }
   }
 }
+
+

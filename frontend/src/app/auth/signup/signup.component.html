@@ -47,12 +47,22 @@
       <mat-label>Password</mat-label>
       <input 
         matInput 
-        type="password" 
+        [type]="showPassword ? 'text' : 'password'" 
         [(ngModel)]="password" 
         name="password"
         placeholder="Minimum 6 characters"
         required
       />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        class="password-toggle"
+        [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+        (click)="showPassword = !showPassword"
+      >
+        <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
       <mat-hint>Password must be at least 6 characters</mat-hint>
     </mat-form-field>
 
@@ -60,12 +70,22 @@
       <mat-label>Confirm Password</mat-label>
       <input 
         matInput 
-        type="password" 
+        [type]="showConfirmPassword ? 'text' : 'password'" 
         [(ngModel)]="confirmPassword" 
         name="confirmPassword"
         placeholder="Re-enter password"
         required
       />
+      <button
+        mat-icon-button
+        matSuffix
+        type="button"
+        class="password-toggle"
+        [attr.aria-label]="showConfirmPassword ? 'Hide password' : 'Show password'"
+        (click)="showConfirmPassword = !showConfirmPassword"
+      >
+        <mat-icon>{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
     </mat-form-field>
 
     <button 

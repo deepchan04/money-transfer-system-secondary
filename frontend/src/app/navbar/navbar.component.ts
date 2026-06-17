@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
@@ -17,6 +18,7 @@ import { filter } from 'rxjs/operators';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatBadgeModule,
     RouterModule
   ],
   templateUrl: './navbar.component.html',
@@ -25,6 +27,7 @@ import { filter } from 'rxjs/operators';
 export class NavbarComponent implements OnInit {
   userInitial = 'G';
   userRole = '';
+  unscratchedRewardsCount = 0;
 
   constructor(private postService: PostService, private router: Router) {
     this.loadUserData();
@@ -47,7 +50,28 @@ export class NavbarComponent implements OnInit {
       const user = JSON.parse(userData);
       this.userInitial = user.name ? user.name.charAt(0).toUpperCase() : 'G';
       this.userRole = user.role || '';
+      this.loadRewardIndicator();
+    } else {
+      this.userRole = '';
+      this.unscratchedRewardsCount = 0;
     }
+  }
+
+  @HostListener('window:rewardsUpdated')
+  loadRewardIndicator(): void {
+    if (!this.isLoggedIn() || this.isAdmin()) {
+      this.unscratchedRewardsCount = 0;
+      return;
+    }
+
+    this.postService.getRewardStatus().subscribe({
+      next: (status) => {
+        this.unscratchedRewardsCount = status?.unscratchedCount ?? 0;
+      },
+      error: () => {
+        this.unscratchedRewardsCount = 0;
+      }
+    });
   }
 
   isLoggedIn(): boolean {

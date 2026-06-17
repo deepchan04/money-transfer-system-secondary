@@ -14,6 +14,7 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { authGuard } from './guards/auth.guard';
 import { closedAccount } from './guards/closedAccount.guard';
 import { adminGuard } from './guards/admin.guard';
+import { RewardsComponent } from './rewards/rewards.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,5 +29,6 @@ export const routes: Routes = [
   { path: 'send-money', component: SendMoneyComponent, canActivate: [authGuard, closedAccount] },
   { path: 'add-bank', component: AddBankComponent, canActivate: [authGuard, closedAccount] },
   { path: 'check-balance', component: CheckBalanceComponent, canActivate: [authGuard, closedAccount] },
+  { path: 'rewards', component: RewardsComponent, canActivate: [authGuard, closedAccount] },
   { path: '**', redirectTo: '' }
 ];

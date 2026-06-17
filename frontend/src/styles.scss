@@ -15,11 +15,50 @@ html {
 body {
   color-scheme: light;
 
-  background-color: var(--mat-sys-surface);
+  /* Ensure app background matches dark pages (prevents white gap under sticky nav)
+     Kept as a fixed dark color instead of the Material surface variable to avoid
+     showing the default light surface behind semi-transparent navbars. */
+  background-color: #0f172a;
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
 
   margin: 0;
+}
+
+.password-toggle.mat-mdc-icon-button {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 8px !important;
+  margin: 0 0.35rem 0 0 !important;
+  border-radius: 999px !important;
+  color: #cbd5e1 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-width: 40px !important;
+  flex: 0 0 40px !important;
+  vertical-align: middle !important;
+}
+
+.password-toggle.mat-mdc-icon-button:hover {
+  color: #ffffff !important;
+  background: rgba(148, 163, 184, 0.16) !important;
+  transform: none !important;
+}
+
+.password-toggle mat-icon {
+  display: block !important;
+  font-size: 20px !important;
+  width: 20px !important;
+  height: 20px !important;
+  line-height: 20px !important;
+}
+
+.mat-mdc-form-field-icon-suffix .password-toggle.mat-mdc-icon-button {
+  align-self: center !important;
+  margin-top: 0 !important;
 }
 
 html,
@@ -27,3 +66,189 @@ body {
   height: 100%;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/* Global overrides for Material overlay panels (autocomplete/options) to match dark theme */
+.cdk-overlay-container .mat-mdc-autocomplete-panel,
+.cdk-overlay-container .mat-autocomplete-panel,
+.cdk-overlay-container .mat-mdc-autocomplete-panel * {
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(71, 85, 105, 0.18) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+}
+
+.cdk-overlay-container .mat-mdc-option,
+.cdk-overlay-container .mat-option {
+  background: transparent !important;
+  color: #cbd5e1 !important;
+  padding: 0.6rem 0.8rem !important;
+  min-height: 48px !important;
+}
+
+.cdk-overlay-container .mat-mdc-option.mat-active,
+.cdk-overlay-container .mat-option.mat-active,
+.cdk-overlay-container .mat-mdc-option:hover,
+.cdk-overlay-container .mat-option:hover {
+  background: rgba(59,130,246,0.08) !important;
+  color: #cbd5e1 !important;
+}
+
+/* Extra aggressive overrides to catch any remaining panel/option classes */
+.cdk-overlay-pane .mat-autocomplete-panel,
+.cdk-overlay-pane .mat-mdc-autocomplete-panel,
+.cdk-overlay-pane .mat-autocomplete-panel *,
+.cdk-overlay-pane .mat-mdc-autocomplete-panel *,
+.cdk-overlay-pane .mat-option,
+.cdk-overlay-pane .mat-mdc-option,
+.cdk-overlay-pane .mat-option *,
+.cdk-overlay-pane .mat-mdc-option * {
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #cbd5e1 !important;
+  border-color: rgba(71,85,105,0.18) !important;
+}
+
+/* If the panel is wrapped by different classes (older Material), force the styles */
+.mat-autocomplete-panel,
+.mat-autocomplete-panel *,
+.mat-mdc-autocomplete-panel,
+.mat-mdc-autocomplete-panel * {
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #cbd5e1 !important;
+}
+
+/* Ensure option text is visible even if nested deep */
+.mat-option, .mat-option *,
+.mat-mdc-option, .mat-mdc-option * {
+  color: #cbd5e1 !important;
+}
+
+/* Extra overrides for any remaining autocomplete panel/option variants */
+.cdk-overlay-container .mat-autocomplete-panel,
+.cdk-overlay-container .mat-mdc-autocomplete-panel,
+.cdk-overlay-pane .mat-autocomplete-panel,
+.cdk-overlay-pane .mat-mdc-autocomplete-panel,
+.mat-autocomplete-panel,
+.mat-mdc-autocomplete-panel {
+  background-color: rgba(15,23,42,0.98) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(71,85,105,0.18) !important;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6) !important;
+}
+
+.cdk-overlay-container .mat-autocomplete-panel .mat-option,
+.cdk-overlay-container .mat-mdc-autocomplete-panel .mat-option,
+.cdk-overlay-container .mat-autocomplete-panel .mat-mdc-option,
+.cdk-overlay-container .mat-mdc-autocomplete-panel .mat-mdc-option,
+.mat-autocomplete-panel .mat-option,
+.mat-mdc-autocomplete-panel .mat-mdc-option {
+  background-color: transparent !important;
+  color: #cbd5e1 !important;
+}
+
+/* Ensure nested strong/small tags inherit the panel color */
+.cdk-overlay-container .mat-option strong,
+.cdk-overlay-container .mat-option small,
+.cdk-overlay-container .mat-mdc-option strong,
+.cdk-overlay-container .mat-mdc-option small,
+.mat-option strong,
+.mat-option small,
+.mat-mdc-option strong,
+.mat-mdc-option small {
+  color: inherit !important;
+}
+
+/* Fallback: if a white background is applied via inline styles or other classes, force transparency */
+.cdk-overlay-container *[style*="background"] {
+  background-color: rgba(15,23,42,0.98) !important;
+}
+
+/* Styles applied when `panelClass="dark-autocomplete"` is used on mat-autocomplete */
+.dark-autocomplete {
+  background-color: rgba(15,23,42,0.98) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(71,85,105,0.12) !important;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.6) !important;
+  border-radius: 8px !important;
+  padding: 0 !important;
+}
+
+/* Panel-level padding removed so options align flush under input */
+.dark-autocomplete .mat-option,
+.dark-autocomplete .mat-mdc-option {
+  background: transparent !important;
+  color: #cbd5e1 !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  border-radius: 6px !important;
+  margin: 0.125rem 0 !important;
+}
+
+/* Move spacing into the user-option so layout is consistent and aligned */
+.dark-autocomplete .user-option {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.12rem !important;
+  padding: 0 1rem !important;
+  width: 100% !important;
+  height: 100% !important;
+  justify-content: center !important; /* center vertically */
+}
+
+/* Ensure each option provides enough height to center content visually */
+.dark-autocomplete .mat-option,
+.dark-autocomplete .mat-mdc-option {
+  min-height: 56px !important;
+}
+
+/* Ensure the clickable option centers its content vertically */
+.dark-autocomplete .mat-option,
+.dark-autocomplete .mat-mdc-option {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Make strong/small stack but centered vertically */
+.dark-autocomplete .user-option strong,
+.dark-autocomplete .user-option small {
+  display: block !important;
+  line-height: 1.1 !important;
+}
+
+.dark-autocomplete .mat-option strong,
+.dark-autocomplete .mat-mdc-option strong {
+  color: #cbd5e1 !important;
+  font-weight: 700 !important;
+}
+
+.dark-autocomplete .mat-option small,
+.dark-autocomplete .mat-mdc-option small {
+  color: #94a3b8 !important;
+  margin-top: 0 !important;
+}
+
+.dark-autocomplete .mat-option.mat-active,
+.dark-autocomplete .mat-mdc-option.mat-active,
+.dark-autocomplete .mat-option:hover,
+.dark-autocomplete .mat-mdc-option:hover {
+  background: rgba(30,41,59,0.5) !important;
+  color: #cbd5e1 !important;
+}
+
+/* ===== Scratch Dialog Global Overrides ===== */
+.scratch-dialog-panel {
+  .mat-mdc-dialog-container {
+    padding: 0 !important;
+    border-radius: 20px !important;
+    overflow: hidden;
+    background: #0f172a !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7) !important;
+  }
+
+  .mdc-dialog__surface {
+    border-radius: 20px !important;
+    background: transparent !important;
+  }
+}
+
+

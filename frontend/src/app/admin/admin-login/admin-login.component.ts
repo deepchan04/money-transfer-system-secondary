@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostService } from '../../service/post.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-admin-login',
@@ -17,6 +18,7 @@ import { PostService } from '../../service/post.service';
         MatFormFieldModule,
         MatInputModule,
         MatButtonModule,
+        MatIconModule,
         FormsModule
     ],
     templateUrl: './admin-login.component.html',
@@ -26,6 +28,7 @@ export class AdminLoginComponent {
     phoneNumber = '';
     password = '';
     errorMessage = '';
+    showPassword = false;
 
     constructor(private postService: PostService, private router: Router) { }
 

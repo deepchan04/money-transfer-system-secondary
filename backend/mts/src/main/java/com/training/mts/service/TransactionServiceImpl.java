@@ -32,13 +32,15 @@ public class TransactionServiceImpl implements TransactionService{
     private VPARepository vpaRepository;
     private PasswordEncoder passwordEncoder;
     private TransactionFailServiceImpl tFail;
+    private RewardService rewardService;
 
-    public TransactionServiceImpl(TransactionFailServiceImpl tFail,PasswordEncoder passwordEncoder,TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository) {
+    public TransactionServiceImpl(TransactionFailServiceImpl tFail, PasswordEncoder passwordEncoder, TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository, RewardService rewardService) {
         this.transactionRepository = transactionRepository;
         this.bankAccountService = bankAccountService;
         this.vpaRepository = vpaRepository;
         this.passwordEncoder = passwordEncoder;
         this.tFail = tFail;
+        this.rewardService = rewardService;
     }
 
     @Transactional
@@ -90,7 +92,10 @@ public class TransactionServiceImpl implements TransactionService{
         // 6. Execute Transfer and Save
         executeMoneyTransfer(payerAccount, payeeAccount, request.getAmount());
 
-        return new TransactionDTO(saveTransactionRecord(key, payer, payee, request.getAmount(), request.getNote(), request.getTransactionType()));
+        Transaction savedTx = saveTransactionRecord(key, payer, payee, request.getAmount(), request.getNote(), request.getTransactionType());
+        rewardService.awardPointsForTransaction(savedTx);
+
+        return new TransactionDTO(savedTx);
 
     }
 

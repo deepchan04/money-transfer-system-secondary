@@ -22,7 +22,17 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Account Password</mat-label>
-              <input matInput type="password" [(ngModel)]="accountPassword" name="accountPassword">
+              <input matInput [type]="showAccountPassword ? 'text' : 'password'" [(ngModel)]="accountPassword" name="accountPassword">
+              <button
+                mat-icon-button
+                matSuffix
+                type="button"
+                class="password-toggle"
+                [attr.aria-label]="showAccountPassword ? 'Hide account password' : 'Show account password'"
+                (click)="showAccountPassword = !showAccountPassword"
+              >
+                <mat-icon>{{ showAccountPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
             </mat-form-field>
 
             <button mat-raised-button color="primary" [disabled]="!vpaId || !accountNumber || !accountPassword"

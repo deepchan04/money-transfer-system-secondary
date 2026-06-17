@@ -34,6 +34,8 @@ export class SignupComponent {
   confirmPassword: string = '';
   phoneNumber: string = '';
   errorMessage: string = '';
+  showPassword = false;
+  showConfirmPassword = false;
 
   @Output() signupSuccess = new EventEmitter<void>();
 

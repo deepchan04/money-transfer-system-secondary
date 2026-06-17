@@ -195,6 +195,36 @@ export class PostService {
     return this.http.get<any>(url);
   }
 
+  // Get reward points and cards status
+  getRewardStatus(): Observable<any> {
+    const url = 'http://localhost:8080/rewards/status';
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<any>(url, { headers });
+  }
+
+  // Get user's scratchcards list
+  getScratchCards(): Observable<any> {
+    const url = 'http://localhost:8080/rewards/list';
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<any>(url, { headers });
+  }
+
+  // Scratch card and reveal coupon details
+  scratchCard(cardId: number): Observable<any> {
+    const url = `http://localhost:8080/rewards/scratch/${cardId}`;
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<any>(url, {}, { headers });
+  }
+
   // Logout method to clear the localStorage
   logout(): void {
     localStorage.removeItem('user');

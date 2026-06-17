@@ -1,0 +1,100 @@
+<div class="scratch-dialog">
+
+  <!-- Confetti Layer -->
+  <div class="confetti-layer" *ngIf="confettiParticles.length > 0">
+    <div
+      class="confetti-dot"
+      *ngFor="let p of confettiParticles; let i = index"
+      [style.left.px]="p.x"
+      [style.top.px]="p.y"
+      [style.width.px]="p.size"
+      [style.height.px]="p.size"
+      [style.background]="p.color"
+      [style.opacity]="p.alpha"
+    ></div>
+  </div>
+
+  <!-- Dialog Header -->
+  <div class="dialog-header">
+    <div class="header-icon">
+      <mat-icon>card_giftcard</mat-icon>
+    </div>
+    <div class="header-text">
+      <div class="header-title">Your Reward!</div>
+      <div class="header-sub" *ngIf="!isRevealed">Scratch below to reveal your coupon</div>
+      <div class="header-sub revealed-sub" *ngIf="isRevealed">🎉 Congratulations!</div>
+    </div>
+    <button mat-icon-button class="close-btn" (click)="close()" id="scratch-dialog-close">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <!-- Scratch Area (before reveal) -->
+  <div class="scratch-area" *ngIf="!isRevealed || isRevealing">
+    <!-- Reveal bg (what's underneath) -->
+    <div class="reveal-bg">
+      <mat-icon class="reveal-bg-icon">redeem</mat-icon>
+      <span class="reveal-bg-text">Scratch the card!</span>
+    </div>
+
+    <!-- API calling state overlay -->
+    <div class="api-loading" *ngIf="isApiCalling">
+      <div class="loader-ring-sm"></div>
+    </div>
+
+    <!-- Canvas -->
+    <canvas
+      #scratchCanvas
+      class="scratch-canvas"
+      [style.cursor]="isRevealed ? 'default' : 'crosshair'"
+    ></canvas>
+  </div>
+
+  <!-- Revealed Coupon -->
+  <div class="coupon-reveal" *ngIf="isRevealed && !isRevealing">
+    <div class="coupon-card" *ngIf="revealedCard; else fallback">
+      <div class="coupon-brand-row">
+        <div class="brand-code">{{ revealedCard.couponCode.split('-')[0] }}</div>
+        <div class="coupon-badge">COUPON</div>
+      </div>
+      <div class="coupon-title">{{ revealedCard.title }}</div>
+      <div class="coupon-desc">{{ revealedCard.description }}</div>
+      <div class="coupon-code-section">
+        <div class="code-label">YOUR CODE</div>
+        <div class="code-box">
+          <span class="code-text" id="coupon-code-display">{{ revealedCard.couponCode }}</span>
+          <button
+            mat-raised-button
+            class="copy-btn"
+            (click)="copyCode()"
+            id="copy-coupon-btn"
+          >
+            <mat-icon>{{ copySuccess ? 'check' : 'content_copy' }}</mat-icon>
+            {{ copySuccess ? 'Copied!' : 'Copy' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #fallback>
+      <div class="coupon-card fallback">
+        <mat-icon>check_circle</mat-icon>
+        <p>Your card has been revealed! Refresh the page to see your reward.</p>
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- Footer Action -->
+  <div class="dialog-footer">
+    <button
+      mat-raised-button
+      class="done-btn"
+      (click)="close()"
+      *ngIf="isRevealed"
+      id="scratch-dialog-done"
+    >
+      Done
+    </button>
+  </div>
+
+</div>

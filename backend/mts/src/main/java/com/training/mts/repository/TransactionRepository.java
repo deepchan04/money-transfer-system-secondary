@@ -18,4 +18,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         List<Transaction> findByPayerOrPayeeOrderByTransactionTimeDesc(User payer, User payee);
         Optional<Transaction> findByIdempotencyKey(String idempotencyKey);
 
+        long countByPayerAndPayeeAndStatusAndTransactionTimeAfter(
+            User payer, User payee, TransactionStatus status, java.time.LocalDateTime time
+        );
 }
