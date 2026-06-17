@@ -12,6 +12,10 @@ public class TransactionDTO {
     private String status;
     private String failureReason;
     private LocalDateTime transactionTime;
+    private Integer points;
+
+    public Integer getPoints(){return points;}
+    public void setPoints(Integer points){this.points = points;}
 
     public String getNote() {
         return note;
@@ -44,6 +48,7 @@ public class TransactionDTO {
         this.transactionTime = t.getTransactionTime();
         this.transactionType = t.getTransactionType();
         this.note = t.getNote();
+        this.points = t.getPoints();
     }
 
     public String getPayerVpaId() {

@@ -22,6 +22,7 @@ interface Transaction {
   type: 'credit' | 'debit';
   amount: string;
   amountNumeric: number;
+  points?: number;
   status: string;
   transactionTime: string;
   vpaId: string;
@@ -50,7 +51,7 @@ interface Transaction {
   styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-  displayedColumns = ['date', 'description', 'amount', 'status'];
+  displayedColumns = ['date', 'description', 'points', 'amount', 'status'];
   transactions: Transaction[] = [];
   filteredTransactions: Transaction[] = [];
   isLoading = false;
@@ -121,6 +122,7 @@ export class TransactionsComponent implements OnInit {
               time: this.formatTime(credit.transactionTime),
               primaryText: `Received from ${username}`,
               secondaryText: credit.note || 'No description',
+              points: credit.points ?? 0,
               amount: `₹${credit.amount.toLocaleString('en-IN')}`,
               amountNumeric: credit.amount,
               status: credit.status,
@@ -145,6 +147,7 @@ export class TransactionsComponent implements OnInit {
               time: this.formatTime(debit.transactionTime),
               primaryText: `Sent to ${username}`,
               secondaryText: debit.note || 'No description',
+              points: debit.points ?? 0,
               amount: `₹${debit.amount.toLocaleString('en-IN')}`,
               amountNumeric: debit.amount,
               status: debit.status,

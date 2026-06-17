@@ -14,12 +14,15 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Integer points;
+
     private Double amount;
 
     private TransactionStatus status;
 
 
-
+    public Integer getPoints(){return points;}
+    public void setPoints(Integer points){this.points = points;}
     public String getNote() {
         return note;
     }

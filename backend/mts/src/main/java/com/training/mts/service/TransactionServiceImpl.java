@@ -162,16 +162,30 @@ public class TransactionServiceImpl implements TransactionService{
 
         // 2. Call the specific methods
         // Credits: User is Payee + Status must be SUCCESS
-        List<TransactionDTO> credits = transactionRepository
-                .findByPayeeAndStatusOrderByTransactionTimeDesc(user, TransactionStatus.SUCCESS)
-                .stream()
-                .map(TransactionDTO::new) // Convert Entity to DTO
-                .toList();
-        List<TransactionDTO> debits = transactionRepository
-                .findByPayerOrderByTransactionTimeDesc(user)
-                .stream()
-                .map(TransactionDTO::new) // Convert Entity to DTO
-                .toList();
+        // Fetch transactions as entities so we can ensure `points` is set before returning
+        List<Transaction> creditTx = transactionRepository
+            .findByPayeeAndStatusOrderByTransactionTimeDesc(user, TransactionStatus.SUCCESS);
+        for (Transaction t : creditTx) {
+            if (t.getPoints() == null || t.getPoints() <= 0) {
+            t.setPoints(0);
+            transactionRepository.save(t);
+            }
+        }
+        List<TransactionDTO> credits = creditTx.stream()
+            .map(TransactionDTO::new)
+            .toList();
+
+        List<Transaction> debitTx = transactionRepository
+            .findByPayerOrderByTransactionTimeDesc(user);
+        for (Transaction t : debitTx) {
+            if (t.getPoints() == null || t.getPoints() <= 0) {
+            t.setPoints(0);
+            transactionRepository.save(t);
+            }
+        }
+        List<TransactionDTO> debits = debitTx.stream()
+            .map(TransactionDTO::new)
+            .toList();
 
 
         return new TransactionHistoryResponse(credits, debits);

@@ -101,6 +101,9 @@ public class RewardServiceImpl implements RewardService {
         user.setTotalPointsEarned(newTotal);
         userRepository.save(user);
 
+        transaction.setPoints(points);
+        transactionRepository.save(transaction);
+
         // Milestone trigger: 1 scratchcard per 10 points
         int cardsToGenerate = (newTotal / 10) - (oldTotal / 10);
         for (int i = 0; i < cardsToGenerate; i++) {
