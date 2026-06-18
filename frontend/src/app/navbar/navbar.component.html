@@ -10,23 +10,23 @@
   <div class="spacer"></div>
 
   <nav class="nav-links">
-    <button mat-button routerLink="/">Home</button>
     <button mat-button routerLink="/auth" *ngIf="!isLoggedIn()">Login</button>
     <button mat-button routerLink="/admin-login" *ngIf="!isLoggedIn()" class="admin-btn">Admin</button>
     <button mat-button routerLink="/admin-dashboard" *ngIf="isLoggedIn() && isAdmin()" class="admin-btn">Admin
       Dashboard</button>
     <button mat-button routerLink="/dashboard" *ngIf="isLoggedIn() && !isAdmin()">Dashboard</button>
-<button
-  mat-button
-  routerLink="/rewards"
-  class="rewards-btn"
-  matBadgeColor="accent"
-  matBadge={{unscratchedRewardsCount}}
-  [matBadgeHidden]="unscratchedRewardsCount === 0"
->
-  <mat-icon>card_giftcard</mat-icon>
-  Rewards
-</button>
+    <button
+      mat-button
+      routerLink="/rewards"
+      *ngIf="isLoggedIn() $$ !isAdmin()"
+      class="rewards-btn"
+      matBadgeColor="accent"
+      matBadge={{unscratchedRewardsCount}}
+      [matBadgeHidden]="unscratchedRewardsCount === 0"
+    >
+      <mat-icon>card_giftcard</mat-icon>
+      Rewards
+    </button>
 
     <!-- Avatar Menu - Only show when logged in -->
     <ng-container *ngIf="isLoggedIn()">

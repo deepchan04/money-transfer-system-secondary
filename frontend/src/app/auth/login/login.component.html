@@ -6,7 +6,7 @@
     <span>{{ errorMessage }}</span>
   </div>
 
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="login()" autocomplete="off">
     <mat-form-field appearance="outline">
       <mat-label>Phone Number</mat-label>
       <input 

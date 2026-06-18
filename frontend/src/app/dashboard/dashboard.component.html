@@ -121,10 +121,12 @@
           </div>
 
           <div class="legend">
-            <div *ngFor="let item of spendingBreakdown">
-              <span class="dot" [style.background]="item.color"></span>
-              {{ item.label }} ({{ item.value }}%)
-            </div>
+            <ng-container *ngFor="let item of spendingBreakdown">
+              <div *ngIf="item.value > 0" class="legend-item">
+                <span class="dot" [style.background]="item.color"></span>
+                {{ item.label }} ({{ item.value }}%)
+              </div>
+            </ng-container>
           </div>
         </mat-card>
 

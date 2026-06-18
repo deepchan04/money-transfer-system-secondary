@@ -25,8 +25,6 @@ public class TransactionFailServiceImpl {
         transaction.setFailureReason(reason);
         transaction.setStatus(TransactionStatus.FAILED);
         transaction.setTransactionTime(LocalDateTime.now());
-
-
         return transactionRepository.save(transaction);
 
     }

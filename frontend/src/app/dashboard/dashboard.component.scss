@@ -505,6 +505,10 @@
   margin-bottom: 2.5rem;
 
   .stat-card {
+            display: flex;          /* 1. Unlocks the layout engine */
+    flex-direction: column; /* 2. Stacks the child elements vertically */
+    align-items: center;    /* 3. Centers icon, h3, and p horizontally */
+    text-align: center; 
     background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(71, 85, 105, 0.2);
