@@ -93,6 +93,6 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.postService.logout();
-    this.router.navigate(['/auth']);
+    this.router.navigate(['/']);
   }
 }

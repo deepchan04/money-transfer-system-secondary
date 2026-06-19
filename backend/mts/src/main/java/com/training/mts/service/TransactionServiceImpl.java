@@ -104,21 +104,15 @@ public class TransactionServiceImpl implements TransactionService{
         String date = LocalDate.now().toString();
         String payerName = payer.getName();
 
-        // 3. Call the helper methods to generate HTML and send the emails
-        try {
-            // Generate and send Debit alert to Payer
-            String payerHtml = getPayerEmailTemplate(amount, accountNumber, payee_vpa, date);
-            emailServiceImpl.sendEmail(payer.getEmail(), "MTS - Debit Alert", payerHtml);
 
-            // Generate and send Credit alert to Payee
-            String payeeHtml = getPayeeEmailTemplate(amount, payerName, date);
-            emailServiceImpl.sendEmail(payee.getEmail(), "MTS - Credit Alert", payeeHtml);
+        String payerHtml = getPayerEmailTemplate(amount, accountNumber, payee_vpa, date);
+        emailServiceImpl.sendEmail(payer.getEmail(), "MTS - Debit Alert", payerHtml);
 
-        } catch (MessagingException e) {
-            // Log the error but don't necessarily block the user's transaction receipt
-            // depending on your business requirements
-            System.err.println("Failed to send transaction emails: " + e.getMessage());
-        }
+        // Generate and send Credit alert to Payee
+        String payeeHtml = getPayeeEmailTemplate(amount, payerName, date);
+        emailServiceImpl.sendEmail(payee.getEmail(), "MTS - Credit Alert", payeeHtml);
+
+
 
 
 

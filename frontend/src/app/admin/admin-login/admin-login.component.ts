@@ -29,12 +29,28 @@ export class AdminLoginComponent {
     password = '';
     errorMessage = '';
     showPassword = false;
+    phoneNonNumeric = false;
 
     constructor(private postService: PostService, private router: Router) { }
+
+    onPhoneInput(value: string) {
+        const raw = value || '';
+        this.phoneNonNumeric = /\D/.test(raw);
+        const digits = raw.replace(/\D+/g, '').slice(0, 10);
+
+        if (digits !== this.phoneNumber) {
+            this.phoneNumber = digits;
+        }
+    }
 
     login() {
         // Clear previous errors
         this.errorMessage = '';
+
+        if (!this.phoneNumber || !this.password) {
+            this.errorMessage = 'Please enter both phone number and password';
+            return;
+        }
 
         // Check if user is already logged in from another tab
         const existingUser = localStorage.getItem('user');
@@ -50,42 +66,45 @@ export class AdminLoginComponent {
             return;
         }
 
-        if (this.phoneNumber && this.password) {
-            const loginData = {
-                phoneNumber: this.phoneNumber,
-                password: this.password
-            };
-
-            this.postService.loginUser(loginData).subscribe({
-                next: (response) => {
-                    console.log('Admin login successful', response);
-                    if (response.token) {
-                        localStorage.setItem('token', response.token);
-
-                        // Fetch user details
-                        this.postService.findByPhone(this.phoneNumber).subscribe({
-                            next: (user) => {
-                                console.log('Admin details fetched:', user);
-                                localStorage.setItem('user', JSON.stringify(user));
-                                // Redirect to admin dashboard
-                                this.router.navigate(['/admin-dashboard']);
-                            },
-                            error: (err) => {
-                                console.error('Error fetching admin details:', err);
-                                this.errorMessage = err.error?.message || 'Failed to fetch admin details';
-                                this.router.navigate(['/admin-dashboard']); // Navigate anyway
-                            }
-                        });
-                    } else {
-                        this.router.navigate(['/admin-dashboard']);
-                    }
-                },
-                error: (err) => {
-                    console.error('Admin login failed', err);
-                    this.errorMessage = err.error?.message || 'Invalid credentials. Please try again.';
-                }
-            });
+        if (this.phoneNumber.length !== 10) {
+            this.errorMessage = 'Phone number must be 10 digits';
+            return;
         }
+
+        const loginData = {
+            phoneNumber: this.phoneNumber,
+            password: this.password
+        };
+
+        this.postService.loginUser(loginData).subscribe({
+            next: (response) => {
+                console.log('Admin login successful', response);
+                if (response.token) {
+                    localStorage.setItem('token', response.token);
+
+                    // Fetch user details
+                    this.postService.findByPhone(this.phoneNumber).subscribe({
+                        next: (user) => {
+                            console.log('Admin details fetched:', user);
+                            localStorage.setItem('user', JSON.stringify(user));
+                            // Redirect to admin dashboard
+                            this.router.navigate(['/admin-dashboard']);
+                        },
+                        error: (err) => {
+                            console.error('Error fetching admin details:', err);
+                            this.errorMessage = err.error?.message || 'Failed to fetch admin details';
+                            this.router.navigate(['/admin-dashboard']); // Navigate anyway
+                        }
+                    });
+                } else {
+                    this.router.navigate(['/admin-dashboard']);
+                }
+            },
+            error: (err) => {
+                console.error('Admin login failed', err);
+                this.errorMessage = err.error?.message || 'Invalid credentials. Please try again.';
+            }
+        });
     }
 
     goHome() {

@@ -9,7 +9,7 @@
   <nav class="nav-links">
     <button mat-button routerLink="/auth" *ngIf="!isLoggedIn()">Login</button>
     <button mat-button routerLink="/admin-login" *ngIf="!isLoggedIn()" class="admin-btn">Admin</button>
-    <button mat-button routerLink="/admin-dashboard" *ngIf="isLoggedIn() && isAdmin()" class="admin-btn">Admin
+    <button mat-button routerLink="/admin-dashboard" *ngIf="isLoggedIn() && isAdmin() && currentUrl !== '/admin-dashboard'" class="admin-btn">Admin
       Dashboard</button>
     <button mat-button routerLink="/dashboard" *ngIf="isLoggedIn() && !isAdmin() && currentUrl !== '/dashboard'">Dashboard</button>
     <button
@@ -34,7 +34,7 @@
       </button>
 
       <mat-menu #profileMenu="matMenu">
-        <button mat-menu-item routerLink="/profile">
+        <button mat-menu-item routerLink="/profile" *ngIf="!isAdmin()">
           <mat-icon>person</mat-icon>
           Profile
         </button>
