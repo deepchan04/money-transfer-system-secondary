@@ -322,35 +322,14 @@
                     <td mat-cell *matCellDef="let user">{{ user.vpaId }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="accountStatus">
-                    <th mat-header-cell *matHeaderCellDef>Status</th>
-                    <td mat-cell *matCellDef="let user">
-                        <mat-form-field appearance="outline" class="status-select" *ngIf="user.vpaId !== 'N/A'">
-                            <mat-select 
-                                [(value)]="user.accountStatus" 
-                                (selectionChange)="changeUserStatus(user, $event.value)"
-                                class="p-l-4">
-                                <mat-option *ngFor="let status of statusOptions" [value]="status">
-                                    {{ status }}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                        <span *ngIf="user.vpaId === 'N/A'" class="status-na">{{ user.accountStatus }}</span>
-                    </td>
-                </ng-container>
+
 
                 <ng-container matColumnDef="accountNumber">
                     <th mat-header-cell *matHeaderCellDef>Account</th>
                     <td mat-cell *matCellDef="let user">{{ user.accountNumber }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="balance">
-                    <th mat-header-cell *matHeaderCellDef>Balance</th>
-                    <td mat-cell *matCellDef="let user" class="amount-cell">
-                        <span *ngIf="user.balance > 0">₹{{ user.balance | number }}</span>
-                        <span *ngIf="user.balance === 0">-</span>
-                    </td>
-                </ng-container>
+
 
                 <tr mat-header-row *matHeaderRowDef="userColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: userColumns;"></tr>

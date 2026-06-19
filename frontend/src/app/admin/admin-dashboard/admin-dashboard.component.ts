@@ -127,7 +127,7 @@ export class AdminDashboardComponent implements OnInit {
     usersDisplay: User[] = [];
 
     displayedColumns: string[] = ['id', 'from', 'to', 'amount', 'status', 'date'];
-    userColumns: string[] = ['id', 'name', 'email', 'phoneNumber', 'vpaId', 'accountStatus', 'accountNumber', 'balance'];
+    userColumns: string[] = ['id', 'name', 'email', 'phoneNumber', 'vpaId', 'accountNumber'];
 
     // Status options
     statusOptions = ['ACTIVE', 'CLOSED', 'LOCKED'];
@@ -381,6 +381,11 @@ export class AdminDashboardComponent implements OnInit {
     // Generate SVG path for area chart
     generateAreaPath(): string {
         if (this.dailyVolume.length === 0) return '';
+
+        if (this.dailyVolume.length === 1) {
+            const y = 200 - (this.dailyVolume[0].TOTAL_AMOUNT / this.getMaxDailyVolume() * 150);
+            return `M 300 200 L 300 ${y} L 300 200 Z`;
+        }
         
         const points = this.dailyVolume.map((d, i) => {
             const x = i * (600 / (this.dailyVolume.length - 1));
@@ -395,7 +400,12 @@ export class AdminDashboardComponent implements OnInit {
     // Generate SVG points for area chart line
     generateLinePoints(): string {
         if (this.dailyVolume.length === 0) return '';
-        
+
+        if (this.dailyVolume.length === 1) {
+            const y = 200 - (this.dailyVolume[0].TOTAL_AMOUNT / this.getMaxDailyVolume() * 150);
+            return `300,${y}`;
+        }
+
         return this.dailyVolume.map((d, i) => {
             const x = i * (600 / (this.dailyVolume.length - 1));
             const y = 200 - (d.TOTAL_AMOUNT / this.getMaxDailyVolume() * 150);
@@ -416,7 +426,7 @@ export class AdminDashboardComponent implements OnInit {
     // Get user name and ID by account ID
     getUserDisplayName(accountId: string): string {
         // The ACCOUNT_ID from Snowflake is the bank account ID, which matches user.id
-        const user = this.users.find(u => u.id === accountId);
+        const user = this.users.find(u => Number(u.id) === Number(accountId));
         if (user) {
             return `${user.name} (${user.accountNumber})`;
         }

@@ -17,13 +17,13 @@ public class SnowflakeRepository {
     // Run a query and get a list of maps (flexible)
     public List<Map<String, Object>> getPeakHours() {
         String sql = "SELECT HOUR(TO_TIMESTAMP(transaction_time)) AS tx_hour, COUNT(*) AS tx_count " +
-                "FROM transaction GROUP BY tx_hour ORDER BY tx_count DESC";
+                "FROM mts_transaction GROUP BY tx_hour ORDER BY tx_count DESC";
         return jdbcTemplate.queryForList(sql);
     }
 
     // Example with parameters (safer against SQL injection)
     public Map<String, Object> getSuccessRate() {
-        String sql = "SELECT ROUND(COUNT_IF(status = 0) * 100.0 / COUNT(*), 2) AS success_rate FROM transaction";
+        String sql = "SELECT ROUND(COUNT_IF(status = 0) * 100.0 / COUNT(*), 2) AS success_rate FROM mts_transaction";
         return jdbcTemplate.queryForMap(sql);
     }
 
@@ -32,7 +32,7 @@ public class SnowflakeRepository {
                 "  TO_DATE(TO_TIMESTAMP(transaction_time)) AS tx_date, " +
                 "  COUNT(*) AS total_count, " +
                 "  SUM(amount::FLOAT) AS total_amount " +
-                "FROM transaction " +
+                "FROM mts_transaction " +
                 "WHERE status = 0" +
                 "GROUP BY tx_date " +
                 "ORDER BY tx_date DESC";
@@ -42,9 +42,9 @@ public class SnowflakeRepository {
     public List<Map<String, Object>> getMostActiveAccounts() {
         String sql = "SELECT account_id, COUNT(*) as activity_count " +
                 "FROM ( " +
-                "    SELECT payer_id AS account_id FROM transaction " +
+                "    SELECT payer_id AS account_id FROM mts_transaction " +
                 "    UNION ALL " +
-                "    SELECT payee_id AS account_id FROM transaction " +
+                "    SELECT payee_id AS account_id FROM mts_transaction " +
                 ") " +
                 "GROUP BY account_id " +
                 "ORDER BY activity_count DESC " +
@@ -54,7 +54,7 @@ public class SnowflakeRepository {
 
     public Map<String, Object> getAverageTransferAmount() {
         // We cast amount to FLOAT to perform the average calculation
-        String sql = "SELECT AVG(amount::FLOAT) AS avg_transaction_value FROM transaction WHERE status = 0";
+        String sql = "SELECT AVG(amount::FLOAT) AS avg_transaction_value FROM mts_transaction WHERE status = 0";
         return jdbcTemplate.queryForMap(sql);
     }
 }

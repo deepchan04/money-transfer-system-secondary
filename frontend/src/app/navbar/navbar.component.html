@@ -15,7 +15,7 @@
     <button
       mat-button
       routerLink="/rewards"
-      *ngIf="isLoggedIn() && !isAdmin()"
+      *ngIf="isLoggedIn() && !isAdmin() && isAccountActive"
       class="rewards-btn"
       matBadgeColor="accent"
       matBadge={{unscratchedRewardsCount}}

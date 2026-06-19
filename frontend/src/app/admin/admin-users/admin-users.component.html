@@ -96,9 +96,9 @@
           <ng-container matColumnDef="accountStatus">
             <th mat-header-cell *matHeaderCellDef>Status</th>
             <td mat-cell *matCellDef="let user">
-              <mat-form-field appearance="outline" class="status-select" *ngIf="user.vpaId !== 'N/A'">
+                <mat-form-field class="status-select" *ngIf="user.vpaId !== 'N/A'">
                 <mat-select
-                  [(value)]="user.accountStatus"
+                  [value]="user.accountStatus"
                   (selectionChange)="changeUserStatus(user, $event.value)" class="p-l-2">
                   <mat-option class="status-option" *ngFor="let status of statusOptions" [value]="status">
                     {{ status }}

@@ -12,6 +12,7 @@ html {
   ));
 }
 
+
 .transactions-select-panel .mat-mdc-option {
   --mat-option-focus-state-layer-color: transparent !important;
   --mat-option-hover-state-layer-color: rgba(59,130,246,0.15) !important;
@@ -91,6 +92,22 @@ body {
   color: #cbd5e1 !important;
   border: 1px solid rgba(71, 85, 105, 0.18) !important;
   box-shadow: 0 8px 24px rgba(0,0,0,0.6) !important;
+}
+
+.cdk-overlay-pane .mat-mdc-select-panel {
+    background: #1e293b !important;
+}
+
+.cdk-overlay-pane .mat-mdc-option {
+    color: white !important;
+}
+
+.cdk-overlay-pane .mat-mdc-option:hover {
+    background: rgba(255,255,255,0.08) !important;
+}
+
+.cdk-overlay-pane .mdc-list-item--selected {
+    color: #60a5fa !important;
 }
 
 .cdk-overlay-container .mat-mdc-option,

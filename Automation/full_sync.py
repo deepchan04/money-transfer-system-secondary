@@ -6,7 +6,7 @@ import os
 # --- 1. CONFIGURATION ---
 mysql_config = {
     'user': 'root',
-    'password': 'Root123$',
+    'password': 'Cloud@123$',
     'host': 'localhost',
     'database': 'mts',
     'charset': 'utf8mb4'
@@ -15,7 +15,7 @@ mysql_config = {
 sf_config = {
     'user': 'DEEPCHAN04',
     'password': 'Brasil@@1011810118',
-    'account': 'QDXKKIX-IY55722', 
+    'account': 'HNSUABX-UB74610', 
     'warehouse': 'ANALYTICS_WH',
     'database': 'ANALYTICS_DB',
     'schema': 'ANALYTICS_SCHEMA'
@@ -56,7 +56,7 @@ try:
         sf_conn = snowflake.connector.connect(**sf_config)
         cursor = sf_conn.cursor()
 
-        table_name = "TRANSACTION"
+        table_name = "MTS_TRANSACTION"
         # Format path for Snowflake (forward slashes)
         clean_path = export_file.replace("\\", "/")
         snowflake_path = f"file://{clean_path}"

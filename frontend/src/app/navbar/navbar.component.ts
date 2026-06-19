@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   userRole = '';
   unscratchedRewardsCount = 0;
   currentUrl = '';
+  isAccountActive = true;
 
   constructor(private postService: PostService, private router: Router) {
     this.loadUserData();
@@ -53,6 +54,7 @@ export class NavbarComponent implements OnInit {
       const user = JSON.parse(userData);
       this.userInitial = user.name ? user.name.charAt(0).toUpperCase() : 'G';
       this.userRole = user.role || '';
+      this.isAccountActive = user.accountStatus === 'ACTIVE';
       this.loadRewardIndicator();
     } else {
       this.userRole = '';
