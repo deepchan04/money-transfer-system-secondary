@@ -152,8 +152,20 @@ export class SignupComponent {
           // Bad request - could be validation error
           this.errorMessage = err.error?.message || 'Invalid input. Please check all fields.';
         } else if (err.status === 409) {
-          // Conflict - user already exists
-          this.errorMessage = 'An account with this phone number or email already exists.';
+          // Conflict - user already exists. Parse backend message to show a clearer UI message.
+          const raw = (typeof err.error === 'string') ? err.error : (err.error?.message || '');
+          const lowered = raw.toLowerCase();
+          const hasPhone = lowered.includes('phone');
+          const hasEmail = lowered.includes('email');
+          if (hasPhone && hasEmail) {
+            this.errorMessage = 'Both phone number and email are already registered.';
+          } else if (hasPhone) {
+            this.errorMessage = 'Phone number already registered.';
+          } else if (hasEmail) {
+            this.errorMessage = 'Email already registered.';
+          } else {
+            this.errorMessage = raw || 'An account with this phone number or email already exists.';
+          }
         } else if (err.status === 500) {
           this.errorMessage = 'Server error. Please try again later.';
         } else if (err.error?.message) {

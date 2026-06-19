@@ -27,7 +27,7 @@
 
       <!-- Filters Section -->
       <div class="filters-section">
-        <mat-form-field appearance="outline" class="search-field">
+        <mat-form-field appearance="outline" >
           <mat-label>Search transactions</mat-label>
           <input matInput [(ngModel)]="searchQuery" (ngModelChange)="applyFilters()" 
                  placeholder="Search by name, VPA ID, or note">
@@ -36,20 +36,20 @@
 
         <mat-form-field appearance="outline" class="filter-field">
           <mat-label>Transaction Type</mat-label>
-          <mat-select [(ngModel)]="typeFilter" (ngModelChange)="applyFilters()">
-            <mat-option class="black-t" value="all">All Transactions</mat-option>
-            <mat-option class="black-t" value="credit">Money Received</mat-option>
-            <mat-option class="black-t" value="debit">Money Sent</mat-option>
+          <mat-select [(ngModel)]="typeFilter" (ngModelChange)="applyFilters()" panelClass="transactions-select-panel">
+            <mat-option value="all">All Transactions</mat-option>
+            <mat-option value="credit">Money Received</mat-option>
+            <mat-option value="debit">Money Sent</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="filter-field">
           <mat-label>Sort By</mat-label>
-          <mat-select [(ngModel)]="sortBy" (ngModelChange)="applyFilters()">
-            <mat-option class="black-t" value="date-desc">Date (Newest First)</mat-option>
-            <mat-option class="black-t" value="date-asc">Date (Oldest First)</mat-option>
-            <mat-option class="black-t" value="amount-desc">Amount (High to Low)</mat-option>
-            <mat-option class="black-t" value="amount-asc">Amount (Low to High)</mat-option>
+          <mat-select [(ngModel)]="sortBy" (ngModelChange)="applyFilters()" panelClass="transactions-select-panel">
+            <mat-option value="date-desc">Date (Newest First)</mat-option>
+            <mat-option value="date-asc">Date (Oldest First)</mat-option>
+            <mat-option value="amount-desc">Amount (High to Low)</mat-option>
+            <mat-option value="amount-asc">Amount (Low to High)</mat-option>
           </mat-select>
         </mat-form-field>
 

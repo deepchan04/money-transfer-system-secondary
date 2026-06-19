@@ -5,6 +5,7 @@ import com.training.mts.exceptions.*;
 import com.training.mts.model.User;
 import com.training.mts.model.VPA;
 import com.training.mts.repository.UserRepository;
+import com.training.mts.exceptions.DuplicateUserException;
 import com.training.mts.repository.VPARepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,25 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(password));
         user.setRole(com.training.mts.enums.Role.ROLE_USER);
         user.setAppStatus(com.training.mts.enums.AppStatus.ACTIVE);
+        // Check for duplicates before saving to provide a clear error
+        List<String> conflicts = new ArrayList<>();
+        if (phoneNumber != null && userRepository.findByPhoneNumber(phoneNumber).isPresent()) {
+            conflicts.add("Phone number");
+        }
+        if (email != null && userRepository.findByEmail(email).isPresent()) {
+            conflicts.add("Email");
+        }
+
+        if (!conflicts.isEmpty()) {
+            String message;
+            if (conflicts.size() == 1) {
+                message = conflicts.get(0) + " already registered";
+            } else {
+                message = String.join(" and ", conflicts) + " already registered";
+            }
+            throw new DuplicateUserException(message);
+        }
+
         userRepository.save(user);
         String vpaId = vpaService.generateVPAId(user);
         VPA vpa = new VPA();

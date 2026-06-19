@@ -35,6 +35,8 @@
         placeholder="Enter password"
         required
       />
+      <mat-hint *ngIf="password && password.length < 6" class="password-hint">Password must be at least 6 characters</mat-hint>
+
       <button
         mat-icon-button
         matSuffix
@@ -51,7 +53,7 @@
       mat-raised-button 
       color="primary" 
       type="submit"
-      [disabled]="phoneNumber?.length !== 10 || !password || password.length < 6"
+      [disabled]="phoneNumber.length !== 10 || !password || password.length < 6"
     >
       Login
     </button>

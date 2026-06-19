@@ -116,7 +116,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Description (optional)</mat-label>
                 <input matInput maxlength="100" [(ngModel)]="description">
-                <mat-hint align="end">{{ (description?.length || 0) }}/100</mat-hint>
+                <mat-hint align="end">{{ (description.length || 0) }}/100</mat-hint>
               </mat-form-field>
 
               <!-- TAG SELECTION -->

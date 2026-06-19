@@ -95,18 +95,29 @@ mat-card {
   }
 }
 
+
+
 .filters-section {
   padding: 1.5rem 2rem;
   background: rgba(30, 41, 59, 0.3);
   border-bottom: 1px solid rgba(71, 85, 105, 0.15);
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr auto;
   gap: 1rem;
-  align-items: center;
+  align-items: end;
 
   mat-form-field {
+    color: white;
     flex: 1;
     min-width: 200px;
+    --mdc-outlined-text-field-label-text-color: #94a3b8;
+    --mdc-outlined-text-field-focus-label-text-color: #94a3b8;
+    --mdc-outlined-text-field-outline-color: rgba(71, 85, 105, 0.4);
+    --mdc-outlined-text-field-hover-outline-color: rgba(71, 85, 105, 0.6);
+    --mdc-outlined-text-field-focus-outline-color: #3b82f6;
+    --mat-select-enabled-trigger-text-color: #f1f5f9;
+    --mat-select-enabled-arrow-color: #94a3b8;
+    --mat-select-focused-arrow-color: #94a3b8;
 
     &.search-field {
       flex: 2;
@@ -120,27 +131,53 @@ mat-card {
     ::ng-deep {
       .mat-mdc-text-field-wrapper {
         background-color: rgba(15, 23, 42, 0.6);
+        border-radius: 8px;
       }
 
       .mat-mdc-form-field-flex {
         border-radius: 8px;
       }
 
-      label {
+      .mat-mdc-floating-label,
+      .mdc-floating-label {
         color: #94a3b8 !important;
       }
 
-      input, .mat-mdc-select-value {
-        color: #f1f5f9;
+      .mat-mdc-input-element,
+      .mat-mdc-select-value,
+      .mat-mdc-select-min-line,
+      .mat-mdc-select-value-text,
+      .mat-mdc-select-placeholder {
+        color: #f1f5f9 !important;
+        -webkit-text-fill-color: #f1f5f9 !important;
+        opacity: 1 !important;
       }
 
-      .mat-mdc-notch-piece {
+      .mat-mdc-select-arrow,
+      .mat-mdc-select-arrow svg {
+        color: #94a3b8 !important;
+        fill: #94a3b8 !important;
+      }
+
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
         border-color: rgba(71, 85, 105, 0.4) !important;
       }
 
-      &.mat-focused {
-        .mat-mdc-notch-piece {
+      .mat-mdc-form-field.mat-focused {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
           border-color: #3b82f6 !important;
+        }
+      }
+
+      .mat-mdc-form-field:hover:not(.mat-focused) {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: rgba(71, 85, 105, 0.6) !important;
         }
       }
 
@@ -155,12 +192,14 @@ mat-card {
   }
 
   .clear-btn {
-    height: 48px;
+    height: 56px;
     color: #94a3b8;
     border-color: rgba(71, 85, 105, 0.4);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    min-height: 56px;
+    align-self: stretch;
 
     &:hover {
       background: rgba(30, 41, 59, 0.4);
@@ -196,6 +235,10 @@ mat-card {
     font-size: 0.95rem;
     margin: 0;
   }
+}
+
+.filter-field {
+  color:white;
 }
 
 // Empty State
@@ -367,13 +410,24 @@ mat-card {
 
 // Material Select Dropdown Styling
 ::ng-deep {
-  .mat-mdc-select-panel {
+  .transactions-select-panel.mat-mdc-select-panel {
     background: rgba(15, 23, 42, 0.98);
     border: 1px solid rgba(71, 85, 105, 0.3);
     border-radius: 8px;
+    padding: 0.5rem 0;
+    --mat-option-label-text-color: #ffffff;
+    --mat-option-hover-state-layer-color: rgba(30, 41, 59, 0.6);
+    --mat-option-selected-state-label-text-color: #ffffff;
 
     .mat-mdc-option {
-      color: #e2e8f0;
+      color: #ffffff !important;
+      opacity: 1 !important;
+
+      .mdc-list-item__primary-text {
+        color: #ffffff !important;
+        opacity: 1 !important;
+        -webkit-text-fill-color: #ffffff !important;
+      }
 
       &:hover {
         background: rgba(30, 41, 59, 0.6);
@@ -381,6 +435,11 @@ mat-card {
 
       &.mat-mdc-option-active {
         background: rgba(30, 41, 59, 0.4);
+      }
+
+      &.mdc-list-item--selected,
+      &.mat-mdc-option-multiple {
+        background: rgba(59, 130, 246, 0.12);
       }
     }
   }
@@ -453,8 +512,4 @@ mat-card {
       }
     }
   }
-}
-
-.black-t{
-  color: black;
 }
