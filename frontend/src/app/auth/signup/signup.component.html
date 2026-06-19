@@ -12,10 +12,13 @@
       <input 
         matInput 
         [(ngModel)]="name" 
+        (ngModelChange)="onNameInput($event)"
         name="name"
         placeholder="Enter your full name"
         required
       />
+      <mat-hint *ngIf="nameNonAlphabetic" class="password-hint">Name cannot contain digits or special characters</mat-hint>
+      <mat-hint *ngIf="!nameNonAlphabetic && name && !isNameValid()" class="password-hint">Name must be at least 2 characters long</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -28,6 +31,7 @@
         placeholder="example@email.com"
         required
       />
+      <mat-hint *ngIf="email && !isEmailValid()" class="password-hint">Please enter a valid email address</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -36,11 +40,16 @@
         matInput 
         type="tel" 
         [(ngModel)]="phoneNumber" 
+        (ngModelChange)="onPhoneInput($event)"
+        inputmode="numeric"
+        pattern="[0-9]*"
         name="phoneNumber"
-        placeholder="10-digit phone number"
+        placeholder="Enter 10-digit phone number"
         maxlength="10"
         required
       />
+      <mat-hint *ngIf="phoneNonNumeric" class="password-hint">Phone Number must be numeric</mat-hint>
+      <mat-hint *ngIf="!phoneNonNumeric && phoneNumber && phoneNumber.length !== 10" class="password-hint">Phone number must be 10 digits</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -63,7 +72,7 @@
       >
         <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
-      <mat-hint>Password must be at least 6 characters</mat-hint>
+      <mat-hint *ngIf="password && password.length < 6" class="password-hint">Password must be at least 6 characters</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -86,13 +95,14 @@
       >
         <mat-icon>{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
+      <mat-hint *ngIf="confirmPassword && password !== confirmPassword" class="password-hint">Passwords do not match</mat-hint>
     </mat-form-field>
 
     <button 
       mat-raised-button 
       color="primary" 
       type="submit"
-      [disabled]="!name || !email || !phoneNumber || !password || !confirmPassword"
+      [disabled]="!name || !isNameValid() || !email || !isEmailValid() || phoneNumber?.length !== 10 || !password || !confirmPassword || password.length < 6 || password !== confirmPassword"
     >
       Sign Up
     </button>

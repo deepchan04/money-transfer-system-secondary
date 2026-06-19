@@ -28,6 +28,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent {
+  private readonly emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  private readonly nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+
   name: string = '';
   email: string = '';
   password: string = '';
@@ -36,10 +39,41 @@ export class SignupComponent {
   errorMessage: string = '';
   showPassword = false;
   showConfirmPassword = false;
+  phoneNonNumeric = false;
+  nameNonAlphabetic = false;
 
   @Output() signupSuccess = new EventEmitter<void>();
 
   constructor(private postService: PostService) { }
+
+  onPhoneInput(value: string) {
+    const raw = value || '';
+    this.phoneNonNumeric = /\D/.test(raw);
+    const digits = raw.replace(/\D+/g, '').slice(0, 10);
+
+    if (digits !== this.phoneNumber) {
+      this.phoneNumber = digits;
+    }
+  }
+
+  onNameInput(value: string) {
+    const raw = value || '';
+    this.nameNonAlphabetic = /[^A-Za-z\s]/.test(raw);
+    const sanitized = raw.replace(/[^A-Za-z\s]+/g, '').replace(/\s+/g, ' ');
+
+    if (sanitized !== this.name) {
+      this.name = sanitized;
+    }
+  }
+
+  isNameValid(): boolean {
+    const trimmedName = this.name.trim();
+    return trimmedName.length >= 2 && this.nameRegex.test(trimmedName);
+  }
+
+  isEmailValid(): boolean {
+    return this.emailRegex.test(this.email);
+  }
 
   signup(): void {
     // Clear previous errors
@@ -52,22 +86,20 @@ export class SignupComponent {
     }
 
     // Validate name
-    if (this.name.trim().length < 2) {
+    if (!this.isNameValid()) {
       this.errorMessage = 'Name must be at least 2 characters long.';
       return;
     }
 
     // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(this.email)) {
+    if (!this.isEmailValid()) {
       this.errorMessage = 'Please enter a valid email address.';
       return;
     }
 
-    // Validate phone number format (basic validation)
-    const phoneRegex = /^[0-9]{10}$/;
-    if (!phoneRegex.test(this.phoneNumber)) {
-      this.errorMessage = 'Please enter a valid 10-digit phone number.';
+    // Ensure phone number is exactly 10 digits
+    if (this.phoneNumber.length !== 10) {
+      this.errorMessage = 'Phone number must be 10 digits';
       return;
     }
 
@@ -84,7 +116,7 @@ export class SignupComponent {
     }
 
     const newUser: UserData = {
-      name: this.name,
+      name: this.name.trim(),
       email: this.email,
       phoneNumber: this.phoneNumber,
       password: this.password

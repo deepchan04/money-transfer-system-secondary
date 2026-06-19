@@ -29,6 +29,18 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
   showPassword = false;
+  phoneNonNumeric = false;
+
+  onPhoneInput(value: string) {
+    // Strip any non-digit characters and limit to 10 digits
+    const raw = value || '';
+    // mark if user entered any non-digit characters
+    this.phoneNonNumeric = /\D/.test(raw);
+    const digits = raw.replace(/\D+/g, '').slice(0, 10);
+    if (digits !== this.phoneNumber) {
+      this.phoneNumber = digits;
+    }
+  }
 
   constructor(private postService: PostService, private router: Router) { }
 
@@ -49,10 +61,9 @@ export class LoginComponent {
       return;
     }
 
-    
-    if (this.phoneNumber.length > 10) {
-      
-      this.errorMessage = 'Phone number must have at most 10 digits';
+    // Ensure phone number is exactly 10 digits
+    if (this.phoneNumber.length !== 10) {
+      this.errorMessage = 'Phone number must be 10 digits';
       return;
     }
 

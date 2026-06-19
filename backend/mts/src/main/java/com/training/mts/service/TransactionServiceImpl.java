@@ -158,7 +158,7 @@ public class TransactionServiceImpl implements TransactionService{
                 "      <tr><td style='padding: 12px; border-bottom: 1px solid #eeeeee; color: #666;'>Received From</td><td style='padding: 12px; border-bottom: 1px solid #eeeeee; font-weight: bold;'>" + fromName + "</td></tr>" +
                 "      <tr><td style='padding: 12px; color: #666;'>Date</td><td style='padding: 12px; font-weight: bold;'>" + date + "</td></tr>" +
                 "    </table>" +
-                "    <p style='font-size: 13px; color: #666666; margin-top: 30px;'>Thank you for using MTS APP.</p>" +
+                "    <p style='font-size: 13px; color: #666666; margin-top: 30px;'>Thank you for using MTS.</p>" +
                 "  </div>" +
                 "</div>";
     }

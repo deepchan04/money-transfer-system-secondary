@@ -211,13 +211,15 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
       : 'OTHER';
 
     // Prepare payment request
+    const note = (this.description || '').substring(0, 100);
+
     const paymentRequest = {
       payerVpaId: payerVpaId,
       payeeVpaId: payeeVpaId,
       payerPwd: this.password,
       idempotencyKey: idempotencyKey,
       amount: this.amount,
-      note: this.description || '',
+      note: note,
       transactionType: transactionType
     };
 

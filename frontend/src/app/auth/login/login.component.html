@@ -13,11 +13,16 @@
         matInput 
         type="tel" 
         [(ngModel)]="phoneNumber" 
+        (ngModelChange)="onPhoneInput($event)"
+        inputmode="numeric"
+        pattern="[0-9]*"
         name="phoneNumber"
         placeholder="Enter 10-digit phone number"
         maxlength="10"
         required
       />
+      <mat-hint *ngIf="phoneNonNumeric" class="password-hint">Phone Number must be numeric</mat-hint>
+      <mat-hint *ngIf="!phoneNonNumeric && phoneNumber && phoneNumber.length !== 10" class="password-hint">Phone number must be 10 digits</mat-hint>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -46,7 +51,7 @@
       mat-raised-button 
       color="primary" 
       type="submit"
-      [disabled]="!phoneNumber || !password"
+      [disabled]="phoneNumber?.length !== 10 || !password || password.length < 6"
     >
       Login
     </button>

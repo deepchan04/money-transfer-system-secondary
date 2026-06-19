@@ -54,11 +54,9 @@ mat-card {
       text-align: left;
     }
 
-    .subtitle {
-      color: #94a3b8;
-      font-size: 0.95rem;
-      margin: 0 0 1.5rem 0;
-      text-align: left;
+    .heading {
+      margin: 0 0 2rem 0;
+      
     }
 
     .error-box {
@@ -369,4 +367,9 @@ mat-card {
 
 .white-c {
   color: white;
+}
+
+.password-hint {
+  color: #fca5a5 !important;
+  font-size: 0.75rem;
 }

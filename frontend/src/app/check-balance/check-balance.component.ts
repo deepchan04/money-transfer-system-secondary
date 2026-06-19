@@ -46,7 +46,10 @@ export class CheckBalanceComponent {
         this.errorMessage = '';
 
         if (!this.password) {
-            this.errorMessage = 'Please enter your password';
+            return;
+        }
+
+        if (this.password.length < 6) {
             return;
         }
 

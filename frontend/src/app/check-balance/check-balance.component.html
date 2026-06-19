@@ -7,9 +7,9 @@
                 <div class="form-wrapper">
                     <!-- Left Side: Form Fields -->
                     <div class="form-section">
-                        <h2>Check Bank Balance</h2>
+                        <h2 class="heading">Check Bank Balance</h2>
 
-                        <p class="subtitle">Secure authentication required</p>
+                        
 
                         <div *ngIf="errorMessage" class="error-box">
                             {{ errorMessage }}
@@ -28,9 +28,9 @@
                             >
                                 <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
                             </button>
+                            <mat-hint *ngIf="password && password.length < 6" class="password-hint">Password must be at least 6 characters</mat-hint>
                         </mat-form-field>
-
-                        <button mat-raised-button color="primary" (click)="fetchBalance()" [disabled]="!password" class="white-c">
+                        <button mat-raised-button color="primary" (click)="fetchBalance()" [disabled]="!password || password.length < 6" class="white-c">
                             Fetch Balance
                         </button>
 
@@ -44,12 +44,7 @@
                     <!-- Right Side: Information Panel -->
                     <div class="info-section">
                         <div class="info-content">
-                            <div class="info-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="12" y1="1" x2="12" y2="23"></line>
-                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                                </svg>
-                            </div>
+                            
                             
                             <h3>Secure Balance Check</h3>
                             <p class="tagline">View your current account balance securely with password authentication</p>
@@ -59,7 +54,7 @@
                                     <span class="step-number">1</span>
                                     <div class="step-text">
                                         <strong>Enter Password</strong>
-                                        <p>Provide your secure account password</p>
+                                        <p>Provide your account password</p>
                                     </div>
                                 </div>
 
@@ -78,13 +73,6 @@
                                         <p>Access your current account balance</p>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="security-note">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                </svg>
-                                Your password is encrypted and never stored on our servers
                             </div>
                         </div>
                     </div>

@@ -40,6 +40,7 @@ public class Transaction {
     }
 
     private TransactionType transactionType;
+    @Column(length = 100)
     private String note;
     @ManyToOne
     @JoinColumn(name = "payer_id")

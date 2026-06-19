@@ -105,17 +105,18 @@
             <!-- AMOUNT -->
             <div *ngIf="selectedUser" @fadeIn>
               <mat-form-field appearance="outline">
-                <mat-label>Amount</mat-label>
-                <input matInput type="number" [(ngModel)]="amount">
-                <span matPrefix>₹&nbsp;</span>
+                <mat-label>Amount (in INR)</mat-label>
+                <input matInput type="number" min="1" [(ngModel)]="amount">
+                <mat-hint *ngIf="amount !== null && amount !== undefined && amount <= 0" class="password-hint">Amount must be greater than zero</mat-hint>
               </mat-form-field>
             </div>
 
             <!-- DESCRIPTION -->
-            <div *ngIf="amount" @fadeIn>
+            <div *ngIf="amount && amount > 0" @fadeIn>
               <mat-form-field appearance="outline">
                 <mat-label>Description (optional)</mat-label>
-                <input matInput [(ngModel)]="description">
+                <input matInput maxlength="100" [(ngModel)]="description">
+                <mat-hint align="end">{{ (description?.length || 0) }}/100</mat-hint>
               </mat-form-field>
 
               <!-- TAG SELECTION -->
@@ -134,7 +135,7 @@
             </div>
 
             <!-- PASSWORD -->
-            <div *ngIf="amount" @fadeIn>
+            <div *ngIf="amount && amount > 0" @fadeIn>
               <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
                 <input class="white-c"
@@ -160,7 +161,7 @@
             <button 
               mat-raised-button 
               color="primary" 
-              *ngIf="password && password.length >= 6 && !isProcessing" 
+              *ngIf="password && password.length >= 6 && !isProcessing && amount && amount > 0" 
               (click)="makePayment()"
               class="white-c">
               Pay ₹{{ amount }}
@@ -177,12 +178,6 @@
           <!-- Right Side: Information Panel -->
           <div class="info-section">
             <div class="info-content">
-              <div class="info-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="12" y1="1" x2="12" y2="23"></line>
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                </svg>
-              </div>
               
               <h3>Fast & Secure Transfers</h3>
               <p class="tagline">Send money instantly to anyone with our secure payment system</p>
@@ -211,13 +206,6 @@
                     <p>Enter your password and complete the transfer</p>
                   </div>
                 </div>
-              </div>
-
-              <div class="security-note">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                All transactions are encrypted and secured with industry-standard protocols
               </div>
             </div>
           </div>
