@@ -21,10 +21,15 @@
     <!-- Normal Dashboard for Active Users -->
     <ng-container *ngIf="isAccountActive ">      
 
-      <h2 *ngIf="hasBankAccount" class="center-al over">Current Month Overview</h2>
+      <h1 *ngIf="hasBankAccount" class="greeting-title center-al">
+        Good {{ getGreeting() }}, {{ user.name }} 
+      </h1>
+
+      <p *ngIf="hasBankAccount" class="greeting-subtitle center-al">
+        What would you like to do today?
+      </p>
 
       <ng-container *ngIf="hasBankAccount; else noBank">
-        <h1 class="center-al">₹{{ currentMonthSpent | number }}</h1>
         
         <!-- Quick Actions -->
         <div class="quick-actions">
@@ -42,8 +47,8 @@
 
           <a class="action-card" routerLink="/transactions">
             <mat-icon>receipt_long</mat-icon>
-            <span class="action-label">All Transactions</span>
-            <span class="action-desc">Complete history</span>
+            <span class="action-label">View All Transactions</span>
+            <span class="action-desc">View Complete history</span>
           </a>
 
           <a *ngIf="!hasBankAccount" class="action-card" routerLink="/add-bank">
@@ -57,7 +62,7 @@
       <ng-template #noBank>
         <div class="info-banner">
           <mat-icon>info</mat-icon>
-          <p>Link your bank account to start sending and receiving money instantly through UPI.</p>
+          <p>Link your bank account to start sending and receiving money instantly through MTS.</p>
         </div>
 
         <p class="no-bank-text center-al">
@@ -95,9 +100,9 @@
       </mat-card>
 
       <mat-card class="stat-card">
-        <div class="stat-label">Avg. Transaction</div>
+        <div class="stat-label">Avg. Transaction Value</div>
         <div class="stat-value">₹{{ getAverageTransaction() }}</div>
-        <div class="stat-change">Based on last 10</div>
+        <div class="stat-change">Average of your successful transactions</div>
       </mat-card>
     </section>
 

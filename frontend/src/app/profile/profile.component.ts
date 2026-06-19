@@ -27,11 +27,10 @@ export class ProfileComponent {
   }
 
   // Mask account number - show last 4 digits
-  getMaskedAccountNumber(): string {
+  getAccountNumber(): string {
     if (!this.user.bankAccount?.accountNumber) return 'Not linked';
     const accNum = this.user.bankAccount.accountNumber;
-    const lastFour = accNum.slice(-4);
-    return `••••${lastFour}`;
+    return `${accNum}`;
   }
 
   // Get status badge color

@@ -94,6 +94,18 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  getGreeting(): string {
+  const hour = new Date().getHours();
+
+  if (hour < 12) {
+    return 'Morning';
+  } else if (hour < 17) {
+    return 'Afternoon';
+  } else {
+    return 'Evening';
+  }
+}
+
   getStatusMessage(): string {
     if (!this.user?.appStatus) {
       return 'Your account status is pending verification.';
@@ -123,18 +135,17 @@ export class DashboardComponent implements OnInit {
 
   // Calculate average transaction amount
   getAverageTransaction(): string {
-    if (this.allTransactions.length === 0) return '0';
+    if (!this.allTransactions || this.allTransactions.length === 0) return '0';
 
-    const successfulTransactions: Transaction[] = this.allTransactions.filter(t => t.status === "SUCCESS");
-    
-    if (successfulTransactions.length === 0) return '0';
-    
-    const total = successfulTransactions.reduce((sum, t) => {
-      return sum + (t.numericAmount || 0);
-    }, 0);
-    
-    const average = total / successfulTransactions.length;
-    return average.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    // Compute average only across successful transactions
+    const successfulTxns = this.allTransactions.filter(
+      t => t.status === 'SUCCESS' && typeof t.numericAmount === 'number'
+    );
+    if (successfulTxns.length === 0) return '0';
+
+    const total = successfulTxns.reduce((sum, t) => sum + (t.numericAmount || 0), 0);
+    const average = total / successfulTxns.length;
+    return Math.round(average).toLocaleString('en-IN', { maximumFractionDigits: 0 });
   }
 
   // Calculate current month spending

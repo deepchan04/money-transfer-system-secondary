@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 
+
 .add-bank-acc {
       font-weight: 500;
       font-size: 0.9375rem;
@@ -15,6 +16,7 @@
       letter-spacing: 0.01em;
       position: relative;
       background: rgba(30, 44, 75, 0.95);
+      
 
       &::before {
         content: '';
@@ -61,6 +63,22 @@
   background: #0f172a;
 }
 
+.greeting-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #f8fafc;
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.greeting-subtitle {
+  font-size: 1.5rem;
+  color: #c6d2e4;
+  margin-top: 2rem;    // more gap from title
+  margin-bottom: 3rem;    // more gap before cards
+}
+
 /* ===== Header Section ===== */
 .dashboard-header {
   margin-bottom: 3rem;
@@ -72,16 +90,6 @@
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #f8fafc;
-    letter-spacing: -0.02em;
-    font-family: 'JetBrains Mono', monospace;
-    margin-bottom: 2rem;
-    line-height: 1.1;
   }
 }
 

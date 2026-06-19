@@ -108,11 +108,11 @@ public class TransactionServiceImpl implements TransactionService{
         try {
             // Generate and send Debit alert to Payer
             String payerHtml = getPayerEmailTemplate(amount, accountNumber, payee_vpa, date);
-            emailServiceImpl.sendEmail(payer.getEmail(), "MTS APP - Debit Alert", payerHtml);
+            emailServiceImpl.sendEmail(payer.getEmail(), "MTS - Debit Alert", payerHtml);
 
             // Generate and send Credit alert to Payee
             String payeeHtml = getPayeeEmailTemplate(amount, payerName, date);
-            emailServiceImpl.sendEmail(payee.getEmail(), "MTS APP - Credit Alert", payeeHtml);
+            emailServiceImpl.sendEmail(payee.getEmail(), "MTS - Credit Alert", payeeHtml);
 
         } catch (MessagingException e) {
             // Log the error but don't necessarily block the user's transaction receipt
@@ -129,7 +129,7 @@ public class TransactionServiceImpl implements TransactionService{
     private String getPayerEmailTemplate(String amount, String account, String toVpa, String date) {
         return "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>" +
                 "  <div style='background-color: #1a73e8; padding: 20px; text-align: center; color: white;'>" +
-                "    <h2 style='margin: 0;'>MTS APP</h2>" +
+                "    <h2 style='margin: 0;'>MTS</h2>" +
                 "    <p style='margin: 5px 0 0 0; opacity: 0.9;'>Transaction Notification</p>" +
                 "  </div>" +
                 "  <div style='padding: 24px; color: #333333; line-height: 1.6;'>" +
@@ -148,12 +148,12 @@ public class TransactionServiceImpl implements TransactionService{
     private String getPayeeEmailTemplate(String amount, String fromName, String date) {
         return "<div style='font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;'>" +
                 "  <div style='background-color: #28a745; padding: 20px; text-align: center; color: white;'>" +
-                "    <h2 style='margin: 0;'>MTS APP</h2>" +
+                "    <h2 style='margin: 0;'>MTS</h2>" +
                 "    <p style='margin: 5px 0 0 0; opacity: 0.9;'>Money Received</p>" +
                 "  </div>" +
                 "  <div style='padding: 24px; color: #333333; line-height: 1.6;'>" +
-                "    <p>Hello,</p>" +
-                "    <p>Great news! You have received <strong style='color: #28a745; font-size: 18px;'>Rs. " + amount + "</strong> in your account.</p>" +
+                "    <p>Dear Customer,</p>" +
+                "    <p>An amount of <strong style='color: #28a745; font-size: 18px;'>Rs. " + amount + "</strong> has been credited to your account.</p>" +
                 "    <table style='width: 100%; border-collapse: collapse; margin: 20px 0; background-color: #f8f9fa; border-radius: 6px; overflow: hidden;'>" +
                 "      <tr><td style='padding: 12px; border-bottom: 1px solid #eeeeee; color: #666;'>Received From</td><td style='padding: 12px; border-bottom: 1px solid #eeeeee; font-weight: bold;'>" + fromName + "</td></tr>" +
                 "      <tr><td style='padding: 12px; color: #666;'>Date</td><td style='padding: 12px; font-weight: bold;'>" + date + "</td></tr>" +

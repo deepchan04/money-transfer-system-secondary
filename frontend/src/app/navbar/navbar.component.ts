@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
   userInitial = 'G';
   userRole = '';
   unscratchedRewardsCount = 0;
+  currentUrl = '';
 
   constructor(private postService: PostService, private router: Router) {
     this.loadUserData();
@@ -36,11 +37,13 @@ export class NavbarComponent implements OnInit {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
+      this.currentUrl = this.router.url;
       this.loadUserData();
     });
   }
 
   ngOnInit() {
+    this.currentUrl = this.router.url;
     this.loadUserData();
   }
 
