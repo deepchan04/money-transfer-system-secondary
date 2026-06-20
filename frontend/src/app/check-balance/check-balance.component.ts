@@ -35,7 +35,7 @@ export class CheckBalanceComponent {
     showPassword = false;
 
     constructor(private postService: PostService) {
-        const userData = localStorage.getItem('user');
+        const userData = sessionStorage.getItem('user');
         if (userData) {
             this.user = JSON.parse(userData);
         }

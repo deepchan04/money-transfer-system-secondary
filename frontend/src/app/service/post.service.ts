@@ -62,7 +62,7 @@ export class PostService {
   // Find user by phone number
   findByPhone(phoneNumber: string): Observable<any> {
     const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -72,7 +72,7 @@ export class PostService {
   // Link bank account
   linkBankAccount(data: any): Observable<any> {
     const url = 'http://localhost:8080/bankaccounts/link';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ export class PostService {
   // Get bank balance
   getBalance(vpaId: string, password: string): Observable<any> {
     const url = `http://localhost:8080/users/getbalance?vpaId=${vpaId}&password=${password}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -93,7 +93,7 @@ export class PostService {
   // Get all users
   getUsers(): Observable<any> {
     const url = 'http://localhost:8080/users/getusers';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -103,7 +103,7 @@ export class PostService {
   // Get all users for admin
   getAdminUsers(): Observable<any> {
     const url = 'http://localhost:8080/admin/getusers';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -113,7 +113,7 @@ export class PostService {
   // Change user status (admin only)
   changeUserStatus(vpaId: string, appStatus: string): Observable<any> {
     const url = 'http://localhost:8080/admin/changeStatus';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -125,7 +125,7 @@ export class PostService {
   // Make payment transaction
   makePayment(paymentData: PaymentRequest): Observable<PaymentResponse> {
     const url = 'http://localhost:8080/transactions/pay';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -136,7 +136,7 @@ export class PostService {
   // Get transaction log
   getTransactionLog(vpaId: string): Observable<any> {
     const url = `http://localhost:8080/transactions/gettranslog?vpaId=${vpaId}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -146,7 +146,7 @@ export class PostService {
   // Get admin transaction log
   getAdminTransactionLog(): Observable<any> {
     const url = 'http://localhost:8080/admin/gettranslog';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -156,7 +156,7 @@ export class PostService {
   // Get user by VPA
   getUserByVpa(vpaId: string): Observable<any> {
     const url = `http://localhost:8080/users/getbyvpa?vpaId=${vpaId}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -198,7 +198,7 @@ export class PostService {
   // Get reward points and cards status
   getRewardStatus(): Observable<any> {
     const url = 'http://localhost:8080/rewards/status';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -208,7 +208,7 @@ export class PostService {
   // Get user's scratchcards list
   getScratchCards(): Observable<any> {
     const url = 'http://localhost:8080/rewards/list';
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -218,16 +218,16 @@ export class PostService {
   // Scratch card and reveal coupon details
   scratchCard(cardId: number): Observable<any> {
     const url = `http://localhost:8080/rewards/scratch/${cardId}`;
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
     return this.http.post<any>(url, {}, { headers });
   }
 
-  // Logout method to clear the localStorage
+  // Logout method to clear the sessionStorage
   logout(): void {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
   }
 }

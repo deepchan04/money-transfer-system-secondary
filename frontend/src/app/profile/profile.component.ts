@@ -22,7 +22,7 @@ export class ProfileComponent {
   user: any;
 
   constructor() {
-    const userData = localStorage.getItem('user');
+    const userData = sessionStorage.getItem('user');
     this.user = userData ? JSON.parse(userData) : {};
   }
 

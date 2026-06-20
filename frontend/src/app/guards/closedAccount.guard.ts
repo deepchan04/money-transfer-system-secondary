@@ -3,7 +3,7 @@ import { Router, CanActivateFn } from '@angular/router';
 
 export const closedAccount: CanActivateFn = (route, state) => {
     const router = inject(Router);
-    const user = localStorage.getItem('user');
+    const user = sessionStorage.getItem('user');
     let userData;
     if(user){
         userData = JSON.parse(user);        

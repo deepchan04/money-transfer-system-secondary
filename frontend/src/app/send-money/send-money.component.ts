@@ -78,14 +78,14 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Get current user from localStorage
-    const userStr = localStorage.getItem('user');
+    // Get current user from sessionStorage
+    const userStr = sessionStorage.getItem('user');
     if (userStr) {
       try {
         this.currentUser = JSON.parse(userStr);
         console.log('Current user:', this.currentUser);
       } catch (e) {
-        console.error('Error parsing user from localStorage:', e);
+        console.error('Error parsing user from sessionStorage:', e);
       }
     }
 

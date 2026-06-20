@@ -10,8 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { forkJoin, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+
 
 interface Transaction {
   date: string;
@@ -77,12 +76,12 @@ export class DashboardComponent implements OnInit {
   maxMonthlySpend = Math.max(...this.monthlySpending.map(m => m.amount));
 
   constructor(private postService: PostService) {
-    const userData = localStorage.getItem('user');
+    const userData = sessionStorage.getItem('user');
     if (userData) {
       this.user = JSON.parse(userData);
       this.hasBankAccount = !!this.user.bankAccount;
       console.log(this.hasBankAccount);
-      
+
       // Check if account is active
       this.isAccountActive = this.user.appStatus === 'ACTIVE';
     }
@@ -95,22 +94,22 @@ export class DashboardComponent implements OnInit {
   }
 
   getGreeting(): string {
-  const hour = new Date().getHours();
+    const hour = new Date().getHours();
 
-  if (hour < 12) {
-    return 'Morning';
-  } else if (hour < 17) {
-    return 'Afternoon';
-  } else {
-    return 'Evening';
+    if (hour < 12) {
+      return 'Morning';
+    } else if (hour < 17) {
+      return 'Afternoon';
+    } else {
+      return 'Evening';
+    }
   }
-}
 
   getStatusMessage(): string {
     if (!this.user?.appStatus) {
       return 'Your account status is pending verification.';
     }
-    
+
     switch (this.user.appStatus) {
       case 'CLOSED':
         return 'Your account has been permanently closed. Please contact our support team to understand the reason and explore reinstatement options.';
@@ -123,7 +122,7 @@ export class DashboardComponent implements OnInit {
 
   // Calculate successful transaction count
   getSuccessfulCount(): number {
-    return this.allTransactions.filter(t => t.status === 'SUCCESS' && t.type === 'debit' ).length;
+    return this.allTransactions.filter(t => t.status === 'SUCCESS' && t.type === 'debit').length;
   }
 
   // Calculate success rate percentage
@@ -157,7 +156,7 @@ export class DashboardComponent implements OnInit {
     // Filter successful debit transactions from current month
     const currentMonthDebits = this.allTransactions.filter(t => {
       if (t.type !== 'debit' || t.status !== 'SUCCESS') return false;
-      
+
       const txnDate = new Date(t.transactionTime);
       return txnDate.getMonth() === currentMonth && txnDate.getFullYear() === currentYear;
     });
@@ -203,79 +202,50 @@ export class DashboardComponent implements OnInit {
           });
         }
 
-        if(response.debits && Array.isArray(response.debits) && response.debits.length > 0){
+        if (response.debits && Array.isArray(response.debits) && response.debits.length > 0) {
           this.moneySent = true;
         }
 
-        // Get unique VPA IDs
-        const uniqueVpaIds = [...new Set(allTransactions.map(txn => txn.vpaId))];
-
-        // Fetch user details for all VPA IDs
-        const userRequests = uniqueVpaIds.map(vpaId => 
-          this.postService.getUserByVpa(vpaId).pipe(
-            catchError(error => {
-              console.error(`Error fetching user for VPA ${vpaId}:`, error);
-              return of({ name: vpaId.split('@')[0], vpa: { vpaId } });
-            })
-          )
-        );
-
-        forkJoin(userRequests).subscribe({
-          next: (users: any[]) => {
-            // Create a map of VPA ID to user name
-            const vpaToNameMap = new Map<string, string>();
-            users.forEach(user => {
-              if (user?.vpa?.vpaId && user?.name) {
-                vpaToNameMap.set(user.vpa.vpaId, user.name);
-              }
-            });
-
-            // Transform transactions with actual names
-            const transformedTransactions: Transaction[] = allTransactions.map(txn => {
-              const userName = vpaToNameMap.get(txn.vpaId) || this.extractUsername(txn.vpaId);
-              
-              return {
-                date: this.formatDate(txn.transactionTime),
-                description: txn.type === 'credit' 
-                  ? `Received from ${userName} ${txn.note ? '- ' + txn.note : ''}`
-                  : `Sent to ${userName} ${txn.note ? '- ' + txn.note : ''}`,
-                amount: `₹${txn.amount.toLocaleString('en-IN')}`,
-                status: txn.status,
-                type: txn.type,
-                transactionTime: txn.transactionTime,
-                numericAmount: txn.amount,
-                transactionType: txn.transactionType // PASS transactionType to transformed transaction
-              };
-            });
-
-            // Store all transactions sorted by time
-            this.allTransactions = transformedTransactions
-              .sort((a, b) => new Date(b.transactionTime).getTime() - new Date(a.transactionTime).getTime());
-
-            // Top 10 for display
-            this.transactions = this.allTransactions.slice(0, 10);
-
-            // Calculate current month spending
-            this.calculateCurrentMonthSpent();
-
-            // Generate spending breakdown from tags
-            this.generateSpendingBreakdown();
-
-            // Generate monthly spending data
-            this.generateMonthlySpending();
-
-            console.log('Transactions loaded:', this.transactions);
-            console.log('Current month spent:', this.currentMonthSpent);
-            console.log('Spending breakdown:', this.spendingBreakdown);
-            console.log('Monthly spending:', this.monthlySpending);
-
-            this.isLoading = false;
-          },
-          error: (error) => {
-            console.error('Error fetching user details:', error);
-            this.isLoading = false;
-          }
+        // Transform transactions using VPA IDs
+        const transformedTransactions: Transaction[] = allTransactions.map(txn => {
+          const userName = txn.vpaId;
+          
+          return {
+            date: this.formatDate(txn.transactionTime),
+            description: txn.type === 'credit' 
+              ? `Received from ${userName} ${txn.note ? '- ' + txn.note : ''}`
+              : `Sent to ${userName} ${txn.note ? '- ' + txn.note : ''}`,
+            amount: `₹${txn.amount.toLocaleString('en-IN')}`,
+            status: txn.status,
+            type: txn.type,
+            transactionTime: txn.transactionTime,
+            numericAmount: txn.amount,
+            transactionType: txn.transactionType // PASS transactionType to transformed transaction
+          };
         });
+
+        // Store all transactions sorted by time
+        this.allTransactions = transformedTransactions
+          .sort((a, b) => new Date(b.transactionTime).getTime() - new Date(a.transactionTime).getTime());
+
+        // Top 10 for display
+        this.transactions = this.allTransactions.slice(0, 10);
+
+        // Calculate current month spending
+        this.calculateCurrentMonthSpent();
+
+        // Generate spending breakdown from tags
+        this.generateSpendingBreakdown();
+
+        // Generate monthly spending data
+        this.generateMonthlySpending();
+
+        console.log('Transactions loaded:', this.transactions);
+        console.log('Current month spent:', this.currentMonthSpent);
+        console.log('Spending breakdown:', this.spendingBreakdown);
+        console.log('Monthly spending:', this.monthlySpending);
+
+        this.isLoading = false;
       },
       error: (error) => {
         console.error('Error loading transactions:', error);
@@ -299,7 +269,7 @@ export class DashboardComponent implements OnInit {
 
     // Group by tag and sum amounts
     const tagAmounts = new Map<string, number>();
-    
+
     debits.forEach(txn => {
       const tag = txn.transactionType || 'Others';
       const current = tagAmounts.get(tag) || 0;
@@ -365,7 +335,7 @@ export class DashboardComponent implements OnInit {
 
     // Group by month
     const monthlyData = new Map<string, number>();
-    
+
     debits.forEach(txn => {
       const date = new Date(txn.transactionTime);
       const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
@@ -418,7 +388,7 @@ export class DashboardComponent implements OnInit {
 
     // Filter out items with 0% value
     const validItems = this.spendingBreakdown.filter(item => item.value > 0);
-    
+
     if (validItems.length === 0) {
       return `conic-gradient(#1e293b 0% 100%)`;
     }
@@ -429,12 +399,12 @@ export class DashboardComponent implements OnInit {
     validItems.forEach((item, index) => {
       const nextPercentage = currentPercentage + item.value;
       gradient += `${item.color} ${currentPercentage}% ${nextPercentage}%`;
-      
+
       // Only add comma if not the last item
       if (index < validItems.length - 1) {
         gradient += ', ';
       }
-      
+
       currentPercentage = nextPercentage;
     });
 

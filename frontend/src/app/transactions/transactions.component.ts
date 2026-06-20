@@ -69,7 +69,7 @@ export class TransactionsComponent implements OnInit {
   netBalance = 0;
 
   constructor(private postService: PostService) {
-    const userData = localStorage.getItem('user');
+    const userData = sessionStorage.getItem('user');
     if (userData) {
       this.user = JSON.parse(userData);
     }
@@ -84,30 +84,10 @@ export class TransactionsComponent implements OnInit {
   loadTransactions() {
     this.isLoading = true;
     this.postService.getTransactionLog(this.user.vpa.vpaId).subscribe({
-      next: async (response) => {
+      next: (response) => {
         const allTransactions: Transaction[] = [];
         let creditsTotal = 0;
         let debitsTotal = 0;
-
-        // Cache for storing VPA to name mappings
-        const userNameCache = new Map<string, string>();
-
-        // Helper function to get user name from VPA
-        const getUserName = async (vpaId: string): Promise<string> => {
-          if (userNameCache.has(vpaId)) {
-            return userNameCache.get(vpaId)!;
-          }
-
-          try {
-            const user = await this.postService.getUserByVpa(vpaId).toPromise();
-            const name = user?.name || this.extractUsername(vpaId);
-            userNameCache.set(vpaId, name);
-            return name;
-          } catch (error) {
-            console.error(`Error fetching user name for ${vpaId}:`, error);
-            return this.extractUsername(vpaId);
-          }
-        };
 
         // Process credits
         if (response.credits && Array.isArray(response.credits)) {
@@ -116,7 +96,7 @@ export class TransactionsComponent implements OnInit {
               creditsTotal += credit.amount;
             }
             
-            const username = await getUserName(credit.payerVpaId);
+            const username = credit.payerVpaId;
             allTransactions.push({
               date: this.formatDate(credit.transactionTime),
               time: this.formatTime(credit.transactionTime),
@@ -141,7 +121,7 @@ export class TransactionsComponent implements OnInit {
               debitsTotal += debit.amount;
             }
 
-            const username = await getUserName(debit.payeeVpaId);
+            const username = debit.payeeVpaId;
             allTransactions.push({
               date: this.formatDate(debit.transactionTime),
               time: this.formatTime(debit.transactionTime),

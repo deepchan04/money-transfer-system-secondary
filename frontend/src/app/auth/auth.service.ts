@@ -20,25 +20,25 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, { username, email, password });
   }
 
-  // Save user and JWT in localStorage
+  // Save user and JWT in sessionStorage
   saveUserAndToken(user: any, token: string): void {
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('user', JSON.stringify(user));
+    sessionStorage.setItem('token', token);
   }
 
-  // Get current user from localStorage
+  // Get current user from sessionStorage
   getCurrentUser(): any {
-    return JSON.parse(localStorage.getItem('user') || '{}');
+    return JSON.parse(sessionStorage.getItem('user') || '{}');
   }
 
-  // Get JWT token from localStorage
+  // Get JWT token from sessionStorage
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
-  // Logout method to clear the localStorage
+  // Logout method to clear the sessionStorage
   logout(): void {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('user');
+    sessionStorage.removeItem('token');
   }
 }

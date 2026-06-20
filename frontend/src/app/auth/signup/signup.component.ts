@@ -130,7 +130,7 @@ export class SignupComponent {
         this.postService.findByPhone(this.phoneNumber).subscribe({
           next: (user) => {
             console.log('User details fetched:', user);
-            localStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('user', JSON.stringify(user));
             alert('Signup successful! Welcome aboard!');
             this.signupSuccess.emit();
           },

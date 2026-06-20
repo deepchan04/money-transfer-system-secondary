@@ -46,8 +46,8 @@ export class AddBankComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    // Auto-populate VPA ID from localStorage
-    const userData = localStorage.getItem('user');
+    // Auto-populate VPA ID from sessionStorage
+    const userData = sessionStorage.getItem('user');
     if (userData) {
       const user = JSON.parse(userData);
       this.vpaId = user.vpa?.vpaId || user.vpaId || '';
@@ -72,7 +72,7 @@ export class AddBankComponent implements OnInit, OnDestroy {
         next: (response) => {
           console.log('Bank account linked successfully!', response);
           this.responseMessage = JSON.stringify(response);
-          localStorage.setItem('user', JSON.stringify(response));
+          sessionStorage.setItem('user', JSON.stringify(response));
           this.isLoading = false;
           this.startCountdown();
         },

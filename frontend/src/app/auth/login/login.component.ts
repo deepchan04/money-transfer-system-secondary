@@ -68,7 +68,7 @@ export class LoginComponent {
     }
 
     // Check if user is already logged in from another tab
-    const existingUser = localStorage.getItem('user');
+    const existingUser = sessionStorage.getItem('user');
     if (existingUser) {
       console.log('User already logged in from another tab, redirecting to dashboard');
       this.router.navigate(['/dashboard']);
@@ -89,7 +89,7 @@ export class LoginComponent {
           return;
         }
 
-        localStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.token);
 
         // Fetch user details
         this.postService.findByPhone(this.phoneNumber).subscribe({
@@ -99,13 +99,13 @@ export class LoginComponent {
             // Check if user account is closed
             if (user.appStatus === 'CLOSED') {
               this.errorMessage = 'Your account is closed. Please contact support.';
-              localStorage.removeItem('token');
-              localStorage.removeItem('user');
+              sessionStorage.removeItem('token');
+              sessionStorage.removeItem('user');
               return;
             }
 
             // Save user details and navigate to dashboard
-            localStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('user', JSON.stringify(user));
             this.router.navigate(['/dashboard']);
           },
           error: (err) => {

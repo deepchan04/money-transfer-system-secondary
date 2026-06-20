@@ -49,12 +49,12 @@ export class NavbarComponent implements OnInit {
   }
 
   loadUserData() {
-    const userData = localStorage.getItem('user');
+    const userData = sessionStorage.getItem('user');
     if (userData) {
       const user = JSON.parse(userData);
       this.userInitial = user.name ? user.name.charAt(0).toUpperCase() : 'G';
       this.userRole = user.role || '';
-      this.isAccountActive = user.accountStatus === 'ACTIVE';
+      this.isAccountActive = user.appStatus === 'ACTIVE';
       this.loadRewardIndicator();
     } else {
       this.userRole = '';
@@ -80,12 +80,12 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!sessionStorage.getItem('token');
   }
 
   isAdmin(): boolean {
-    // Check user role from localStorage, not from URL
-    const userData = localStorage.getItem('user');
+    // Check user role from sessionStorage, not from URL
+    const userData = sessionStorage.getItem('user');
     if (userData) {
       const user = JSON.parse(userData);
       return user.role === 'ROLE_ADMIN';
