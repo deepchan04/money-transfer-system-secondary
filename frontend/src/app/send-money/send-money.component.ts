@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -74,24 +75,20 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
 
   constructor(
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    // Get current user from sessionStorage
-    const userStr = sessionStorage.getItem('user');
-    if (userStr) {
-      try {
-        this.currentUser = JSON.parse(userStr);
-        console.log('Current user:', this.currentUser);
-      } catch (e) {
-        console.error('Error parsing user from sessionStorage:', e);
-      }
+    // Get current user from AuthService
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      this.currentUser = user;
+      console.log('Current user:', this.currentUser);
     }
 
     this.loadUsers();
   }
-
   loadUsers() {
     this.postService.getUsers().subscribe({
       next: (users) => {

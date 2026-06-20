@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PostService } from '../../service/post.service';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'app-admin-login',
@@ -31,7 +32,7 @@ export class AdminLoginComponent {
     showPassword = false;
     phoneNonNumeric = false;
 
-    constructor(private postService: PostService, private router: Router) { }
+    constructor(private postService: PostService, private router: Router, private authService: AuthService) { }
 
     onPhoneInput(value: string) {
         const raw = value || '';
@@ -53,8 +54,8 @@ export class AdminLoginComponent {
         }
 
         // Check if user is already logged in from another tab
-        const existingUser = sessionStorage.getItem('user');
-        if (existingUser) {
+        const existingToken = sessionStorage.getItem('token');
+        if (existingToken) {
             console.log('Admin already logged in from another tab, redirecting to admin dashboard');
             this.router.navigate(['/admin-dashboard']);
             return;
@@ -86,7 +87,7 @@ export class AdminLoginComponent {
                     this.postService.findByPhone(this.phoneNumber).subscribe({
                         next: (user) => {
                             console.log('Admin details fetched:', user);
-                            sessionStorage.setItem('user', JSON.stringify(user));
+                            this.authService.setCurrentUser(user);
                             // Redirect to admin dashboard
                             this.router.navigate(['/admin-dashboard']);
                         },

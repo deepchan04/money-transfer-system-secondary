@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,9 +22,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 export class ProfileComponent {
   user: any;
 
-  constructor() {
-    const userData = sessionStorage.getItem('user');
-    this.user = userData ? JSON.parse(userData) : {};
+  constructor(private authService: AuthService) {
+    this.user = this.authService.getCurrentUser() || {};
   }
 
   // Mask account number - show last 4 digits

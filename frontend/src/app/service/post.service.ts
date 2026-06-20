@@ -82,12 +82,14 @@ export class PostService {
 
   // Get bank balance
   getBalance(vpaId: string, password: string): Observable<any> {
-    const url = `http://localhost:8080/users/getbalance?vpaId=${vpaId}&password=${password}`;
+    const url = `http://localhost:8080/users/getbalance`;
     const token = sessionStorage.getItem('token');
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
     });
-    return this.http.get<any>(url, { headers });
+    const body = { vpaId, password };
+    return this.http.post<any>(url, body, { headers });
   }
 
   // Get all users

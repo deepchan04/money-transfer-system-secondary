@@ -29,6 +29,8 @@ interface Transaction {
   note: string;
 }
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'app-transactions',
   standalone: true,
@@ -68,11 +70,8 @@ export class TransactionsComponent implements OnInit {
   totalDebits = 0;
   netBalance = 0;
 
-  constructor(private postService: PostService) {
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      this.user = JSON.parse(userData);
-    }
+  constructor(private postService: PostService, private authService: AuthService) {
+    this.user = this.authService.getCurrentUser();
   }
 
   ngOnInit() {

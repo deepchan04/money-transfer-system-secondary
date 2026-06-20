@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { PostService } from '../../service/post.service';
 import { MatIconModule } from '@angular/material/icon';
 
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -42,7 +44,7 @@ export class LoginComponent {
     }
   }
 
-  constructor(private postService: PostService, private router: Router) { }
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) { }
 
   login() {
     // Clear previous errors
@@ -68,8 +70,8 @@ export class LoginComponent {
     }
 
     // Check if user is already logged in from another tab
-    const existingUser = sessionStorage.getItem('user');
-    if (existingUser) {
+    const existingToken = sessionStorage.getItem('token');
+    if (existingToken) {
       console.log('User already logged in from another tab, redirecting to dashboard');
       this.router.navigate(['/dashboard']);
       return;
@@ -100,12 +102,12 @@ export class LoginComponent {
             if (user.appStatus === 'CLOSED') {
               this.errorMessage = 'Your account is closed. Please contact support.';
               sessionStorage.removeItem('token');
-              sessionStorage.removeItem('user');
+              this.authService.setCurrentUser(null);
               return;
             }
 
             // Save user details and navigate to dashboard
-            sessionStorage.setItem('user', JSON.stringify(user));
+            this.authService.setCurrentUser(user);
             this.router.navigate(['/dashboard']);
           },
           error: (err) => {

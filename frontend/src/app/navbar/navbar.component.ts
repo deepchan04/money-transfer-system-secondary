@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,8 +31,10 @@ export class NavbarComponent implements OnInit {
   unscratchedRewardsCount = 0;
   currentUrl = '';
   isAccountActive = true;
+  user: any;
+  navItems: any[] = [];
 
-  constructor(private postService: PostService, private router: Router) {
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) {
     this.loadUserData();
     
     // Listen to route changes to update user data
@@ -49,9 +52,8 @@ export class NavbarComponent implements OnInit {
   }
 
   loadUserData() {
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
+    const user = this.authService.getCurrentUser();
+    if (user) {
       this.userInitial = user.name ? user.name.charAt(0).toUpperCase() : 'G';
       this.userRole = user.role || '';
       this.isAccountActive = user.appStatus === 'ACTIVE';
@@ -84,17 +86,15 @@ export class NavbarComponent implements OnInit {
   }
 
   isAdmin(): boolean {
-    // Check user role from sessionStorage, not from URL
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
+    const user = this.authService.getCurrentUser();
+    if (user) {
       return user.role === 'ROLE_ADMIN';
     }
     return false;
   }
 
   logout() {
-    this.postService.logout();
+    this.authService.logout();
     this.router.navigate(['/']);
   }
 }

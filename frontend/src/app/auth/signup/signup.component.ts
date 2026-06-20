@@ -44,7 +44,7 @@ export class SignupComponent {
 
   @Output() signupSuccess = new EventEmitter<void>();
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private authService: AuthService) { }
 
   onPhoneInput(value: string) {
     const raw = value || '';
@@ -130,7 +130,7 @@ export class SignupComponent {
         this.postService.findByPhone(this.phoneNumber).subscribe({
           next: (user) => {
             console.log('User details fetched:', user);
-            sessionStorage.setItem('user', JSON.stringify(user));
+            this.authService.setCurrentUser(user);
             alert('Signup successful! Welcome aboard!');
             this.signupSuccess.emit();
           },

@@ -8,6 +8,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth'; // Example API URL
 
+  private currentUser: any = null;
+
   constructor(private http: HttpClient) { }
 
   // Login method
@@ -20,15 +22,20 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, { username, email, password });
   }
 
-  // Save user and JWT in sessionStorage
+  // Save only JWT in sessionStorage and update in-memory user
   saveUserAndToken(user: any, token: string): void {
-    sessionStorage.setItem('user', JSON.stringify(user));
+    this.currentUser = user;
     sessionStorage.setItem('token', token);
   }
 
-  // Get current user from sessionStorage
+  // Explicitly set the current user (e.g. after login)
+  setCurrentUser(user: any): void {
+    this.currentUser = user;
+  }
+
+  // Get current user from memory
   getCurrentUser(): any {
-    return JSON.parse(sessionStorage.getItem('user') || '{}');
+    return this.currentUser;
   }
 
   // Get JWT token from sessionStorage
@@ -36,9 +43,54 @@ export class AuthService {
     return sessionStorage.getItem('token');
   }
 
-  // Logout method to clear the sessionStorage
+  // Logout method to clear memory and sessionStorage
   logout(): void {
-    sessionStorage.removeItem('user');
+    this.currentUser = null;
     sessionStorage.removeItem('token');
+  }
+
+  // Decode JWT payload
+  private decodeToken(token: string): any {
+    try {
+      const payload = token.split('.')[1];
+      const decoded = atob(payload);
+      return JSON.parse(decoded);
+    } catch (e) {
+      console.error('Error decoding token', e);
+      return null;
+    }
+  }
+
+  // Load user data based on token
+  loadCurrentUser(): Promise<any> {
+    const token = this.getToken();
+    if (!token) {
+      this.currentUser = null;
+      return Promise.resolve(null);
+    }
+
+    const decoded = this.decodeToken(token);
+    if (!decoded || !decoded.sub) {
+      this.currentUser = null;
+      return Promise.resolve(null);
+    }
+
+    const phoneNumber = decoded.sub;
+    const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
+    const headers = { 'Authorization': `Bearer ${token}` };
+    
+    return new Promise((resolve) => {
+      this.http.get<any>(url, { headers }).subscribe({
+        next: (user) => {
+          this.currentUser = user;
+          resolve(user);
+        },
+        error: (err) => {
+          console.error('Error fetching user', err);
+          this.currentUser = null;
+          resolve(null);
+        }
+      });
+    });
   }
 }

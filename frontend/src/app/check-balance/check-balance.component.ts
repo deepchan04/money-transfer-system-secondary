@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -34,11 +35,8 @@ export class CheckBalanceComponent {
     errorMessage = '';
     showPassword = false;
 
-    constructor(private postService: PostService) {
-        const userData = sessionStorage.getItem('user');
-        if (userData) {
-            this.user = JSON.parse(userData);
-        }
+    constructor(private postService: PostService, private authService: AuthService) {
+        this.user = this.authService.getCurrentUser();
     }
 
     fetchBalance() {

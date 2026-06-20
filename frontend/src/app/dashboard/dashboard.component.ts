@@ -24,6 +24,8 @@ interface Transaction {
   tag?: string;
 }
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -75,10 +77,9 @@ export class DashboardComponent implements OnInit {
 
   maxMonthlySpend = Math.max(...this.monthlySpending.map(m => m.amount));
 
-  constructor(private postService: PostService) {
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      this.user = JSON.parse(userData);
+  constructor(private postService: PostService, private authService: AuthService) {
+    this.user = this.authService.getCurrentUser();
+    if (this.user) {
       this.hasBankAccount = !!this.user.bankAccount;
       console.log(this.hasBankAccount);
 

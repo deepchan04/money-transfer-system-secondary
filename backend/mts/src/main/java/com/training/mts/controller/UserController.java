@@ -1,6 +1,7 @@
 package com.training.mts.controller;
 
 import com.training.mts.dto.GetAllUsersRequest;
+import com.training.mts.dto.GetBalanceRequest;
 import com.training.mts.exceptions.AccountNotLinkedException;
 import com.training.mts.exceptions.IncorrectPasswordException;
 import com.training.mts.model.User;
@@ -23,9 +24,9 @@ public class UserController {
     }
 
 
-    @GetMapping("/getbalance")
-    public ResponseEntity<Double> getBalance(@RequestParam String vpaId, @RequestParam String password) throws AccountNotLinkedException, IncorrectPasswordException {
-        return new ResponseEntity<>(userService.getBankBalance(vpaId,password), HttpStatus.OK);
+    @PostMapping("/getbalance")
+    public ResponseEntity<Double> getBalance(@RequestBody GetBalanceRequest request) throws AccountNotLinkedException, IncorrectPasswordException {
+        return new ResponseEntity<>(userService.getBankBalance(request.getVpaId(), request.getPassword()), HttpStatus.OK);
     }
 
 

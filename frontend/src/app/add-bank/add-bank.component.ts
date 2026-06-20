@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -42,14 +43,14 @@ export class AddBankComponent implements OnInit, OnDestroy {
 
   constructor(
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
-    // Auto-populate VPA ID from sessionStorage
-    const userData = sessionStorage.getItem('user');
-    if (userData) {
-      const user = JSON.parse(userData);
+    // Auto-populate VPA ID from AuthService
+    const user = this.authService.getCurrentUser();
+    if (user) {
       this.vpaId = user.vpa?.vpaId || user.vpaId || '';
     }
   }
@@ -72,7 +73,7 @@ export class AddBankComponent implements OnInit, OnDestroy {
         next: (response) => {
           console.log('Bank account linked successfully!', response);
           this.responseMessage = JSON.stringify(response);
-          sessionStorage.setItem('user', JSON.stringify(response));
+          this.authService.setCurrentUser(response);
           this.isLoading = false;
           this.startCountdown();
         },
