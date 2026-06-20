@@ -22,10 +22,10 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, { username, email, password });
   }
 
-  // Save only JWT in sessionStorage and update in-memory user
+  // Save only JWT in localStorage and update in-memory user
   saveUserAndToken(user: any, token: string): void {
     this.currentUser = user;
-    sessionStorage.setItem('token', token);
+    localStorage.setItem('token', token);
   }
 
   // Explicitly set the current user (e.g. after login)
@@ -38,15 +38,15 @@ export class AuthService {
     return this.currentUser;
   }
 
-  // Get JWT token from sessionStorage
+  // Get JWT token from localStorage
   getToken(): string | null {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
-  // Logout method to clear memory and sessionStorage
+  // Logout method to clear memory and localStorage
   logout(): void {
     this.currentUser = null;
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
   }
 
   // Decode JWT payload

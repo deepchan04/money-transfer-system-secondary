@@ -5,6 +5,7 @@ import com.training.mts.exceptions.AccountLinkedException;
 import com.training.mts.exceptions.AccountNotFoundException;
 import com.training.mts.exceptions.IncorrectPasswordException;
 import com.training.mts.model.User;
+import com.training.mts.dto.UserResponse;
 import com.training.mts.service.BankAccountServiceImpl;
 
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,9 @@ public class BankAccountController {
     }
 
     @PostMapping("/link")
-    public ResponseEntity<User> linkBankAccount(@RequestBody LinkAccountRequest linkAccountRequest) throws AccountNotFoundException, IncorrectPasswordException, AccountLinkedException {
-        return new ResponseEntity<>(bankAccountService.linkBankAccount(linkAccountRequest.getVpaId(), linkAccountRequest.getAccountNumber(), linkAccountRequest.getAccountPassword()),HttpStatus.CREATED);
+    public ResponseEntity<UserResponse> linkBankAccount(@RequestBody LinkAccountRequest linkAccountRequest) throws AccountNotFoundException, IncorrectPasswordException, AccountLinkedException {
+        User created = bankAccountService.linkBankAccount(linkAccountRequest.getVpaId(), linkAccountRequest.getAccountNumber(), linkAccountRequest.getAccountPassword());
+        return new ResponseEntity<>(UserResponse.from(created),HttpStatus.CREATED);
     }
 
 

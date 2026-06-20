@@ -117,14 +117,7 @@
             </td>
           </ng-container>
 
-          <!-- Balance Column -->
-          <ng-container matColumnDef="balance">
-            <th mat-header-cell *matHeaderCellDef>Balance</th>
-            <td mat-cell *matCellDef="let user">
-              <span class="balance-amount" *ngIf="user.balance > 0">₹{{ user.balance | number }}</span>
-              <span class="no-balance" *ngIf="user.balance === 0">-</span>
-            </td>
-          </ng-container>
+          <!-- Balance removed from response; use separate balance API if needed -->
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="user-row"></tr>

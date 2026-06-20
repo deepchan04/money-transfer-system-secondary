@@ -48,7 +48,7 @@ class BankAccountControllerTest {
                 request.getAccountPassword()))
                 .thenReturn(user);
 
-        ResponseEntity<User> response =
+        ResponseEntity<com.training.mts.dto.UserResponse> response =
                 bankAccountController.linkBankAccount(request);
 
         assertEquals(201, response.getStatusCode().value());

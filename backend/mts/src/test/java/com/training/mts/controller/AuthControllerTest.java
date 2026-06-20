@@ -4,6 +4,7 @@ import com.training.mts.dto.LoginRequest;
 import com.training.mts.dto.LoginResponse;
 import com.training.mts.dto.UserRequest;
 import com.training.mts.model.User;
+import com.training.mts.dto.UserResponse;
 import com.training.mts.security.JwtUtils;
 import com.training.mts.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -115,7 +116,7 @@ class AuthControllerTest {
         when(userService.createUser(any(), any(), any(), any()))
                 .thenReturn(user);
 
-        ResponseEntity<User> response =
+        ResponseEntity<UserResponse> response =
                 authController.registerUser(request);
 
         assertEquals(201, response.getStatusCode().value());

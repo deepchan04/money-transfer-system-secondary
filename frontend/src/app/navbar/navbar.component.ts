@@ -82,7 +82,7 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return !!sessionStorage.getItem('token');
+    return !!localStorage.getItem('token');
   }
 
   isAdmin(): boolean {

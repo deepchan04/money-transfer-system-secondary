@@ -4,8 +4,8 @@ import { Router, CanActivateFn } from '@angular/router';
 
 export const redirectIfLoggedIn: CanActivateFn = (route, state) => {
   const router = inject(Router);
-  const token = sessionStorage.getItem('token');
   const authService = inject(AuthService);
+  const token = authService.getToken();
   const user = authService.getCurrentUser();
 
   if (token && user) {

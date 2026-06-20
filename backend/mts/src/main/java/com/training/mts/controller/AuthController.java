@@ -4,6 +4,7 @@ import com.training.mts.dto.LoginRequest;
 import com.training.mts.dto.LoginResponse;
 import com.training.mts.dto.UserRequest;
 import com.training.mts.model.User;
+import com.training.mts.dto.UserResponse;
 import com.training.mts.security.JwtUtils;
 import com.training.mts.service.UserService;
 
@@ -60,11 +61,11 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<User> registerUser(@RequestBody UserRequest user) {
+        public ResponseEntity<UserResponse> registerUser(@RequestBody UserRequest user) {
 
             User createdUser = userService.createUser(user.getName(), user.getPhoneNumber(), user.getEmail(),
-                    user.getPassword());
-            return ResponseEntity.status(HttpStatus.CREATED).body(createdUser);
+                user.getPassword());
+            return ResponseEntity.status(HttpStatus.CREATED).body(UserResponse.from(createdUser));
 
     }
 }

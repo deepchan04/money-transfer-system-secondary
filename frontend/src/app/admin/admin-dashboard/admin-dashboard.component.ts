@@ -51,7 +51,6 @@ interface User {
     vpaId: string;
     accountStatus: string;
     accountNumber: string;
-    balance: number;
 }
 
 interface PeakHour {
@@ -139,6 +138,18 @@ export class AdminDashboardComponent implements OnInit {
         this.loadTransactions();
         this.loadAnalytics();
     }
+
+      getGreeting(): string {
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+      return 'Morning';
+    } else if (hour < 17) {
+      return 'Afternoon';
+    } else {
+      return 'Evening';
+    }
+  }
 
     loadAnalytics() {
         this.isLoadingAnalytics = true;
@@ -299,8 +310,7 @@ export class AdminDashboardComponent implements OnInit {
             phoneNumber: apiUser.phoneNumber,
             vpaId: apiUser.vpa?.vpaId || 'N/A',
             accountStatus: apiUser.appStatus || 'N/A',
-            accountNumber: apiUser.bankAccount?.accountNumber || 'N/A',
-            balance: apiUser.bankAccount?.balance || 0
+            accountNumber: apiUser.bankAccount?.accountNumber || 'N/A'
         };
     }
 

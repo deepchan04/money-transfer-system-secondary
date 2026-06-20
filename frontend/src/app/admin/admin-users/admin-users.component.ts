@@ -42,7 +42,6 @@ interface User {
     vpaId: string;
     accountStatus: string;
     accountNumber: string;
-    balance: number;
 }
 
 @Component({
@@ -75,7 +74,7 @@ export class AdminUsersComponent implements OnInit {
     filteredUsers: User[] = [];
     paginatedUsers: User[] = [];
 
-    displayedColumns: string[] = ['id', 'name', 'email', 'phoneNumber', 'vpaId', 'accountStatus', 'accountNumber', 'balance'];
+    displayedColumns: string[] = ['id', 'name', 'email', 'phoneNumber', 'vpaId', 'accountStatus', 'accountNumber'];
 
     // Status options
     statusOptions = ['ACTIVE', 'CLOSED', 'LOCKED'];
@@ -126,7 +125,6 @@ export class AdminUsersComponent implements OnInit {
             vpaId: apiUser.vpa?.vpaId || 'N/A',
             accountStatus: apiUser.appStatus || 'N/A',
             accountNumber: apiUser.bankAccount?.accountNumber || 'N/A',
-            balance: apiUser.bankAccount?.balance || 0
         };
     }
 

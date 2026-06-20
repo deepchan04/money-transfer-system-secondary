@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 
 export interface UserData {
@@ -41,7 +42,7 @@ export class PostService {
   private apiUrl = 'http://localhost:8080/auth/register';
   private analyticsUrl = 'http://localhost:8081/api/snowflake';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   // POST method
   createUser(data: UserData): Observable<any> {
@@ -62,7 +63,7 @@ export class PostService {
   // Find user by phone number
   findByPhone(phoneNumber: string): Observable<any> {
     const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -72,7 +73,7 @@ export class PostService {
   // Link bank account
   linkBankAccount(data: any): Observable<any> {
     const url = 'http://localhost:8080/bankaccounts/link';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -83,7 +84,7 @@ export class PostService {
   // Get bank balance
   getBalance(vpaId: string, password: string): Observable<any> {
     const url = `http://localhost:8080/users/getbalance`;
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -95,7 +96,7 @@ export class PostService {
   // Get all users
   getUsers(): Observable<any> {
     const url = 'http://localhost:8080/users/getusers';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -105,7 +106,7 @@ export class PostService {
   // Get all users for admin
   getAdminUsers(): Observable<any> {
     const url = 'http://localhost:8080/admin/getusers';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -115,7 +116,7 @@ export class PostService {
   // Change user status (admin only)
   changeUserStatus(vpaId: string, appStatus: string): Observable<any> {
     const url = 'http://localhost:8080/admin/changeStatus';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -127,7 +128,7 @@ export class PostService {
   // Make payment transaction
   makePayment(paymentData: PaymentRequest): Observable<PaymentResponse> {
     const url = 'http://localhost:8080/transactions/pay';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -138,7 +139,7 @@ export class PostService {
   // Get transaction log
   getTransactionLog(vpaId: string): Observable<any> {
     const url = `http://localhost:8080/transactions/gettranslog?vpaId=${vpaId}`;
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -148,7 +149,7 @@ export class PostService {
   // Get admin transaction log
   getAdminTransactionLog(): Observable<any> {
     const url = 'http://localhost:8080/admin/gettranslog';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -158,7 +159,7 @@ export class PostService {
   // Get user by VPA
   getUserByVpa(vpaId: string): Observable<any> {
     const url = `http://localhost:8080/users/getbyvpa?vpaId=${vpaId}`;
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -200,7 +201,7 @@ export class PostService {
   // Get reward points and cards status
   getRewardStatus(): Observable<any> {
     const url = 'http://localhost:8080/rewards/status';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -210,7 +211,7 @@ export class PostService {
   // Get user's scratchcards list
   getScratchCards(): Observable<any> {
     const url = 'http://localhost:8080/rewards/list';
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
@@ -220,16 +221,15 @@ export class PostService {
   // Scratch card and reveal coupon details
   scratchCard(cardId: number): Observable<any> {
     const url = `http://localhost:8080/rewards/scratch/${cardId}`;
-    const token = sessionStorage.getItem('token');
+    const token = this.authService.getToken();
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
     return this.http.post<any>(url, {}, { headers });
   }
 
-  // Logout method to clear the sessionStorage
   logout(): void {
-    sessionStorage.removeItem('user');
-    sessionStorage.removeItem('token');
+    // Logout method delegates to AuthService
+    this.authService.logout();
   }
 }

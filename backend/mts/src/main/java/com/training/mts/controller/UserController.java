@@ -1,6 +1,7 @@
 package com.training.mts.controller;
 
 import com.training.mts.dto.GetAllUsersRequest;
+import com.training.mts.dto.UserResponse;
 import com.training.mts.dto.GetBalanceRequest;
 import com.training.mts.exceptions.AccountNotLinkedException;
 import com.training.mts.exceptions.IncorrectPasswordException;
@@ -31,8 +32,8 @@ public class UserController {
 
 
     @GetMapping("/findByPhone")
-    public ResponseEntity<User> getUser(@RequestParam String phoneNumber) {
-        return new ResponseEntity<>(userService.getUserByPhoneNumber(phoneNumber),HttpStatus.OK);
+    public ResponseEntity<UserResponse> getUser(@RequestParam String phoneNumber) {
+        return new ResponseEntity<>(UserResponse.from(userService.getUserByPhoneNumber(phoneNumber)),HttpStatus.OK);
     }
     @GetMapping("/getusers")
     public ResponseEntity<List<GetAllUsersRequest>> getUsers() {

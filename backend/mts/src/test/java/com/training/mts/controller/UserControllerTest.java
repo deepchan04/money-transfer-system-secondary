@@ -59,11 +59,12 @@ class UserControllerTest {
         when(userService.getUserByPhoneNumber("9999999999"))
                 .thenReturn(user);
 
-        ResponseEntity<User> response =
+        ResponseEntity<com.training.mts.dto.UserResponse> response =
                 userController.getUser("9999999999");
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals(user, response.getBody());
+        assertEquals("Diya", response.getBody().getName());
+        assertEquals("9999999999", response.getBody().getPhoneNumber());
     }
 
     @Test

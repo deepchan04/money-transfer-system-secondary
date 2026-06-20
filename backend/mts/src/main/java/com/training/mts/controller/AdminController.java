@@ -3,6 +3,7 @@ package com.training.mts.controller;
 import com.training.mts.dto.ChangeStatusRequest;
 import com.training.mts.model.Transaction;
 import com.training.mts.model.User;
+import com.training.mts.dto.UserResponse;
 import com.training.mts.service.AdminServiceImpl;
 
 import org.springframework.http.HttpStatus;
@@ -30,12 +31,13 @@ public class AdminController {
     }
 
     @GetMapping("/getusers")
-    public ResponseEntity<List<User>> getUsers(){
-        return new ResponseEntity<>(adminService.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<UserResponse>> getUsers(){
+        var list = adminService.findAll().stream().map(UserResponse::from).toList();
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @PutMapping("/changeStatus")
-    public ResponseEntity<User> changeStatus(@RequestBody ChangeStatusRequest changeStatusRequest){
-        return new ResponseEntity<>(adminService.updateUser(changeStatusRequest.getVpaId(),changeStatusRequest.getAppStatus()),HttpStatus.OK);
+    public ResponseEntity<UserResponse> changeStatus(@RequestBody ChangeStatusRequest changeStatusRequest){
+        return new ResponseEntity<>(UserResponse.from(adminService.updateUser(changeStatusRequest.getVpaId(),changeStatusRequest.getAppStatus())),HttpStatus.OK);
     }
 }
