@@ -4,18 +4,18 @@ import { Router, CanActivateFn } from '@angular/router';
 
 export const authGuard: CanActivateFn = (route, state) => {
     const router = inject(Router);
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     const authService = inject(AuthService);
-  const user = authService.getCurrentUser();
-    let userData;
-    if(user){
-        userData = user;        
-    }
+    const user = authService.getCurrentUser();
+        let userData;
+        if(user){
+            userData = user;        
+        }
 
-    if (userData.role === "ROLE_ADMIN" || token && userData.appStatus !== "CLOSED") {
-        return true;
-    } else {
-        router.navigate(['/auth']);
-        return false;
-    }
-};
+        if (userData?.role === "ROLE_ADMIN" || token && userData?.appStatus !== "CLOSED") {
+            return true;
+        } else {
+            router.navigate(['/']);
+            return false;
+        }
+    };

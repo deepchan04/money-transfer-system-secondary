@@ -5747,3 +5747,1006 @@ com.training.mts.exceptions.IncorrectPasswordException: Password Incorrect!!
 2026-06-21 12:24:04 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-06-21 12:24:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-21 12:24:04 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-21 13:01:21 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-06-21 13:01:21 [main] INFO  com.training.mts.MtsApplication - Starting MtsApplication using Java 21 with PID 35368 (D:\Fidelity\Projects\money-transfer-system-secondary\backend\mts\target\classes started by deepc in D:\Fidelity\Projects\money-transfer-system-secondary\backend\mts)
+2026-06-21 13:01:21 [main] INFO  com.training.mts.MtsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-21 13:01:22 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-21 13:01:22 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 66 ms. Found 5 JPA repository interfaces.
+2026-06-21 13:01:23 [main] INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-21 13:01:23 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-21 13:01:23 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-21 13:01:23 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-21 13:01:23 [main] INFO  org.springframework.boot.web.context.servlet.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2411 ms
+2026-06-21 13:01:24 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-21 13:01:24 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-21 13:01:26 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-21 13:01:26 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-21 13:01:27 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@612bb755
+2026-06-21 13:01:27 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-21 13:01:27 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-21 13:01:27 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/mts?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: mts/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-21 13:01:29 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-21 13:01:29 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-21 13:01:30 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-21 13:01:32 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-06-21 13:01:34 [main] WARN  org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-21 13:01:36 [main] DEBUG org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-06-21 13:01:37 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-21 13:01:37 [main] INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-06-21 13:01:37 [main] INFO  com.training.mts.MtsApplication - Started MtsApplication in 16.464 seconds (process running for 16.964)
+2026-06-21 13:03:11 [http-nio-8080-exec-2] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-21 13:03:11 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-21 13:03:11 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-06-21 13:03:11 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:03:11 [http-nio-8080-exec-2] WARN  org.springframework.web.servlet.handler.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/auth/login' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-06-21 13:03:11 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:03:11 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:03:11 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:03:12 [http-nio-8080-exec-2] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:03:12 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:03:12 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:03:12 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:03:12 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:03:12 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@53f827a2}
+2026-06-21 13:03:13 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:03:13 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:03:13 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:03:13 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:03:13 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:03:13 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@75c4338f
+2026-06-21 13:08:00 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:00 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:00 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:08:00 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3ef246f9}
+2026-06-21 13:08:00 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:00 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:00 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:08:00 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@2514eb05}
+2026-06-21 13:08:00 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:00 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:00 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:08:00 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@d72786e
+2026-06-21 13:08:00 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:00 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:00 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:08:00 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:00 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@52973ccd
+2026-06-21 13:08:04 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:04 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:04 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:08:04 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3f95307d}
+2026-06-21 13:08:04 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:04 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:04 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:08:04 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3b045e4}
+2026-06-21 13:08:04 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:04 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:04 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:08:04 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@3cdc44f7
+2026-06-21 13:08:04 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:04 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:04 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:08:04 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:04 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@3035c4a
+2026-06-21 13:08:21 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:21 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:08:21 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:08:21 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@6672dca4}
+2026-06-21 13:08:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:21 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:21 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:08:21 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:08:21 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:21 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:08:21 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:08:21 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@45521384
+2026-06-21 13:08:21 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:09:24 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:09:25 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:09:25 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:09:25 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@6af32b5f}
+2026-06-21 13:09:25 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:09:25 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:09:25 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:09:25 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:09:25 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@3d719aa0
+2026-06-21 13:10:48 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:10:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:10:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:10:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:10:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:10:48 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:10:48 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:10:48 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:10:48 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:10:48 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@265152db}
+2026-06-21 13:10:48 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:10:48 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:10:48 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:10:48 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:10:48 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@bd15d18
+2026-06-21 13:10:48 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:10:48 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:18 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:18 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:18 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7f8872fa}
+2026-06-21 13:13:18 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:18 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:18 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:18 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@474411e7
+2026-06-21 13:13:18 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:18 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:22 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:22 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:22 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1d268842}
+2026-06-21 13:13:22 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:22 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:22 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:22 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@c75530c}
+2026-06-21 13:13:22 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:22 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:22 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:22 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@407de0bb
+2026-06-21 13:13:22 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:22 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:22 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:22 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:22 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@794c0ece
+2026-06-21 13:13:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:28 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:28 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:28 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7ad3d66a}
+2026-06-21 13:13:28 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:28 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:28 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:28 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7f6cb4a5}
+2026-06-21 13:13:28 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:28 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:28 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:28 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@2fc53c51
+2026-06-21 13:13:28 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:28 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:28 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:28 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:28 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1b69eccb
+2026-06-21 13:13:29 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:29 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:29 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:29 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@18897025}
+2026-06-21 13:13:30 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:30 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:30 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:30 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@66a23fd5}
+2026-06-21 13:13:30 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:30 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:30 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:30 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6af5e6dd
+2026-06-21 13:13:30 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:30 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:30 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:30 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:30 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@15d2ea4
+2026-06-21 13:13:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:13:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:13:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:13:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:13:56 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:56 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:13:56 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:13:56 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@148da5f6}
+2026-06-21 13:13:56 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:56 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:13:56 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:13:56 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@3dc5489e
+2026-06-21 13:13:56 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:13:56 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:14:42 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:14:42 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:14:42 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:14:42 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@622d78c6}
+2026-06-21 13:14:43 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:14:43 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:14:43 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:14:43 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:14:43 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:14:43 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:14:43 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:14:43 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:14:43 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@5e62edb9
+2026-06-21 13:14:43 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:22 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:22 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:18:22 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@5e3e4f47}
+2026-06-21 13:18:22 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:22 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:22 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:18:22 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3467d7fe}
+2026-06-21 13:18:22 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:22 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:22 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:18:22 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6e63a525
+2026-06-21 13:18:22 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:22 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:22 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:18:22 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6dbcbe0d
+2026-06-21 13:18:22 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:22 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:41 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:18:41 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:18:41 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:18:42 [http-nio-8080-exec-1] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:18:42 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:42 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:18:42 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:18:42 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@645c1966}
+2026-06-21 13:18:42 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:42 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:18:42 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:18:42 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@76eb6d6e
+2026-06-21 13:18:42 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:18:42 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:19:55 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:19:55 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:19:55 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:19:55 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:19:56 [http-nio-8080-exec-7] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:19:56 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:19:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:19:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:19:56 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:19:56 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@5c0f2034}
+2026-06-21 13:19:56 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:19:56 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:19:56 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:19:56 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:19:56 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@589b5767
+2026-06-21 13:19:56 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:19:56 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:20:34 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:20:34 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:20:34 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@70e7f18b}
+2026-06-21 13:20:34 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:20:34 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:20:34 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:20:34 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:20:34 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@390d698c
+2026-06-21 13:21:11 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:21:11 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:21:11 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:21:11 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:21:12 [http-nio-8080-exec-5] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:21:12 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:12 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:12 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:12 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:21:12 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3095a607}
+2026-06-21 13:21:12 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:12 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:12 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:12 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:21:12 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@58623780
+2026-06-21 13:21:12 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:12 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:15 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:15 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:15 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:21:15 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7fa25350}
+2026-06-21 13:21:15 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:15 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:15 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:15 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:15 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:21:15 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@358e1f9e
+2026-06-21 13:21:36 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:36 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:36 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:21:36 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:21:36 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@5eeada49}
+2026-06-21 13:21:36 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:36 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:36 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:21:36 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:21:36 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@626626ca
+2026-06-21 13:21:36 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:21:36 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:24 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:22:24 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@2a9dc012}
+2026-06-21 13:22:24 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:24 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:24 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:24 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:24 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:22:24 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1018051a
+2026-06-21 13:22:26 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:26 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:26 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:26 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:22:26 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@33d0665e}
+2026-06-21 13:22:26 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:26 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:26 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:22:26 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:26 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@478c605c
+2026-06-21 13:22:26 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:27 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:27 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:27 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:22:27 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3d4aef31}
+2026-06-21 13:22:27 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:27 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:27 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:22:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:27 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@31f1a8a8
+2026-06-21 13:22:29 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:29 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:29 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:29 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:22:29 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@67a482c4}
+2026-06-21 13:22:29 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:29 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:29 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:29 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:22:29 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:29 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@47941580
+2026-06-21 13:22:53 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:53 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:53 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:22:53 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:22:53 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3dc38770}
+2026-06-21 13:22:53 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:53 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:53 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:22:53 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:22:53 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:22:53 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6e6d5f2a
+2026-06-21 13:23:26 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:23:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:23:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:23:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:23:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:23:26 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:26 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:27 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:23:27 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@46e703a4}
+2026-06-21 13:23:27 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:27 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:27 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:27 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:23:27 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@62e19557
+2026-06-21 13:23:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:31 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:31 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:31 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:23:31 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@31c2d392}
+2026-06-21 13:23:31 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:31 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:31 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:31 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:23:31 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:31 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@2aa86ecb
+2026-06-21 13:23:42 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:42 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:42 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:23:42 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:23:42 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@10cc0c67}
+2026-06-21 13:23:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:42 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:42 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:23:42 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:23:42 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:23:42 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@300587c5
+2026-06-21 13:23:42 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:45:11 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-21 13:45:11 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:45:11 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:45:11 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:45:11 [http-nio-8080-exec-3] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:45:11 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:45:11 [http-nio-8080-exec-6] ERROR com.training.mts.security.JwtUtils - JWT validation failed: JWT strings must contain exactly 2 period characters. Found: 0
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.authentication.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /error?phoneNumber=9090909090
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:45:11 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.authentication.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2026-06-21 13:47:41 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 13:47:41 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 13:47:41 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 13:47:41 [http-nio-8080-exec-4] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 13:47:41 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:47:41 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:47:41 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:47:41 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1c5e8938}
+2026-06-21 13:47:41 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:47:41 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:47:41 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:47:41 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:47:41 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1a80aacf
+2026-06-21 13:47:41 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:41 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/getusers
+2026-06-21 13:47:47 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/getusers
+2026-06-21 13:47:47 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/getusers
+2026-06-21 13:47:47 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getAllUsers() with arguments: []
+2026-06-21 13:47:47 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:47 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getAllUsers() | Returned: [com.training.mts.dto.GetAllUsersRequest@53d7a4a9, com.training.mts.dto.GetAllUsersRequest@77f37ea, com.training.mts.dto.GetAllUsersRequest@6d0d14, com.training.mts.dto.GetAllUsersRequest@232b0ab7]
+2026-06-21 13:47:48 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:47:48 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:47:48 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:47:48 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6d034e50
+2026-06-21 13:47:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:47:48 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:48:05 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:48:05 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:48:05 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:48:05 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@54a7c35}
+2026-06-21 13:48:13 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:48:13 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:48:13 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:48:13 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@e77ea67}
+2026-06-21 13:48:13 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:48:13 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:48:13 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:48:13 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:48:13 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@7193c470
+2026-06-21 13:54:03 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:54:03 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:54:03 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:54:03 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@4c3106bc}
+2026-06-21 13:54:03 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:54:03 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:54:03 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:54:03 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:54:03 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1c454452}
+2026-06-21 13:54:03 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:54:03 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:54:03 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@203fdc0c
+2026-06-21 13:54:03 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:54:03 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:54:03 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:54:03 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:54:03 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@2121ec94
+2026-06-21 13:56:50 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:56:50 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:56:50 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:56:50 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@2db9b3ab}
+2026-06-21 13:56:50 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:50 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:50 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:50 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:56:50 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:50 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:56:50 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:56:50 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:56:50 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:56:50 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:50 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:56:50 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@3bb7f8eb}
+2026-06-21 13:56:50 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1fbd32d2
+2026-06-21 13:56:50 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:56:51 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:56:51 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:56:51 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:56:51 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@4a5896f2
+2026-06-21 13:57:16 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:57:16 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:57:16 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:57:16 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@20da7b71}
+2026-06-21 13:57:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:57:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:57:23 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:57:23 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@74615862}
+2026-06-21 13:57:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:57:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:57:23 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:57:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:57:23 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6862e21b
+2026-06-21 13:58:24 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:24 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:24 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:24 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@fdd02bc}
+2026-06-21 13:58:24 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:24 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:24 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:24 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@5a93a3ee}
+2026-06-21 13:58:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:24 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:24 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:58:24 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@de2c62b
+2026-06-21 13:58:24 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:24 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:24 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:58:24 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:24 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@20c4b7fe
+2026-06-21 13:58:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:26 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:26 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:26 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@32fe2ea6}
+2026-06-21 13:58:26 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:26 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:26 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:58:26 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:26 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@2ac4ab38
+2026-06-21 13:58:27 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:27 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:27 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:27 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1a6ba161}
+2026-06-21 13:58:27 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:27 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:58:27 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:27 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1d679b68
+2026-06-21 13:58:32 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:32 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:32 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:32 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@6397563e}
+2026-06-21 13:58:32 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:32 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 13:58:32 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 13:58:32 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1b219e75}
+2026-06-21 13:58:32 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:32 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:32 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:32 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 13:58:32 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 13:58:32 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:32 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 13:58:32 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@bce0e9e
+2026-06-21 13:58:32 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 13:58:32 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 14:02:35 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 14:02:35 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 14:02:35 [http-nio-8080-exec-3] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 14:02:35 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:35 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:35 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:02:35 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@47dcb571}
+2026-06-21 14:02:35 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:02:35 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:02:35 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:02:35 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@6e318e6f
+2026-06-21 14:02:35 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:35 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:42 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:42 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:02:42 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7757a439}
+2026-06-21 14:02:42 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:42 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:02:42 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:02:42 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@2912e7ce}
+2026-06-21 14:02:42 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:02:42 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:02:42 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:02:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:02:42 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@3a8e474e
+2026-06-21 14:02:42 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 14:03:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 14:03:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 14:03:21 [http-nio-8080-exec-5] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 14:03:21 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:21 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:21 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:03:21 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@5f933d8c}
+2026-06-21 14:03:21 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:03:21 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:03:21 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:03:21 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@68a6187
+2026-06-21 14:03:21 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:21 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:25 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:25 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:03:25 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7f7fa176}
+2026-06-21 14:03:25 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:25 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:03:25 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:03:25 [http-nio-8080-exec-3] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@21cc9769}
+2026-06-21 14:03:25 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:03:25 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:03:25 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:03:25 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-5] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@1d45986
+2026-06-21 14:03:25 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:03:25 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:53 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 14:05:53 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 14:05:53 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 14:05:54 [http-nio-8080-exec-10] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 14:05:54 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:54 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:54 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:05:54 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@68c6864}
+2026-06-21 14:05:54 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:05:54 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:05:54 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:05:54 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@4b39a5c2
+2026-06-21 14:05:54 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:54 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:59 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:59 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:05:59 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@7299482a}
+2026-06-21 14:05:59 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:59 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:05:59 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:05:59 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@1f927b25}
+2026-06-21 14:05:59 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:05:59 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:05:59 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:05:59 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:05:59 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@7b5387c1
+2026-06-21 14:05:59 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-21 14:06:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-21 14:06:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-21 14:06:23 [http-nio-8080-exec-6] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-21 14:06:23 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:23 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:23 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:06:23 [http-nio-8080-exec-9] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@2b31e23d}
+2026-06-21 14:06:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:06:23 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:06:23 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:06:23 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-4] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@e75a8cf
+2026-06-21 14:06:23 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:23 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:28 [http-nio-8080-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:28 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:06:28 [http-nio-8080-exec-7] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@77bf4ff3}
+2026-06-21 14:06:28 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:28 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-21 14:06:28 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-21 14:06:28 [http-nio-8080-exec-10] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Sowjen Meher', vpa=com.training.mts.model.VPA@353267b0}
+2026-06-21 14:06:28 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:06:28 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /transactions/gettranslog?vpaId=sowjenmeher1290902@mts
+2026-06-21 14:06:28 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: TransactionServiceImpl.getTransactionHistory(..) with arguments: [sowjenmeher1290902@mts]
+2026-06-21 14:06:28 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /rewards/status
+2026-06-21 14:06:28 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: TransactionServiceImpl.getTransactionHistory(..) | Returned: com.training.mts.dto.TransactionHistoryResponse@110dbe57

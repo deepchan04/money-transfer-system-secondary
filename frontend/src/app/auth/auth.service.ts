@@ -1,6 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {AuthSyncService} from "../service/authSyncService";
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +11,43 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://localhost:8080/api/auth'; // Example API URL
 
-  private currentUser: any = null;
+  private currentUserSubject = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) { }
+  currentUser$ = this.currentUserSubject.asObservable();
+
+  constructor(private router: Router, private http: HttpClient, private authSyncService: AuthSyncService) { 
+      this.authSyncService.tokenReceived$
+    .subscribe(token => {
+
+      if (!sessionStorage.getItem('token')) {
+
+        sessionStorage.setItem('token', token);
+
+        this.loadCurrentUser().then((user) => {
+         if (user) {
+          this.router.navigate(['/dashboard']);
+        }
+      });
+      }
+    });
+    this.authSyncService.login$
+  .subscribe(token => {
+
+    this.loadCurrentUser().then(user => {
+
+      if (user) {
+        this.router.navigate(['/dashboard']);
+      }
+
+    });
+
+  });
+    this.authSyncService.logout$
+      .subscribe(() => {
+        this.currentUserSubject.next(null);
+        this.router.navigate(['/']);
+    });
+  }
 
   // Login method
   login(username: string, password: string): Observable<any> {
@@ -22,31 +59,33 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, { username, email, password });
   }
 
-  // Save only JWT in localStorage and update in-memory user
+  // Save only JWT in sessionStorage and update in-memory user
   saveUserAndToken(user: any, token: string): void {
-    this.currentUser = user;
-    localStorage.setItem('token', token);
+    this.currentUserSubject.next(user);
+    sessionStorage.setItem('token', token);
+    this.authSyncService.broadcastLogin(token);
   }
 
   // Explicitly set the current user (e.g. after login)
   setCurrentUser(user: any): void {
-    this.currentUser = user;
+    this.currentUserSubject.next(user);
   }
 
   // Get current user from memory
   getCurrentUser(): any {
-    return this.currentUser;
+    return this.currentUserSubject.value;
   }
 
-  // Get JWT token from localStorage
+  // Get JWT token from sessionStorage
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
 
-  // Logout method to clear memory and localStorage
+  // Logout method to clear memory and sessionStorage
   logout(): void {
-    this.currentUser = null;
-    localStorage.removeItem('token');
+    this.currentUserSubject.next(null);
+    sessionStorage.removeItem('token');
+    this.authSyncService.broadcastLogout();
   }
 
   // Decode JWT payload
@@ -63,15 +102,17 @@ export class AuthService {
 
   // Load user data based on token
   loadCurrentUser(): Promise<any> {
+    console.log('Loading current user from token...');
     const token = this.getToken();
     if (!token) {
-      this.currentUser = null;
+      this.currentUserSubject.next(null);
+      this.authSyncService.requestToken();
       return Promise.resolve(null);
     }
-
+    console.log('Token found in sessionStorage:', token);
     const decoded = this.decodeToken(token);
     if (!decoded || !decoded.sub) {
-      this.currentUser = null;
+      this.currentUserSubject.next(null);
       return Promise.resolve(null);
     }
 
@@ -82,12 +123,13 @@ export class AuthService {
     return new Promise((resolve) => {
       this.http.get<any>(url, { headers }).subscribe({
         next: (user) => {
-          this.currentUser = user;
+           console.log('user loaded', user);
+          this.currentUserSubject.next(user);
           resolve(user);
         },
         error: (err) => {
           console.error('Error fetching user', err);
-          this.currentUser = null;
+          this.currentUserSubject.next(null);
           resolve(null);
         }
       });

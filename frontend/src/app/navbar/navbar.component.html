@@ -1,5 +1,5 @@
 <mat-toolbar class="navbar">
-  <div class="brand" [routerLink]="isLoggedIn() ? '/dashboard' : '/'">
+  <div class="brand" [routerLink]="user ? '/dashboard' : '/'">
     <mat-icon>payments</mat-icon>
     <span>MTS</span>
   </div>
@@ -7,15 +7,15 @@
   <div class="spacer"></div>
 
   <nav class="nav-links">
-    <button mat-button routerLink="/auth" *ngIf="!isLoggedIn()">Login</button>
-    <button mat-button routerLink="/admin-login" *ngIf="!isLoggedIn()" class="admin-btn">Admin</button>
-    <button mat-button routerLink="/admin-dashboard" *ngIf="isLoggedIn() && isAdmin() && currentUrl !== '/admin-dashboard'" class="admin-btn">Admin
+    <button mat-button routerLink="/auth" *ngIf="!user">Login</button>
+    <button mat-button routerLink="/admin-login" *ngIf="!user" class="admin-btn">Admin</button>
+    <button mat-button routerLink="/admin-dashboard" *ngIf="user && isAdmin() && currentUrl !== '/admin-dashboard'" class="admin-btn">Admin
       Dashboard</button>
-    <button mat-button routerLink="/dashboard" *ngIf="isLoggedIn() && !isAdmin() && currentUrl !== '/dashboard'">Dashboard</button>
+    <button mat-button routerLink="/dashboard" *ngIf="user && !isAdmin() && currentUrl !== '/dashboard'">Dashboard</button>
     <button
       mat-button
       routerLink="/rewards"
-      *ngIf="isLoggedIn() && !isAdmin() && currentUrl !== '/rewards' && isAccountActive && bankAccountLinked"
+      *ngIf="user && !isAdmin() && currentUrl !== '/rewards' && isAccountActive && bankAccountLinked"
       class="rewards-btn"
       matBadgeColor="accent"
       matBadge={{unscratchedRewardsCount}}
@@ -26,7 +26,7 @@
     </button>
 
     <!-- Avatar Menu - Only show when logged in -->
-    <ng-container *ngIf="isLoggedIn()">
+    <ng-container *ngIf="user">
       <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="avatar-btn">
         <div class="avatar">
           {{ userInitial }}

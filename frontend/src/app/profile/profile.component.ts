@@ -23,7 +23,10 @@ export class ProfileComponent {
   user: any;
 
   constructor(private authService: AuthService) {
-    this.user = this.authService.getCurrentUser() || {};
+    this.authService.currentUser$
+  .subscribe(user => {
+    this.user = user;
+  });;
   }
 
   // Mask account number - show last 4 digits

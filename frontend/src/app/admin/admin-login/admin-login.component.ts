@@ -54,7 +54,7 @@ export class AdminLoginComponent {
         }
 
         // Check if user is already logged in from another tab
-        const existingToken = localStorage.getItem('token');
+        const existingToken = sessionStorage.getItem('token');
         if (existingToken) {
             console.log('Admin already logged in from another tab, redirecting to admin dashboard');
             this.router.navigate(['/admin-dashboard']);
@@ -81,7 +81,7 @@ export class AdminLoginComponent {
             next: (response) => {
                 console.log('Admin login successful', response);
                 if (response.token) {
-                    localStorage.setItem('token', response.token);
+                    sessionStorage.setItem('token', response.token);
 
                     // Fetch user details
                     this.postService.findByPhone(this.phoneNumber).subscribe({

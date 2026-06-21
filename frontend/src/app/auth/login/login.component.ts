@@ -10,6 +10,8 @@ import { PostService } from '../../service/post.service';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs/internal/Observable';
+import { ServerStatusService } from '../../service/server-status.service';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +34,7 @@ export class LoginComponent {
   errorMessage = '';
   showPassword = false;
   phoneNonNumeric = false;
+  serverDown$: Observable<boolean>;
 
   onPhoneInput(value: string) {
     // Strip any non-digit characters and limit to 10 digits
@@ -44,12 +47,18 @@ export class LoginComponent {
     }
   }
 
-  constructor(private postService: PostService, private router: Router, private authService: AuthService) { }
+  constructor(private serverStatusService: ServerStatusService, private postService: PostService, private router: Router, private authService: AuthService) { 
+    this.serverDown$ = this.serverStatusService.serverDown$;
+  }
 
   login() {
     // Clear previous errors
     this.errorMessage = '';
-    
+
+    /*if(this.serverDown$) {
+      this.errorMessage = 'Server is currently down. Please try later.';
+      return;
+    }*/
 
     // Frontend validations
     if (!this.phoneNumber || !this.password) {
@@ -70,7 +79,7 @@ export class LoginComponent {
     }
 
     // Check if user is already logged in from another tab
-    const existingToken = localStorage.getItem('token');
+    const existingToken = sessionStorage.getItem('token');
     if (existingToken) {
       console.log('User already logged in from another tab, redirecting to dashboard');
       this.router.navigate(['/dashboard']);
@@ -91,7 +100,7 @@ export class LoginComponent {
           return;
         }
 
-        localStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.token);
 
         // Fetch user details
         this.postService.findByPhone(this.phoneNumber).subscribe({
@@ -101,13 +110,16 @@ export class LoginComponent {
             // Check if user account is closed
             if (user.appStatus === 'CLOSED') {
               this.errorMessage = 'Your account is closed. Please contact support.';
-              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
               this.authService.setCurrentUser(null);
               return;
             }
 
             // Save user details and navigate to dashboard
-            this.authService.setCurrentUser(user);
+            this.authService.saveUserAndToken(
+                user,
+                response.token
+            );
             this.router.navigate(['/dashboard']);
           },
           error: (err) => {

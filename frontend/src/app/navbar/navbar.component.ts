@@ -35,26 +35,22 @@ export class NavbarComponent implements OnInit {
   user: any;
   navItems: any[] = [];
 
-  constructor(private postService: PostService, private router: Router, private authService: AuthService) {
-    this.loadUserData();
-    
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) {    
     // Listen to route changes to update user data
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
       this.currentUrl = this.router.url;
-      this.loadUserData();
     });
   }
 
   ngOnInit() {
     this.currentUrl = this.router.url;
-    this.loadUserData();
-  }
-
-  loadUserData() {
-    const user = this.authService.getCurrentUser();
-    if (user) {
+    this.authService.currentUser$
+    .subscribe(user => {
+      console.log('NAVBAR RECEIVED:', user);
+      this.user = user;
+      if (user) {
       this.userInitial = this.computeInitials(user.name);
       this.userRole = user.role || '';
       this.isAccountActive = user.appStatus === 'ACTIVE';
@@ -64,7 +60,10 @@ export class NavbarComponent implements OnInit {
       this.userRole = '';
       this.unscratchedRewardsCount = 0;
     }
+    });
   }
+
+  
 
   // Compute initials similarly to ProfileComponent.getInitials()
   private computeInitials(name?: string): string {
@@ -78,7 +77,7 @@ export class NavbarComponent implements OnInit {
 
   @HostListener('window:rewardsUpdated')
   loadRewardIndicator(): void {
-    if (!this.isLoggedIn() || this.isAdmin()) {
+    if (!this.user || this.isAdmin()) {
       this.unscratchedRewardsCount = 0;
       return;
     }
@@ -93,9 +92,7 @@ export class NavbarComponent implements OnInit {
     });
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
-  }
+
 
   isAdmin(): boolean {
     const user = this.authService.getCurrentUser();
