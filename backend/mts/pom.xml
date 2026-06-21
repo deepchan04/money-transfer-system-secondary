@@ -184,6 +184,7 @@
 								<exclude>**/model/**</exclude>
 								<exclude>**/security/**</exclude>
 								<exclude>com/training/mts/MtsApplication*</exclude>
+								<exclude>**/AnalyticsService*</exclude>
 							</excludes>
 						</configuration>
 					</execution>

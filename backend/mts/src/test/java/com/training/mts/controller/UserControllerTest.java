@@ -1,6 +1,7 @@
 package com.training.mts.controller;
 
 import com.training.mts.dto.GetAllUsersRequest;
+import com.training.mts.dto.GetBalanceRequest;
 import com.training.mts.model.User;
 import com.training.mts.service.UserServiceImpl;
 
@@ -41,11 +42,15 @@ class UserControllerTest {
     @Test
     void getBalance_success() throws Exception {
 
+        GetBalanceRequest request = new GetBalanceRequest();
+        request.setVpaId("diya@upi");
+        request.setPassword("pass");
+
         when(userService.getBankBalance("diya@upi", "pass"))
                 .thenReturn(5000.0);
 
         ResponseEntity<Double> response =
-                userController.getBalance("diya@upi", "pass");
+                userController.getBalance(request);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(5000.0, response.getBody());

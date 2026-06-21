@@ -66,7 +66,7 @@ public class RewardServiceImpl implements RewardService {
         Double amount = transaction.getAmount();
 
         // Guardrails
-        if (amount == null || amount < 100) {
+        if (amount == null || amount <= 100) {
             return;
         }
         if (payer == null || payee == null || payer.getId().equals(payee.getId())) {

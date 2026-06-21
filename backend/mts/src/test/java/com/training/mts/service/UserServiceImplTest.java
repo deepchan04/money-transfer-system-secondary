@@ -17,6 +17,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import com.training.mts.exceptions.DuplicateUserException;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +52,116 @@ class UserServiceImplTest {
 
         user.setVpa(vpa);
     }
+
+    @Test
+    void createUser_duplicatePhone() {
+
+        when(passwordEncoder.encode("rawPass"))
+                .thenReturn("encodedPass");
+
+        when(userRepository.findByPhoneNumber("9999999999"))
+                .thenReturn(Optional.of(user));
+
+        assertThrows(DuplicateUserException.class, () ->
+                userService.createUser(
+                        "Diya",
+                        "9999999999",
+                        "diya@gmail.com",
+                        "rawPass"
+                ));
+    }
+
+    @Test
+    void createUser_duplicateEmail() {
+
+        when(passwordEncoder.encode("rawPass"))
+                .thenReturn("encodedPass");
+
+        when(userRepository.findByEmail("diya@gmail.com"))
+                .thenReturn(Optional.of(user));
+
+        assertThrows(DuplicateUserException.class, () ->
+                userService.createUser(
+                        "Diya",
+                        "9999999998",
+                        "diya@gmail.com",
+                        "rawPass"
+                ));
+    }
+
+    @Test
+    void createUser_duplicatePhoneAndEmail() {
+
+        when(passwordEncoder.encode("rawPass"))
+                .thenReturn("encodedPass");
+
+        when(userRepository.findByPhoneNumber("9999999999"))
+                .thenReturn(Optional.of(user));
+
+        when(userRepository.findByEmail("diya@gmail.com"))
+                .thenReturn(Optional.of(user));
+
+        Exception ex = assertThrows(DuplicateUserException.class, () ->
+                userService.createUser(
+                        "Diya",
+                        "9999999999",
+                        "diya@gmail.com",
+                        "rawPass"
+                ));
+
+        assertTrue(ex.getMessage().contains("already registered"));
+    }
+
+    @Test
+    void createUser_nullPhoneNumber() {
+
+        when(passwordEncoder.encode("rawPass"))
+                .thenReturn("encodedPass");
+
+        when(vpaService.generateVPAId(any(User.class)))
+                .thenReturn("diya@upi");
+
+        when(userRepository.save(any(User.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        when(vpaRepository.save(any(VPA.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        User created = userService.createUser(
+                "Diya",
+                null,
+                "diya@gmail.com",
+                "rawPass"
+        );
+
+        assertNotNull(created);
+    }
+
+    @Test
+    void createUser_nullEmail() {
+
+        when(passwordEncoder.encode("rawPass"))
+                .thenReturn("encodedPass");
+
+        when(vpaService.generateVPAId(any(User.class)))
+                .thenReturn("diya@upi");
+
+        when(userRepository.save(any(User.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        when(vpaRepository.save(any(VPA.class)))
+                .thenAnswer(invocation -> invocation.getArgument(0));
+
+        User created = userService.createUser(
+                "Diya",
+                "9999999999",
+                null,
+                "rawPass"
+        );
+
+        assertNotNull(created);
+    }
+
     @Test
     void createUser_success() {
 

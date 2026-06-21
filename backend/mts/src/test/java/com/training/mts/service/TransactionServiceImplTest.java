@@ -46,6 +46,12 @@ class TransactionServiceImplTest {
     @Mock
     private TransactionFailServiceImpl tFail;
 
+        @Mock
+        private RewardService rewardService;
+
+        @Mock
+        private EmailServiceImpl emailServiceImpl;
+
     @InjectMocks
     private TransactionServiceImpl transactionService;
 
@@ -83,6 +89,109 @@ class TransactionServiceImplTest {
         payeeAccount.setBalance(0.0);
     }
 
+    @Test
+    void initiatePayment_idempotencyKeyReusedWithDifferentAmount() {
+
+        Transaction existing = new Transaction();
+        existing.setAmount(100.0);
+
+        User payee = new User();
+        VPA vpa = new VPA();
+        vpa.setVpaId("payee@upi");
+        payee.setVpa(vpa);
+        existing.setPayee(payee);
+
+        TransactionRequest request = new TransactionRequest();
+        request.setIdempotencyKey("abc");
+        request.setAmount(200.0);
+        request.setPayeeVpaId("payee@upi");
+
+        when(transactionRepository.findByIdempotencyKey("abc"))
+                .thenReturn(Optional.of(existing));
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> transactionService.initiatePayment(request)
+        );
+    }
+
+    @Test
+    void initiatePayment_payerInactive() {
+
+        User payer = new User();
+        payer.setAppStatus(AppStatus.CLOSED);
+
+        User payee = new User();
+        payee.setAppStatus(AppStatus.ACTIVE);
+
+        VPA payerVpa = new VPA();
+        payerVpa.setUser(payer);
+        payerVpa.setVpaId("payer@upi");
+
+        VPA payeeVpa = new VPA();
+        payeeVpa.setUser(payee);
+        payeeVpa.setVpaId("payee@upi");
+
+        TransactionRequest request = new TransactionRequest();
+        request.setIdempotencyKey("1");
+        request.setPayerVpaId("payer@upi");
+        request.setPayeeVpaId("payee@upi");
+        request.setAmount(100.0);
+
+        when(transactionRepository.findByIdempotencyKey("1"))
+                .thenReturn(Optional.empty());
+
+        when(vpaRepository.findByVpaId("payer@upi"))
+                .thenReturn(Optional.of(payerVpa));
+
+        when(vpaRepository.findByVpaId("payee@upi"))
+                .thenReturn(Optional.of(payeeVpa));
+
+        assertThrows(
+                AccountNotActiveException.class,
+                () -> transactionService.initiatePayment(request)
+        );
+    }
+
+    @Test
+    void initiatePayment_payeeInactive() {
+
+        User payer = new User();
+        payer.setAppStatus(AppStatus.ACTIVE);
+
+        User payee = new User();
+        payee.setAppStatus(AppStatus.CLOSED);
+
+        VPA payerVpa = new VPA();
+        payerVpa.setUser(payer);
+        payerVpa.setVpaId("payer@upi");
+
+        VPA payeeVpa = new VPA();
+        payeeVpa.setUser(payee);
+        payeeVpa.setVpaId("payee@upi");
+
+        TransactionRequest request = new TransactionRequest();
+        request.setIdempotencyKey("1");
+        request.setPayerVpaId("payer@upi");
+        request.setPayeeVpaId("payee@upi");
+        request.setAmount(100.0);
+
+        when(transactionRepository.findByIdempotencyKey("1"))
+                .thenReturn(Optional.empty());
+
+        when(vpaRepository.findByVpaId("payer@upi"))
+                .thenReturn(Optional.of(payerVpa));
+
+        when(vpaRepository.findByVpaId("payee@upi"))
+                .thenReturn(Optional.of(payeeVpa));
+
+        assertThrows(
+                AccountNotActiveException.class,
+                () -> transactionService.initiatePayment(request)
+        );
+    }
+
+
 
     @Test
     void testInitiatePayment_success() throws Exception {
@@ -118,6 +227,10 @@ class TransactionServiceImplTest {
 
         when(bankAccountService.getBankAccount("payee@upi"))
                 .thenReturn(payeeAcc);
+
+        // Ensure user objects reference bank accounts so email templates can access account numbers
+        payer.setBankAccount(payerAcc);
+        payee.setBankAccount(payeeAcc);
 
         when(transactionRepository.save(any(Transaction.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
@@ -293,6 +406,75 @@ class TransactionServiceImplTest {
 
         assertEquals(1, response.getCredits().size());
         assertEquals(1, response.getDebits().size());
+    }
+
+    @Test
+    void testGetTransactionHistory_pointsNormalization() {
+
+        Transaction creditTx = new Transaction();
+        creditTx.setAmount(200.0);
+        creditTx.setStatus(TransactionStatus.SUCCESS);
+        creditTx.setPayer(payee);
+        creditTx.setPayee(payer);
+        creditTx.setPoints(null);   // hits first branch
+
+        Transaction debitTx = new Transaction();
+        debitTx.setAmount(100.0);
+        debitTx.setStatus(TransactionStatus.SUCCESS);
+        debitTx.setPayer(payer);
+        debitTx.setPayee(payee);
+        debitTx.setPoints(10);      // hits false branch
+
+        when(vpaRepository.findByVpaId("payer@upi"))
+                .thenReturn(Optional.of(payerVpa));
+
+        when(transactionRepository
+                .findByPayeeAndStatusOrderByTransactionTimeDesc(
+                        payer, TransactionStatus.SUCCESS))
+                .thenReturn(List.of(creditTx));
+
+        when(transactionRepository
+                .findByPayerOrderByTransactionTimeDesc(payer))
+                .thenReturn(List.of(debitTx));
+
+        transactionService.getTransactionHistory("payer@upi");
+
+        verify(transactionRepository).save(creditTx);
+        verify(transactionRepository, never()).save(debitTx);
+    }
+    @Test
+    void testGetTransactionHistory_zeroPointsNormalization() {
+
+        Transaction creditTx = new Transaction();
+        creditTx.setAmount(200.0);
+        creditTx.setStatus(TransactionStatus.SUCCESS);
+        creditTx.setPayer(payee);
+        creditTx.setPayee(payer);
+        creditTx.setPoints(0);
+
+        Transaction debitTx = new Transaction();
+        debitTx.setAmount(100.0);
+        debitTx.setStatus(TransactionStatus.SUCCESS);
+        debitTx.setPayer(payer);
+        debitTx.setPayee(payee);
+        debitTx.setPoints(-1);
+
+        when(vpaRepository.findByVpaId("payer@upi"))
+                .thenReturn(Optional.of(payerVpa));
+
+        when(transactionRepository
+                .findByPayeeAndStatusOrderByTransactionTimeDesc(
+                        payer, TransactionStatus.SUCCESS))
+                .thenReturn(List.of(creditTx));
+
+        when(transactionRepository
+                .findByPayerOrderByTransactionTimeDesc(payer))
+                .thenReturn(List.of(debitTx));
+
+        transactionService.getTransactionHistory("payer@upi");
+
+        verify(transactionRepository).save(creditTx);
+        verify(transactionRepository).save(debitTx);
     }
     @Test
     void testInitiatePayment_idempotencyKeyReuse_validSameData_shouldReturnExisting() {

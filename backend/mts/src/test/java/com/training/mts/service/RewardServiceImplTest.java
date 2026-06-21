@@ -59,6 +59,154 @@ class RewardServiceImplTest {
         transaction.setStatus(TransactionStatus.SUCCESS);
         transaction.setTransactionTime(LocalDateTime.now());
     }
+    @Test
+    void awardPointsForTransaction_nullTransaction() {
+        assertDoesNotThrow(() ->
+                rewardService.awardPointsForTransaction(null));
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_failedTransaction() {
+
+        Transaction transaction = new Transaction();
+        transaction.setStatus(TransactionStatus.FAILED);
+
+        rewardService.awardPointsForTransaction(transaction);
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_nullAmount() {
+
+        User payer = new User();
+        payer.setId(1L);
+
+        User payee = new User();
+        payee.setId(2L);
+
+        Transaction tx = new Transaction();
+        tx.setStatus(TransactionStatus.SUCCESS);
+        tx.setPayer(payer);
+        tx.setPayee(payee);
+        tx.setAmount(null);
+
+        rewardService.awardPointsForTransaction(tx);
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_nullPayer() {
+
+        User payee = new User();
+        payee.setId(2L);
+
+        Transaction tx = new Transaction();
+        tx.setStatus(TransactionStatus.SUCCESS);
+        tx.setAmount(500.0);
+        tx.setPayer(null);
+        tx.setPayee(payee);
+
+        rewardService.awardPointsForTransaction(tx);
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_amountBelowThreshold() {
+
+        User payer = new User();
+        payer.setId(1L);
+
+        User payee = new User();
+        payee.setId(2L);
+
+        Transaction transaction = new Transaction();
+        transaction.setStatus(TransactionStatus.SUCCESS);
+        transaction.setAmount(100.0);
+        transaction.setPayer(payer);
+        transaction.setPayee(payee);
+
+        rewardService.awardPointsForTransaction(transaction);
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_sameUser() {
+
+        User user = new User();
+        user.setId(1L);
+
+        Transaction transaction = new Transaction();
+        transaction.setStatus(TransactionStatus.SUCCESS);
+        transaction.setAmount(500.0);
+        transaction.setPayer(user);
+        transaction.setPayee(user);
+
+        rewardService.awardPointsForTransaction(transaction);
+
+        verifyNoInteractions(userRepository);
+    }
+
+    @Test
+    void awardPointsForTransaction_multipleTransfersToday() {
+
+        User payer = new User();
+        payer.setId(1L);
+
+        User payee = new User();
+        payee.setId(2L);
+
+        Transaction transaction = new Transaction();
+        transaction.setStatus(TransactionStatus.SUCCESS);
+        transaction.setAmount(500.0);
+        transaction.setPayer(payer);
+        transaction.setPayee(payee);
+
+        when(transactionRepository
+                .countByPayerAndPayeeAndStatusAndTransactionTimeAfter(
+                        any(), any(), any(), any()))
+                .thenReturn(2L);
+
+        rewardService.awardPointsForTransaction(transaction);
+
+        verify(userRepository, never()).save(any());
+    }
+
+    @Test
+    void scratchCard_alreadyScratched() {
+
+        User user = new User();
+
+        ScratchCard card = new ScratchCard();
+        card.setScratched(true);
+
+        when(scratchCardRepository.findByIdAndUser(1L, user))
+                .thenReturn(Optional.of(card));
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> rewardService.scratchCard(1L, user)
+        );
+    }
+
+    @Test
+    void scratchCard_notFound() {
+
+        User user = new User();
+
+        when(scratchCardRepository.findByIdAndUser(1L, user))
+                .thenReturn(Optional.empty());
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> rewardService.scratchCard(1L, user)
+        );
+    }
 
     @Test
     void awardPointsForTransaction_success_not_capped() {
