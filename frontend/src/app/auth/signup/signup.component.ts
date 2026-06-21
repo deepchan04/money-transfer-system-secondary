@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PostService, UserData } from '../../service/post.service';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
@@ -44,7 +45,7 @@ export class SignupComponent {
 
   @Output() signupSuccess = new EventEmitter<void>();
 
-  constructor(private postService: PostService, private authService: AuthService) { }
+  constructor(private postService: PostService, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   onPhoneInput(value: string) {
     const raw = value || '';
@@ -126,20 +127,29 @@ export class SignupComponent {
       next: (response) => {
         console.log('User created successfully!', response);
 
-        // Fetch user details by phone number
+        // Notify user immediately on successful signup
+        this.snackBar.open(
+          'Signup successful! Welcome aboard!',
+          'Close',
+          {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            panelClass: ['success-snackbar']
+          }
+        );
+        this.signupSuccess.emit();
+
+        // Fetch user details by phone number (non-blocking)
         this.postService.findByPhone(this.phoneNumber).subscribe({
           next: (user) => {
             console.log('User details fetched:', user);
             this.authService.setCurrentUser(user);
-            alert('Signup successful! Welcome aboard!');
-            this.signupSuccess.emit();
           },
           error: (err) => {
             console.log(err.error);
-            
             console.error('Error fetching user details:', err);
-            this.errorMessage = 'Signup successful, but failed to fetch user details. Please login.';
-            this.signupSuccess.emit(); // Still emit success to proceed
+            // Keep success flow; user can login to fetch details later
           }
         });
       },

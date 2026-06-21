@@ -7,7 +7,8 @@
   <div class="spacer"></div>
 
   <nav class="nav-links">
-    <button mat-button routerLink="/auth" *ngIf="!user">Login</button>
+    <button mat-button routerLink="/auth" *ngIf="!user" [queryParams]="{ mode: 'login' }">Login</button>
+    <button mat-button routerLink="/auth" *ngIf="!user" [queryParams]="{ mode: 'signup' }">Sign Up</button>
     <button mat-button routerLink="/admin-login" *ngIf="!user" class="admin-btn">Admin</button>
     <button mat-button routerLink="/admin-dashboard" *ngIf="user && isAdmin() && currentUrl !== '/admin-dashboard'" class="admin-btn">Admin
       Dashboard</button>

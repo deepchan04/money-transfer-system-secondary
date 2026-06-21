@@ -64,10 +64,13 @@ export class PostService {
   findByPhone(phoneNumber: string): Observable<any> {
     const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
     const token = this.authService.getToken();
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.get<any>(url, { headers });
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      return this.http.get<any>(url, { headers });
+    }
+    return this.http.get<any>(url);
   }
 
   // Link bank account

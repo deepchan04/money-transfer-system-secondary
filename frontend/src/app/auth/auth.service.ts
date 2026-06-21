@@ -25,7 +25,11 @@ export class AuthService {
 
         this.loadCurrentUser().then((user) => {
          if (user) {
-          this.router.navigate(['/dashboard']);
+          if(user.role === "ROLE_ADMIN") {
+            this.router.navigate(['/admin-dashboard']);
+          } else {
+            this.router.navigate(['/dashboard']);
+          }
         }
       });
       }
@@ -104,12 +108,13 @@ export class AuthService {
   loadCurrentUser(): Promise<any> {
     console.log('Loading current user from token...');
     const token = this.getToken();
+    
     if (!token) {
       this.currentUserSubject.next(null);
       this.authSyncService.requestToken();
       return Promise.resolve(null);
     }
-    console.log('Token found in sessionStorage:', token);
+
     const decoded = this.decodeToken(token);
     if (!decoded || !decoded.sub) {
       this.currentUserSubject.next(null);
