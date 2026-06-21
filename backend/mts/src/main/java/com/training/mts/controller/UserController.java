@@ -43,6 +43,14 @@ public class UserController {
     public ResponseEntity<String> getVpa(@RequestParam String phone) {
         return new ResponseEntity<>(userService.getVpaId(phone),HttpStatus.OK);
     }
+    @GetMapping("/search")
+    public ResponseEntity<List<GetAllUsersRequest>> searchUsers(
+            @RequestParam String query) {
+
+        return ResponseEntity.ok(
+                userService.searchUsers(query)
+        );
+    }
 
 
 }

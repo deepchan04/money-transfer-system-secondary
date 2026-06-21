@@ -14,4 +14,5 @@ public interface UserService {
     public User getUserByVpaId(String vpaId);
     public List<GetAllUsersRequest> getAllUsers();
     public Double getBankBalance(String vpaId, String password) throws AccountNotLinkedException, IncorrectPasswordException;
+    public List<GetAllUsersRequest> searchUsers(String query);
 }

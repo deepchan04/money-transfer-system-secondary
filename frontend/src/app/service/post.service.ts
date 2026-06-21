@@ -60,6 +60,12 @@ export class PostService {
     return this.http.post<any>(loginUrl, data, { headers });
   }
 
+  searchUsers(query: string) {
+  return this.http.get<any[]>(
+    `http://localhost:8080/users/search?query=${encodeURIComponent(query)}`
+  );
+}
+
   // Find user by phone number
   findByPhone(phoneNumber: string): Observable<any> {
     const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
@@ -210,6 +216,8 @@ export class PostService {
     });
     return this.http.get<any>(url, { headers });
   }
+
+
 
   // Get user's scratchcards list
   getScratchCards(): Observable<any> {

@@ -86,61 +86,36 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
       console.log('Current user:', this.currentUser);
     }
 
-    this.loadUsers();
+   
   }
-  loadUsers() {
-    this.postService.getUsers().subscribe({
-      next: (users) => {
-        // Filter out the current user from the list
-        if (this.currentUser) {
-          this.allUsers = users.filter((user: any) => {
-            // Filter based on phoneNumber, email, or vpaId - adjust based on your user object structure
-            return user.phoneNumber !== this.currentUser.phoneNumber;
-          });
-        } else {
-          this.allUsers = users;
-        }
-
-        // Start with empty filtered list - only show when user types
-        this.filteredUsers = [];
-        console.log('Users loaded (excluding current user):', this.allUsers);
-      },
-      error: (err) => {
-        console.error('Error loading users:', err);
-        this.errorMessage = 'Failed to load users';
-      }
-    });
-  }
+  
 
   onSearchChange() {
-    console.log('Search query:', this.searchQuery);
 
-    if (this.selectedUser) {
-      const selectedLabel = `${this.selectedUser.name} (${this.selectedUser.vpaId || this.selectedUser.phoneNumber})`;
-      if (this.searchQuery !== selectedLabel) {
-        this.selectedUser = null;
-      }
-    }
-
-    // If search is empty, don't show any users in results
-    if (!this.searchQuery || !this.searchQuery.trim()) {
+    if (!this.searchQuery.trim()) {
       this.filteredUsers = [];
-      this.selectedUser = null;
       return;
     }
 
-    const query = this.searchQuery.toLowerCase().trim();
+    if (this.searchQuery.length < 3) {
+      this.filteredUsers = [];
+      return;
+    }
 
-    // Filter users based on name, phoneNumber, or vpaId
-    this.filteredUsers = this.allUsers.filter(user => {
-      const nameMatch = user.name?.toLowerCase().startsWith(query);
-      const phoneMatch = user.phoneNumber?.startsWith(query);
-      const vpaMatch = user.vpaId?.toLowerCase().startsWith(query);
+    this.postService
+      .searchUsers(this.searchQuery)
+      .subscribe({
+        next: users => {
 
-      return nameMatch || phoneMatch || vpaMatch;
-    });
+          this.filteredUsers = users.filter(
+            user => user.phoneNumber !== this.currentUser.phoneNumber
+          );
 
-    console.log('Filtered users:', this.filteredUsers);
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
   }
 
   onUserSelected(user: any) {

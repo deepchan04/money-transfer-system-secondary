@@ -127,7 +127,6 @@ public class UserServiceImpl implements UserService {
             if(!user.getRole().name().equals("ROLE_ADMIN")){
             GetAllUsersRequest request = new GetAllUsersRequest();
             request.setName(user.getName());
-            request.setPhoneNumber(user.getPhoneNumber());
             request.setVpaId(user.getVpa().getVpaId());
 
             requests.add(request);
@@ -136,6 +135,29 @@ public class UserServiceImpl implements UserService {
         }
 
         return requests;
+    }
+
+    public List<GetAllUsersRequest> searchUsers(String query) {
+
+        List<User> users = userRepository.searchUsers(query);
+
+        List<GetAllUsersRequest> results = new ArrayList<>();
+
+        for (User user : users) {
+
+            if(user.getRole().name().equals("ROLE_ADMIN")) {
+                continue;
+            }
+
+            GetAllUsersRequest dto = new GetAllUsersRequest();
+
+            dto.setName(user.getName());
+            dto.setVpaId(user.getVpa().getVpaId());
+
+            results.add(dto);
+        }
+
+        return results;
     }
 
 }

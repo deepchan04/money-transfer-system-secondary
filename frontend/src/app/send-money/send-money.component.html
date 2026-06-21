@@ -83,7 +83,7 @@
 
               <div
                 class="search-results"
-                *ngIf="searchQuery && searchQuery.trim() && !selectedUser"
+                *ngIf="searchQuery && searchQuery.trim() && !selectedUser && searchQuery.trim().length >= 3"
                 @fadeIn>
                 <button
                   type="button"
