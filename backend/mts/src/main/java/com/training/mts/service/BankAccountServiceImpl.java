@@ -7,6 +7,7 @@ import com.training.mts.model.VPA;
 import com.training.mts.repository.BankAccountRepository;
 import com.training.mts.repository.UserRepository;
 import com.training.mts.repository.VPARepository;
+import java.util.Objects;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,12 @@ public class BankAccountServiceImpl implements BankAccountService{
 
         if (existingAccount == null) {
             throw new AccountNotFoundException("Bank account not found with account number: " + accountNumber);
+        }
+
+        // 2.a Check if this bank account is already linked to another user
+        Optional<User> ownerOpt = userRepository.findByBankAccount(existingAccount);
+        if (ownerOpt.isPresent() && !Objects.equals(ownerOpt.get().getId(), user.getId())) {
+            throw new AccountLinkedException("Bank account already linked to another user");
         }
 
         String accPwd = existingAccount.getAccountPassword();

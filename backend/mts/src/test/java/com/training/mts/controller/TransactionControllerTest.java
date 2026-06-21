@@ -3,7 +3,7 @@ package com.training.mts.controller;
 import com.training.mts.dto.TransactionDTO;
 import com.training.mts.dto.TransactionHistoryResponse;
 import com.training.mts.dto.TransactionRequest;
-import com.training.mts.service.AnalyticsService;
+import com.training.mts.service.AnalyticsServiceImpl;
 import com.training.mts.service.TransactionServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +24,7 @@ class TransactionControllerTest {
     private TransactionServiceImpl transactionService;
 
     @Mock
-    private AnalyticsService analyticsService;
+    private AnalyticsServiceImpl analyticsServiceImpl;
 
     @InjectMocks
     private TransactionController transactionController;
@@ -47,7 +47,7 @@ class TransactionControllerTest {
         assertEquals(dto, response.getBody());
 
         verify(transactionService).initiatePayment(request);
-        verify(analyticsService).triggerSnowflakeSync();
+        verify(analyticsServiceImpl).triggerSnowflakeSync();
     }
 
     @Test

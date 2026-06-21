@@ -31,6 +31,7 @@ export class NavbarComponent implements OnInit {
   unscratchedRewardsCount = 0;
   currentUrl = '';
   isAccountActive = true;
+  bankAccountLinked = false;
   user: any;
   navItems: any[] = [];
 
@@ -54,14 +55,25 @@ export class NavbarComponent implements OnInit {
   loadUserData() {
     const user = this.authService.getCurrentUser();
     if (user) {
-      this.userInitial = user.name ? user.name.charAt(0).toUpperCase() : 'G';
+      this.userInitial = this.computeInitials(user.name);
       this.userRole = user.role || '';
       this.isAccountActive = user.appStatus === 'ACTIVE';
+      this.bankAccountLinked = user.bankAccountLinked;
       this.loadRewardIndicator();
     } else {
       this.userRole = '';
       this.unscratchedRewardsCount = 0;
     }
+  }
+
+  // Compute initials similarly to ProfileComponent.getInitials()
+  private computeInitials(name?: string): string {
+    if (!name) return 'G';
+    const parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+    }
+    return parts[0].charAt(0).toUpperCase();
   }
 
   @HostListener('window:rewardsUpdated')

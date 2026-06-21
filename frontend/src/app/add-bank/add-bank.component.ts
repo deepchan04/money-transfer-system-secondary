@@ -40,6 +40,7 @@ export class AddBankComponent implements OnInit, OnDestroy {
   countdown = 5;
   progressWidth = 0;
   private countdownSubscription?: Subscription;
+  private accPattern: RegExp = /^ACC\d{1,6}$/i;
 
   constructor(
     private postService: PostService,
@@ -55,9 +56,35 @@ export class AddBankComponent implements OnInit, OnDestroy {
     }
   }
 
+  get accountNumberInvalid(): boolean {
+    return !!(this.accountNumber && !this.accPattern.test(this.accountNumber));
+  }
+
+  get accountPasswordInvalid(): boolean {
+    return !!(this.accountPassword && this.accountPassword.length < 6);
+  }
+
   linkBank() {
     // Clear previous errors
     this.errorMessage = '';
+    // Basic client-side validation (format checks)
+    if (!this.accountNumber || !this.accountPassword) {
+      this.errorMessage = 'Please enter account number and password';
+      return;
+    }
+
+    // Account number must begin with 'ACC' and be followed by 1-6 digits
+    if (!this.accPattern.test(this.accountNumber)) {
+      this.errorMessage = "Account number must begin with 'ACC' and be followed by 1 to 6 digits";
+      return;
+    }
+
+    // Password minimum length (same message as login)
+    if (this.accountPassword.length < 6) {
+      this.errorMessage = 'Password must be at least 6 characters long';
+      return;
+    }
+
     this.success = true;
     this.isLoading = true;
 
@@ -79,7 +106,12 @@ export class AddBankComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.error('Error linking bank account:', err);
-          this.errorMessage = err.error || 'Error linking bank account. Please try again.';
+          // For conflict (409) prefer the backend message directly (e.g. AccountLinkedException)
+          if (err.status === 409) {
+            this.errorMessage = (typeof err.error === 'string') ? err.error : (err.error?.message || 'Bank account is already linked.');
+          } else {
+            this.errorMessage = err.error?.message ? err.error.message : (typeof err.error === 'string' ? err.error : 'Error linking bank account. Please try again.');
+          }
           this.success = false;
           this.isLoading = false;
         }

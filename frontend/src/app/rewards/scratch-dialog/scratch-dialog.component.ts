@@ -71,13 +71,13 @@ export class ScratchDialogComponent implements OnInit, AfterViewInit, OnDestroy 
     canvas.height = this.CANVAS_H;
     this.ctx = canvas.getContext('2d')!;
 
-    // Draw gold scratchcard overlay
+    // Draw emerald scratchcard overlay
     const grad = this.ctx.createLinearGradient(0, 0, this.CANVAS_W, this.CANVAS_H);
-    grad.addColorStop(0, '#b45309');
-    grad.addColorStop(0.3, '#d97706');
-    grad.addColorStop(0.55, '#fbbf24');
-    grad.addColorStop(0.75, '#f59e0b');
-    grad.addColorStop(1, '#b45309');
+    grad.addColorStop(0, '#064e3b');
+    grad.addColorStop(0.3, '#065f46');
+    grad.addColorStop(0.55, '#22C55E');
+    grad.addColorStop(0.75, '#16A34A');
+    grad.addColorStop(1, '#064e3b');
     this.ctx.fillStyle = grad;
     this.ctx.fillRect(0, 0, this.CANVAS_W, this.CANVAS_H);
 
@@ -185,7 +185,7 @@ export class ScratchDialogComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   private launchConfetti(): void {
-    const colors = ['#fbbf24', '#f59e0b', '#34d399', '#60a5fa', '#a78bfa', '#f87171', '#fb923c'];
+    const colors = ['#22C55E', '#16A34A', '#34d399', '#60a5fa', '#a78bfa', '#f87171', '#fb923c'];
     this.confettiParticles = Array.from({ length: 60 }, () => ({
       x: Math.random() * 340,
       y: Math.random() * -80,

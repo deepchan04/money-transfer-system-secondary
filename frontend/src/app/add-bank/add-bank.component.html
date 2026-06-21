@@ -17,12 +17,13 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Account Number</mat-label>
-              <input matInput type="text" [(ngModel)]="accountNumber" name="accountNumber">
+                <input matInput type="text" [(ngModel)]="accountNumber" name="accountNumber" placeholder="ACC12345" maxlength="9" #accCtrl="ngModel">
+                <mat-hint *ngIf="accountNumber && accountNumberInvalid && (accountNumber.length > 3 || accCtrl.touched)" class="password-hint">Account number must begin with 'ACC' and be followed by a maximum of 6 digits</mat-hint>
             </mat-form-field>
 
             <mat-form-field appearance="outline">
               <mat-label>Account Password</mat-label>
-              <input matInput [type]="showAccountPassword ? 'text' : 'password'" [(ngModel)]="accountPassword" name="accountPassword">
+              <input matInput [type]="showAccountPassword ? 'text' : 'password'" [(ngModel)]="accountPassword" name="accountPassword" minlength="6" placeholder="Enter password">
               <button
                 mat-icon-button
                 matSuffix
@@ -33,9 +34,10 @@
               >
                 <mat-icon>{{ showAccountPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
               </button>
+              <mat-hint *ngIf="accountPassword && accountPassword.length < 6" class="password-hint">Password must be at least 6 characters</mat-hint>
             </mat-form-field>
 
-            <button mat-raised-button color="primary" [disabled]="!vpaId || !accountNumber || !accountPassword"
+            <button mat-raised-button color="primary" [disabled]="!vpaId || !accountNumber || !accountPassword || accountNumberInvalid || accountPassword.length < 6"
               (click)="linkBank()" class="white-c">
               Link Account
             </button>
@@ -43,16 +45,9 @@
 
           <!-- Right Side: Information Panel -->
           <div class="info-section">
-            <div class="info-content">
-              <div class="info-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="5" width="20" height="14" rx="2"/>
-                  <line x1="2" y1="10" x2="22" y2="10"/>
-                </svg>
-              </div>
-              
+            <div class="info-content">              
               <h3>Quick & Secure Setup</h3>
-              <p class="tagline">Add your account in seconds to access our professional and smart UI dashboard</p>
+              <p class="tagline">Add your account in seconds</p>
 
               <div class="steps">
                 <div class="step">
@@ -78,13 +73,6 @@
                     <p>Access your dashboard and manage transactions</p>
                   </div>
                 </div>
-              </div>
-
-              <div class="security-note">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                </svg>
-                Bank-level encryption ensures your data is always protected
               </div>
             </div>
           </div>

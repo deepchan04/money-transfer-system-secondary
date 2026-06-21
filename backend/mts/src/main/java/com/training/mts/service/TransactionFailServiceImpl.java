@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
-public class TransactionFailServiceImpl {
+public class TransactionFailServiceImpl implements TransactionFailService {
     private TransactionRepository transactionRepository;
     public TransactionFailServiceImpl(TransactionRepository transactionRepository){
         this.transactionRepository = transactionRepository;

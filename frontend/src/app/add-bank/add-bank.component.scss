@@ -92,6 +92,11 @@ mat-card {
         color: white; /* Ensure input text is white */
       }
 
+      .password-hint {
+        color: #fca5a5 !important;
+        font-size: 0.75rem;
+      }
+
       .mat-mdc-notch-piece {
         border-color: rgba(71, 85, 105, 0.4) !important;
       }

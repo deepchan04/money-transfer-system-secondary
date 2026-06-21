@@ -5,8 +5,7 @@ import com.training.mts.dto.TransactionHistoryResponse;
 import com.training.mts.dto.TransactionRequest;
 import com.training.mts.exceptions.AccountNotLinkedException;
 import com.training.mts.exceptions.IncorrectPasswordException;
-import com.training.mts.model.Transaction;
-import com.training.mts.service.AnalyticsService;
+import com.training.mts.service.AnalyticsServiceImpl;
 import com.training.mts.service.TransactionServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,17 +17,17 @@ public class TransactionController {
 
 
     private TransactionServiceImpl transactionService;
-    private AnalyticsService analyticsService;
+    private AnalyticsServiceImpl analyticsServiceImpl;
 
-    public TransactionController(AnalyticsService analyticsService, TransactionServiceImpl transactionService){
+    public TransactionController(AnalyticsServiceImpl analyticsServiceImpl, TransactionServiceImpl transactionService){
         this.transactionService = transactionService;
-        this.analyticsService = analyticsService;
+        this.analyticsServiceImpl = analyticsServiceImpl;
     }
     @PostMapping("/pay")
     public ResponseEntity<TransactionDTO> initiatePayment(@RequestBody TransactionRequest transactionRequest)
             throws IncorrectPasswordException, AccountNotLinkedException {
         TransactionDTO transactionDto = transactionService.initiatePayment(transactionRequest);
-        analyticsService.triggerSnowflakeSync();
+        analyticsServiceImpl.triggerSnowflakeSync();
         return new ResponseEntity<>(transactionDto, HttpStatus.CREATED);
     }
 

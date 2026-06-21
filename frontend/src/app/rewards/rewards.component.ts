@@ -141,18 +141,8 @@ export class RewardsComponent implements OnInit {
   }
 
   getBrandColor(couponCode: string): string {
-    const brand = this.getBrandFromCode(couponCode);
-    const colors: Record<string, string> = {
-      ZOMATO: '#e23744',
-      SWIGGY: '#fc8019',
-      UBER: '#000000',
-      MYNTRA: '#ff3f6c',
-      BMS: '#e31e26',
-      SPOTIFY: '#1DB954',
-      AJIO: '#4a154b',
-      PHARMEASY: '#00a76f'
-    };
-    return colors[brand] || '#3b82f6';
+    // Force emerald branding for all revealed cards per design decision
+    return '#22C55E';
   }
 
   getBrandIcon(couponCode: string): string {

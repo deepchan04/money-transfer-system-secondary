@@ -1,7 +1,7 @@
 <mat-toolbar class="navbar">
   <div class="brand" [routerLink]="isLoggedIn() ? '/dashboard' : '/'">
     <mat-icon>payments</mat-icon>
-    <span>MTS Payment App</span>
+    <span>MTS</span>
   </div>
 
   <div class="spacer"></div>
@@ -15,7 +15,7 @@
     <button
       mat-button
       routerLink="/rewards"
-      *ngIf="isLoggedIn() && !isAdmin() && currentUrl !== '/rewards' && isAccountActive"
+      *ngIf="isLoggedIn() && !isAdmin() && currentUrl !== '/rewards' && isAccountActive && bankAccountLinked"
       class="rewards-btn"
       matBadgeColor="accent"
       matBadge={{unscratchedRewardsCount}}
