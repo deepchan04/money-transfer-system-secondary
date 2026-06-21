@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
   bankAccountLinked = false;
   user: any;
   navItems: any[] = [];
+  rewardLoaded = false;
 
   constructor(private postService: PostService, private router: Router, private authService: AuthService) {    
     // Listen to route changes to update user data
@@ -48,15 +49,18 @@ export class NavbarComponent implements OnInit {
     this.currentUrl = this.router.url;
     this.authService.currentUser$
     .subscribe(user => {
-      console.log('NAVBAR RECEIVED:', user);
       this.user = user;
       if (user) {
       this.userInitial = this.computeInitials(user.name);
       this.userRole = user.role || '';
       this.isAccountActive = user.appStatus === 'ACTIVE';
       this.bankAccountLinked = user.bankAccountLinked;
+          if (!this.rewardLoaded) {
+      this.rewardLoaded = true;
       this.loadRewardIndicator();
+    }
     } else {
+       this.rewardLoaded = false;
       this.userRole = '';
       this.unscratchedRewardsCount = 0;
     }

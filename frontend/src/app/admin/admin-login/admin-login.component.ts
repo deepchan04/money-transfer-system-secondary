@@ -103,7 +103,11 @@ export class AdminLoginComponent {
             },
             error: (err) => {
                 console.error('Admin login failed', err);
-                this.errorMessage = err.error?.message || 'Invalid credentials. Please try again.';
+                if(err.status === 0) {
+                    this.errorMessage = 'Server is currently down. Please try later.';
+                } else {
+                    this.errorMessage = err.error?.message || 'Invalid credentials. Please try again.';
+                }
             }
         });
     }

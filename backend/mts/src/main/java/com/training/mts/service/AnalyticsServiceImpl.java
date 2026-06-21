@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class AnalyticsServiceImpl implements AnalyticsService {
 
     @Async
-    public boolean triggerSnowflakeSync() {
+    public void triggerSnowflakeSync() {
         // 1. Path to your specific python script
         String scriptPath = "..\\..\\Automation\\full_sync.py";
 
@@ -34,12 +34,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
             // 4. Wait for completion and return success status
             int exitCode = process.waitFor();
-            return exitCode == 0;
+
 
         } catch (IOException | InterruptedException e) {
             System.err.println("Failed to execute sync script: " + e.getMessage());
             Thread.currentThread().interrupt();
-            return false;
+
         }
     }
 }

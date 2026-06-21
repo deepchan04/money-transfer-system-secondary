@@ -2,7 +2,7 @@ import { Injectable, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AuthSyncService} from "../service/authSyncService";
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -53,9 +53,12 @@ export class AuthService {
     });
   }
 
+  
+
   // Login method
   login(username: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { username, password });
+    return this.http.post<any>(`${this.apiUrl}/login`, { username, password })
+  
   }
 
   // Signup method
@@ -90,6 +93,7 @@ export class AuthService {
     this.currentUserSubject.next(null);
     sessionStorage.removeItem('token');
     this.authSyncService.broadcastLogout();
+    this.router.navigate(['/']);
   }
 
   // Decode JWT payload
@@ -106,7 +110,7 @@ export class AuthService {
 
   // Load user data based on token
   loadCurrentUser(): Promise<any> {
-    console.log('Loading current user from token...');
+    
     const token = this.getToken();
     
     if (!token) {
@@ -128,12 +132,10 @@ export class AuthService {
     return new Promise((resolve) => {
       this.http.get<any>(url, { headers }).subscribe({
         next: (user) => {
-           console.log('user loaded', user);
           this.currentUserSubject.next(user);
           resolve(user);
         },
         error: (err) => {
-          console.error('Error fetching user', err);
           this.currentUserSubject.next(null);
           resolve(null);
         }
