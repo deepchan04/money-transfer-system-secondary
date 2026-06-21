@@ -11,7 +11,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { PostService } from '../../service/post.service';
 
 interface ApiUser {
@@ -50,7 +49,6 @@ interface User {
     imports: [
         CommonModule,
         FormsModule,
-        NavbarComponent,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

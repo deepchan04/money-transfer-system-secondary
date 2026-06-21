@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { PostService } from '../../service/post.service';
 
 interface Transaction {
@@ -76,7 +75,6 @@ interface ActiveAccount {
         CommonModule,
         FormsModule,
         RouterModule,
-        NavbarComponent,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

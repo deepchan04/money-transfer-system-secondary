@@ -10,7 +10,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { NavbarComponent } from '../../navbar/navbar.component';
 import { PostService } from '../../service/post.service';
 
 interface Transaction {
@@ -29,7 +28,6 @@ interface Transaction {
     imports: [
         CommonModule,
         FormsModule,
-        NavbarComponent,
         MatCardModule,
         MatButtonModule,
         MatIconModule,

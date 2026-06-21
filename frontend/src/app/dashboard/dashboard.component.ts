@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +30,6 @@ import { AuthService } from '../auth/auth.service';
   standalone: true,
   imports: [
     CommonModule,
-    NavbarComponent,
     MatCardModule,
     MatTableModule,
     MatButtonModule,

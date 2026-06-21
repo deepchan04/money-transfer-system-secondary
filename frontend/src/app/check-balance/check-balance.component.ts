@@ -7,7 +7,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { PostService } from '../service/post.service';
 import { RouterModule } from '@angular/router';
 
@@ -22,7 +21,6 @@ import { RouterModule } from '@angular/router';
         MatInputModule,
         MatButtonModule,
         MatIconModule,
-        NavbarComponent,
         RouterModule
     ],
     templateUrl: './check-balance.component.html',

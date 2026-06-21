@@ -9,6 +9,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { filter } from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators';
+import { RewardService } from '../service/reward.service';
 
 @Component({
   selector: 'app-navbar',
@@ -36,7 +38,7 @@ export class NavbarComponent implements OnInit {
   navItems: any[] = [];
   rewardLoaded = false;
 
-  constructor(private postService: PostService, private router: Router, private authService: AuthService) {    
+  constructor(private rewardService: RewardService, private postService: PostService, private router: Router, private authService: AuthService) {    
     // Listen to route changes to update user data
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -46,9 +48,14 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+      this.rewardService.rewardCount$
+    .subscribe(count => {
+      this.unscratchedRewardsCount = count;
+    });
     this.currentUrl = this.router.url;
-    this.authService.currentUser$
-    .subscribe(user => {
+    this.rewardService.refreshRewardCount();
+    this.authService.currentUser$.subscribe(user => {
+      console.log('User emitted:', user);
       this.user = user;
       if (user) {
       this.userInitial = this.computeInitials(user.name);
@@ -57,7 +64,7 @@ export class NavbarComponent implements OnInit {
       this.bankAccountLinked = user.bankAccountLinked;
           if (!this.rewardLoaded) {
       this.rewardLoaded = true;
-      this.loadRewardIndicator();
+      //this.loadRewardIndicator();
     }
     } else {
        this.rewardLoaded = false;
@@ -78,25 +85,6 @@ export class NavbarComponent implements OnInit {
     }
     return parts[0].charAt(0).toUpperCase();
   }
-
-  @HostListener('window:rewardsUpdated')
-  loadRewardIndicator(): void {
-    if (!this.user || this.isAdmin()) {
-      this.unscratchedRewardsCount = 0;
-      return;
-    }
-
-    this.postService.getRewardStatus().subscribe({
-      next: (status) => {
-        this.unscratchedRewardsCount = status?.unscratchedCount ?? 0;
-      },
-      error: () => {
-        this.unscratchedRewardsCount = 0;
-      }
-    });
-  }
-
-
 
   isAdmin(): boolean {
     const user = this.authService.getCurrentUser();

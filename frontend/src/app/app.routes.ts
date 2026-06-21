@@ -16,11 +16,16 @@ import { closedAccount } from './guards/closedAccount.guard';
 import { adminGuard } from './guards/admin.guard';
 import { redirectIfLoggedIn } from './guards/redirectIfLoggedIn.guard';
 import { RewardsComponent } from './rewards/rewards.component';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [redirectIfLoggedIn] },
   { path: 'auth', component: AuthComponent },
   { path: 'admin-login', component: AdminLoginComponent },
+  {
+  path: '',
+  component: MainLayoutComponent,
+  children: [
+    { path: '', component: HomeComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/transactions', component: AdminTransactionsComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users', component: AdminUsersComponent, canActivate: [authGuard, adminGuard] },
@@ -32,4 +37,4 @@ export const routes: Routes = [
   { path: 'check-balance', component: CheckBalanceComponent, canActivate: [authGuard, closedAccount] },
   { path: 'rewards', component: RewardsComponent, canActivate: [authGuard, closedAccount] },
   { path: '**', redirectTo: '' }
-];
+]}];

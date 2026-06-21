@@ -3,18 +3,17 @@ import { AuthService } from '../auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
-
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { Router, RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { RewardService } from '../service/reward.service';
 
 @Component({
   selector: 'app-send-money',
@@ -22,7 +21,6 @@ import { take } from 'rxjs/operators';
   imports: [
     CommonModule,
     FormsModule,
-    NavbarComponent,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
@@ -76,7 +74,8 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private rewardService: RewardService
   ) {}
 
   ngOnInit() {
@@ -232,10 +231,8 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
 
         // Check if payment was successful
         if (response.status === 'SUCCESS') {
-          console.log(response);
           
-          console.log('Payment successful!', response);
-          
+          this.rewardService.refreshRewardCount(); // Update reward indicator in navbar
           // Wait 1 second before showing success state
           setTimeout(() => {
             this.isProcessing = false;

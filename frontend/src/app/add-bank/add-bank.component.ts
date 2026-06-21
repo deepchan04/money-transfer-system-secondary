@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { Router, RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { interval, Subscription } from 'rxjs';
@@ -19,7 +18,6 @@ import { take } from 'rxjs/operators';
     CommonModule,
     FormsModule,
     RouterModule,
-    NavbarComponent,
     MatCardModule,
     MatInputModule,
     MatButtonModule,

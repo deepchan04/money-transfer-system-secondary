@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { ScratchDialogComponent } from './scratch-dialog/scratch-dialog.component';
@@ -32,7 +31,6 @@ export interface RewardStatus {
   standalone: true,
   imports: [
     CommonModule,
-    NavbarComponent,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
