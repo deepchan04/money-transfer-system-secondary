@@ -148,7 +148,10 @@ export class SignupComponent {
         console.error('Error occurred:', err);
         
         // Handle different error scenarios from backend
-        if (err.status === 400) {
+        if(err.status === 0) {
+          this.errorMessage = 'Server is currently down. Please try later.';
+          }
+        else if (err.status === 400) {
           // Bad request - could be validation error
           this.errorMessage = err.error?.message || 'Invalid input. Please check all fields.';
         } else if (err.status === 409) {

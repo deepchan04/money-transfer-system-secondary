@@ -255,7 +255,10 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
         this.isSuccess = false;
         
         // Handle different types of errors
-        if(err.error?.includes("Account not linked")){
+        if(err.status === 0) {
+          this.errorMessage = 'Server is currently down. Please try later.';
+        }
+        else if(err.error?.includes("Account not linked")){
           this.errorMessage = this.selectedUser.name + " doesn't have a linked bank account.";
         }else{
           this.errorMessage = err.error;

@@ -62,7 +62,12 @@ export class CheckBalanceComponent {
             },
             error: (err) => {
                 console.error('Error fetching balance:', err);
+                if(err.status === 0) {
+          this.errorMessage = 'Server is currently down. Please try later.';
+        }
+        else{
                 this.errorMessage = err.error?.message || 'Failed to fetch balance. Please check your password.';
+            }
             }
         });
     }

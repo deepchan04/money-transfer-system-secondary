@@ -107,7 +107,10 @@ export class AddBankComponent implements OnInit, OnDestroy {
         error: (err) => {
           console.error('Error linking bank account:', err);
           // For conflict (409) prefer the backend message directly (e.g. AccountLinkedException)
-          if (err.status === 409) {
+          if(err.status === 0) {
+          this.errorMessage = 'Server is currently down. Please try later.';
+        }
+          else if (err.status === 409) {
             this.errorMessage = (typeof err.error === 'string') ? err.error : (err.error?.message || 'Bank account is already linked.');
           } else {
             this.errorMessage = err.error?.message ? err.error.message : (typeof err.error === 'string' ? err.error : 'Error linking bank account. Please try again.');

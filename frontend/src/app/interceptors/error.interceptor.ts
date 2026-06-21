@@ -17,6 +17,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse) => {
 
       if (error.status === 0) {
+        console.log("SETTING SERVER DOWN");
         serverStatus.setServerDown(true);
       }
 

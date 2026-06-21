@@ -34,7 +34,8 @@ export class LoginComponent {
   errorMessage = '';
   showPassword = false;
   phoneNonNumeric = false;
-  serverDown$: Observable<boolean>;
+  serverDown = false;
+
 
   onPhoneInput(value: string) {
     // Strip any non-digit characters and limit to 10 digits
@@ -47,18 +48,12 @@ export class LoginComponent {
     }
   }
 
-  constructor(private serverStatusService: ServerStatusService, private postService: PostService, private router: Router, private authService: AuthService) { 
-    this.serverDown$ = this.serverStatusService.serverDown$;
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) { 
   }
 
   login() {
     // Clear previous errors
     this.errorMessage = '';
-
-    /*if(this.serverDown$) {
-      this.errorMessage = 'Server is currently down. Please try later.';
-      return;
-    }*/
 
     // Frontend validations
     if (!this.phoneNumber || !this.password) {
@@ -130,9 +125,10 @@ export class LoginComponent {
       },
       error: (err) => {
         console.error('Login failed', err);
-        
-        // Handle different error scenarios from backend
-        if (err.status === 401) {
+        if(err.status === 0) {
+          this.errorMessage = 'Server is currently down. Please try later.';
+        }
+        else if (err.status === 401) {
           this.errorMessage = 'Invalid phone number or password. Please try again.';
         } else if (err.status === 403) {
           this.errorMessage = 'Access denied. Your account may be inactive.';
