@@ -21,7 +21,7 @@
 
             <mat-form-field appearance="outline">
               <mat-label>Account Password</mat-label>
-              <input matInput [type]="showAccountPassword ? 'text' : 'password'" [(ngModel)]="accountPassword" name="accountPassword" minlength="6" placeholder="Enter password">
+              <input matInput [type]="showAccountPassword ? 'text' : 'password'" [(ngModel)]="accountPassword" name="accountPassword" minlength="6" maxlength="128" placeholder="Enter password">
               <button
                 mat-icon-button
                 matSuffix

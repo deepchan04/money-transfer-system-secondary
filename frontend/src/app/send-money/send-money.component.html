@@ -106,7 +106,7 @@
             <div *ngIf="selectedUser" @fadeIn>
               <mat-form-field appearance="outline">
                 <mat-label>Amount (in INR)</mat-label>
-                <input matInput type="number" min="1" [(ngModel)]="amount">
+                <input matInput type="number" min="1" oninput="if(this.value.length > 6) this.value = this.value.slice(0, 6);" [(ngModel)]="amount">
                 <mat-hint *ngIf="amount !== null && amount !== undefined && amount <= 0" class="password-hint">Amount must be greater than zero</mat-hint>
                 <mat-hint *ngIf="amount !== null && amount !== undefined && amount >= 500000" class="password-hint">Amount must be lesser than 5 lakhs</mat-hint>
               </mat-form-field>
@@ -142,6 +142,7 @@
                 <input class="white-c"
                   matInput 
                   [type]="showPassword ? 'text' : 'password'" 
+                  maxlength="128"
                   [(ngModel)]="password">
                 <button
                   mat-icon-button

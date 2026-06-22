@@ -33,6 +33,7 @@
         [(ngModel)]="password" 
         name="password"
         placeholder="Enter password"
+        maxlength="128"
         required
       />
       <mat-hint *ngIf="password && password.length < 6" class="password-hint">Password must be at least 6 characters</mat-hint>

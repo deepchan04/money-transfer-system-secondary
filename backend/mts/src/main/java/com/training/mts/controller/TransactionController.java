@@ -26,6 +26,7 @@ public class TransactionController {
     @PostMapping("/pay")
     public ResponseEntity<TransactionDTO> initiatePayment(@RequestBody TransactionRequest transactionRequest)
             throws IncorrectPasswordException, AccountNotLinkedException {
+
         TransactionDTO transactionDto = transactionService.initiatePayment(transactionRequest);
         analyticsServiceImpl.triggerSnowflakeSync();
         return new ResponseEntity<>(transactionDto, HttpStatus.CREATED);

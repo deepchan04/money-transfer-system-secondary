@@ -53,9 +53,9 @@ export class NavbarComponent implements OnInit {
       this.unscratchedRewardsCount = count;
     });
     this.currentUrl = this.router.url;
-    this.rewardService.refreshRewardCount();
+    if(this.router.url !== '/'){
+    this.rewardService.refreshRewardCount();}
     this.authService.currentUser$.subscribe(user => {
-      console.log('User emitted:', user);
       this.user = user;
       if (user) {
       this.userInitial = this.computeInitials(user.name);
@@ -64,7 +64,7 @@ export class NavbarComponent implements OnInit {
       this.bankAccountLinked = user.bankAccountLinked;
           if (!this.rewardLoaded) {
       this.rewardLoaded = true;
-      //this.loadRewardIndicator();
+      
     }
     } else {
        this.rewardLoaded = false;

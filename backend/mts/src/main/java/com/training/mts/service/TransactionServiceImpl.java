@@ -56,7 +56,7 @@ public class TransactionServiceImpl implements TransactionService{
             return new TransactionDTO(handleIdempotency(existingTx.get(), request));
         }
 
-        String reason = "Account of user";
+        String reason = "Account of user ";
         String vpa = "VPA id ";
         String notfound = "not found";
         // 2. Resolve Entities

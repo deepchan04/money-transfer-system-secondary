@@ -218,6 +218,8 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
           this.errorMessage = response.failureReason || 'Payment failed. Please try again.';
           this.isSuccess = false;
           this.isProcessing = false;
+          this.selectedUser = null; 
+          this.password = '';
           console.error('Payment failed:', response);
         }
       },
@@ -225,6 +227,13 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
         console.error('Payment API Error:', err);
         this.isProcessing = false;
         this.isSuccess = false;
+        this.selectedUser = false
+        this.searchQuery = '';   // Clears the input field text
+      this.filteredUsers = []; // Clears the dropdown list state
+      this.password = '';         // <-- Clears the password input
+      this.selectedTag = '';
+      this.description='';
+    
         
         // Handle different types of errors
         if(err.status === 0) {
