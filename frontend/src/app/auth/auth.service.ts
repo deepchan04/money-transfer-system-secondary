@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {AuthSyncService} from "../service/authSyncService";
 import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'

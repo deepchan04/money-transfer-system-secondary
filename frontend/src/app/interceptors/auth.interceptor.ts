@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 function isTokenExpired(token: string): boolean {
   try {
@@ -13,15 +14,21 @@ function isTokenExpired(token: string): boolean {
 }
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  console.log('Interceptor:', req.method, req.url);
 
   const authService = inject(AuthService);
+  const snackBar = inject(MatSnackBar);
   const token = authService.getToken();
 
-  // Logout only if JWT has expired
   if (token && isTokenExpired(token)) {
-    alert('Your session has expired. Please log in again.');
-    authService.logout();
+        snackBar.open(
+          'Session expired! Please login again!',
+          'Close',
+          {
+            duration: 5000,
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+          }
+        );    authService.logout();
     return throwError(() => new Error('Token expired'));
   }
 

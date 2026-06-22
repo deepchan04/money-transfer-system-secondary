@@ -4,9 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PostService, UserData } from '../../service/post.service';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,7 +20,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule,
     FormsModule
   ],
   templateUrl: './signup.component.html',
@@ -77,40 +74,40 @@ export class SignupComponent {
   }
 
   signup(): void {
-    // Clear previous errors
+    
     this.errorMessage = '';
 
-    // Check for empty fields
+    
     if (!this.name || !this.email || !this.password || !this.confirmPassword || !this.phoneNumber) {
       this.errorMessage = 'Please fill in all fields.';
       return;
     }
 
-    // Validate name
+    
     if (!this.isNameValid()) {
       this.errorMessage = 'Name must be at least 2 characters long.';
       return;
     }
 
-    // Validate email format
+    
     if (!this.isEmailValid()) {
       this.errorMessage = 'Please enter a valid email address.';
       return;
     }
 
-    // Ensure phone number is exactly 10 digits
+    
     if (this.phoneNumber.length !== 10) {
       this.errorMessage = 'Phone number must be 10 digits';
       return;
     }
 
-    // Validate password length
+    
     if (this.password.length < 6) {
       this.errorMessage = 'Password must be at least 6 characters long.';
       return;
     }
 
-    // Check password match
+    
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Passwords do not match!';
       return;
@@ -124,10 +121,8 @@ export class SignupComponent {
     };
 
     this.postService.createUser(newUser).subscribe({
-      next: (response) => {
-        console.log('User created successfully!', response);
-
-        // Notify user immediately on successful signup
+      next: () => {
+        
         this.snackBar.open(
           'Signup successful! Welcome aboard!',
           'Close',
@@ -139,33 +134,15 @@ export class SignupComponent {
           }
         );
         this.signupSuccess.emit();
-
-        // Fetch user details by phone number (non-blocking)
-        this.postService.findByPhone(this.phoneNumber).subscribe({
-          next: (user) => {
-            console.log('User details fetched:', user);
-            this.authService.setCurrentUser(user);
-          },
-          error: (err) => {
-            console.log(err.error);
-            console.error('Error fetching user details:', err);
-            // Keep success flow; user can login to fetch details later
-          }
-        });
       },
       error: (err) => {
-        console.log(err);
-        console.error('Error occurred:', err);
         
-        // Handle different error scenarios from backend
         if(err.status === 0) {
           this.errorMessage = 'Server is currently down. Please try later.';
           }
         else if (err.status === 400) {
-          // Bad request - could be validation error
           this.errorMessage = err.error?.message || 'Invalid input. Please check all fields.';
         } else if (err.status === 409) {
-          // Conflict - user already exists. Parse backend message to show a clearer UI message.
           const raw = (typeof err.error === 'string') ? err.error : (err.error?.message || '');
           const lowered = raw.toLowerCase();
           const hasPhone = lowered.includes('phone');

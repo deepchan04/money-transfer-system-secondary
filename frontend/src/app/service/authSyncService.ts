@@ -78,6 +78,10 @@ export class AuthSyncService {
   });
 }
 
+  broadcastSeletiveLogout(){
+    
+  }
+
   broadcastLogout() {
     this.channel.postMessage({
       type: 'LOGOUT'

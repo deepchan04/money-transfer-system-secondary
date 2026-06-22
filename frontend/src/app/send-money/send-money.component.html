@@ -108,11 +108,12 @@
                 <mat-label>Amount (in INR)</mat-label>
                 <input matInput type="number" min="1" [(ngModel)]="amount">
                 <mat-hint *ngIf="amount !== null && amount !== undefined && amount <= 0" class="password-hint">Amount must be greater than zero</mat-hint>
+                <mat-hint *ngIf="amount !== null && amount !== undefined && amount >= 500000" class="password-hint">Amount must be lesser than 5 lakhs</mat-hint>
               </mat-form-field>
             </div>
 
             <!-- DESCRIPTION -->
-            <div *ngIf="amount && amount > 0" @fadeIn>
+            <div *ngIf="amount && amount > 0 && amount < 500000" @fadeIn>
               <mat-form-field appearance="outline">
                 <mat-label>Description (optional)</mat-label>
                 <input matInput maxlength="100" [(ngModel)]="description">
@@ -135,7 +136,7 @@
             </div>
 
             <!-- PASSWORD -->
-            <div *ngIf="amount && amount > 0" @fadeIn>
+            <div *ngIf="amount && amount > 0 && amount < 500000" @fadeIn>
               <mat-form-field appearance="outline">
                 <mat-label>Password</mat-label>
                 <input class="white-c"

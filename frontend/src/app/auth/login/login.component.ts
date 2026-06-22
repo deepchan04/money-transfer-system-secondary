@@ -38,9 +38,7 @@ export class LoginComponent {
 
 
   onPhoneInput(value: string) {
-    // Strip any non-digit characters and limit to 10 digits
     const raw = value || '';
-    // mark if user entered any non-digit characters
     this.phoneNonNumeric = /\D/.test(raw);
     const digits = raw.replace(/\D+/g, '').slice(0, 10);
     if (digits !== this.phoneNumber) {
@@ -48,11 +46,10 @@ export class LoginComponent {
     }
   }
 
-  constructor(private postService: PostService, private router: Router, private authService: AuthService) { 
-  }
+  constructor(private postService: PostService, private router: Router, private authService: AuthService) {}
 
   login() {
-    // Clear previous errors
+    
     this.errorMessage = '';
 
     // Frontend validations
@@ -76,7 +73,6 @@ export class LoginComponent {
     // Check if user is already logged in from another tab
     const existingToken = sessionStorage.getItem('token');
     if (existingToken) {
-      console.log('User already logged in from another tab, redirecting to dashboard');
       this.router.navigate(['/dashboard']);
       return;
     }
@@ -88,8 +84,6 @@ export class LoginComponent {
 
     this.postService.loginUser(loginData).subscribe({
       next: (response) => {
-        console.log('Login successful', response);
-        
         if (!response.token) {
           this.errorMessage = 'Login failed. No authentication token received.';
           return;
@@ -100,9 +94,7 @@ export class LoginComponent {
         // Fetch user details
         this.postService.findByPhone(this.phoneNumber).subscribe({
           next: (user) => {
-            console.log('User details fetched:', user);
 
-            // Check if user account is closed
             if (user.appStatus === 'CLOSED') {
               this.errorMessage = 'Your account is closed. Please contact support.';
               sessionStorage.removeItem('token');
@@ -118,13 +110,11 @@ export class LoginComponent {
             this.router.navigate(['/dashboard']);
           },
           error: (err) => {
-            console.error('Error fetching user details:', err);
             this.errorMessage = 'Failed to fetch user details. Please try again.';
           }
         });
       },
       error: (err) => {
-        console.error('Login failed', err);
         if(err.status === 0) {
           this.errorMessage = 'Server is currently down. Please try later.';
         }

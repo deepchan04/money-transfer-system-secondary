@@ -36,6 +36,6 @@ export class AuthComponent implements OnInit {
   }
 
    goHome() {
-    this.router.navigate(['/']); // Navigates to the home page (usually the root route)
+    this.router.navigate(['/']);
   }
 }

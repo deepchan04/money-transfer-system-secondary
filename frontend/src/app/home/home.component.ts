@@ -18,4 +18,5 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent {}

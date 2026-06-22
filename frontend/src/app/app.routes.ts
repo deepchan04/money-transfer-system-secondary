@@ -14,7 +14,6 @@ import { AdminUsersComponent } from './admin/admin-users/admin-users.component';
 import { authGuard } from './guards/auth.guard';
 import { closedAccount } from './guards/closedAccount.guard';
 import { adminGuard } from './guards/admin.guard';
-import { redirectIfLoggedIn } from './guards/redirectIfLoggedIn.guard';
 import { RewardsComponent } from './rewards/rewards.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 
@@ -25,7 +24,7 @@ export const routes: Routes = [
   path: '',
   component: MainLayoutComponent,
   children: [
-    { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/transactions', component: AdminTransactionsComponent, canActivate: [authGuard, adminGuard] },
   { path: 'admin/users', component: AdminUsersComponent, canActivate: [authGuard, adminGuard] },

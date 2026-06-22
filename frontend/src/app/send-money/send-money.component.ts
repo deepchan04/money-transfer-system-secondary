@@ -108,7 +108,7 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
         next: users => {
 
           this.filteredUsers = users.filter(
-            user => user.phoneNumber !== this.currentUser.phoneNumber
+            user => user.name !== this.currentUser.name
           );
 
         },

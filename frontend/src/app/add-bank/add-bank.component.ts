@@ -63,21 +63,21 @@ export class AddBankComponent implements OnInit, OnDestroy {
   }
 
   linkBank() {
-    // Clear previous errors
+    
     this.errorMessage = '';
-    // Basic client-side validation (format checks)
+    
     if (!this.accountNumber || !this.accountPassword) {
       this.errorMessage = 'Please enter account number and password';
       return;
     }
 
-    // Account number must begin with 'ACC' and be followed by 1-6 digits
+    
     if (!this.accPattern.test(this.accountNumber)) {
       this.errorMessage = "Account number must begin with 'ACC' and be followed by 1 to 6 digits";
       return;
     }
 
-    // Password minimum length (same message as login)
+    
     if (this.accountPassword.length < 6) {
       this.errorMessage = 'Password must be at least 6 characters long';
       return;
@@ -92,19 +92,16 @@ export class AddBankComponent implements OnInit, OnDestroy {
       accountPassword: this.accountPassword
     };
 
-    // Show loading for 1 second before making API call
     setTimeout(() => {
       this.postService.linkBankAccount(linkData).subscribe({
         next: (response) => {
-          console.log('Bank account linked successfully!', response);
           this.responseMessage = JSON.stringify(response);
           this.authService.setCurrentUser(response);
           this.isLoading = false;
           this.startCountdown();
         },
         error: (err) => {
-          console.error('Error linking bank account:', err);
-          // For conflict (409) prefer the backend message directly (e.g. AccountLinkedException)
+    
           if(err.status === 0) {
           this.errorMessage = 'Server is currently down. Please try later.';
         }
@@ -124,7 +121,6 @@ export class AddBankComponent implements OnInit, OnDestroy {
     this.countdown = 5;
     this.progressWidth = 100;
 
-    // Update countdown every second
     this.countdownSubscription = interval(1000)
       .pipe(take(5))
       .subscribe({
@@ -139,7 +135,6 @@ export class AddBankComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Clean up subscription
     if (this.countdownSubscription) {
       this.countdownSubscription.unsubscribe();
     }

@@ -69,22 +69,13 @@ export class PostService {
   // Find user by phone number
   findByPhone(phoneNumber: string): Observable<any> {
     const url = `http://localhost:8080/users/findByPhone?phoneNumber=${phoneNumber}`;
-    const token = this.authService.getToken();
-    if (token) {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
-      return this.http.get<any>(url, { headers });
-    }
     return this.http.get<any>(url);
   }
 
   // Link bank account
   linkBankAccount(data: any): Observable<any> {
     const url = 'http://localhost:8080/bankaccounts/link';
-    const token = this.authService.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
     return this.http.post<any>(url, data, { headers });
@@ -93,9 +84,7 @@ export class PostService {
   // Get bank balance
   getBalance(vpaId: string, password: string): Observable<any> {
     const url = `http://localhost:8080/users/getbalance`;
-    const token = this.authService.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
     const body = { vpaId, password };

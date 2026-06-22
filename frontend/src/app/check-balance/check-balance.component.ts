@@ -38,7 +38,7 @@ export class CheckBalanceComponent {
     }
 
     fetchBalance() {
-        // Clear previous errors
+    
         this.errorMessage = '';
 
         if (!this.password) {
@@ -54,19 +54,17 @@ export class CheckBalanceComponent {
 
         this.postService.getBalance(vpaId, password).subscribe({
             next: (response) => {
-                console.log('Balance fetched:', response);
-                // Assuming response contains the balance directamente o en un campo balance
                 this.balance = response.balance !== undefined ? response.balance : response;
             },
             error: (err) => {
-                console.error('Error fetching balance:', err);
+               
                 if(err.status === 0) {
-          this.errorMessage = 'Server is currently down. Please try later.';
-        }
-        else{
-                this.errorMessage = err.error?.message || 'Failed to fetch balance. Please check your password.';
+                    this.errorMessage = 'Server is currently down. Please try later.';
+                }
+                else{
+                        this.errorMessage = err.error?.message || 'Failed to fetch balance. Please check your password.';
+                    }
+                    }
+                });
             }
-            }
-        });
-    }
 }
