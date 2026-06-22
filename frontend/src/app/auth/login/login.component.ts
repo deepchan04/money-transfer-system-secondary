@@ -88,12 +88,19 @@ export class LoginComponent {
           this.errorMessage = 'Login failed. No authentication token received.';
           return;
         }
+        const isAdmin = response.roles && response.roles.includes('ROLE_ADMIN');
+        if(isAdmin){
+          alert('Please use Admin login.')
+          this.router.navigate(['/admin-login'])
+          return
+        }
 
         sessionStorage.setItem('token', response.token);
 
         // Fetch user details
         this.postService.findByPhone(this.phoneNumber).subscribe({
           next: (user) => {
+            if(user.role)
 
             if (user.appStatus === 'CLOSED') {
               this.errorMessage = 'Your account is closed. Please contact support.';

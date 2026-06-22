@@ -72,7 +72,12 @@ export class AdminLoginComponent {
 
         this.postService.loginUser(loginData).subscribe({
             next: (response) => {
-                
+                const isUser = response.roles && response.roles.includes('ROLE_USER');
+                if(isUser){
+                alert('Please use user login.')
+                this.router.navigate(['/auth'])
+                return
+                }
                 if (response.token) {
                     sessionStorage.setItem('token', response.token);
 
