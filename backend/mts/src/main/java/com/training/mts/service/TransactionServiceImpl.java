@@ -10,6 +10,7 @@ import com.training.mts.model.BankAccount;
 import com.training.mts.model.Transaction;
 import com.training.mts.model.User;
 import com.training.mts.model.VPA;
+import com.training.mts.repository.BankAccountRepository;
 import com.training.mts.repository.TransactionRepository;
 import com.training.mts.enums.TransactionStatus;
 
@@ -29,6 +30,7 @@ public class TransactionServiceImpl implements TransactionService{
 
 
     private TransactionRepository transactionRepository;
+    private BankAccountRepository bankAccountRepository;
     private BankAccountServiceImpl bankAccountService;
     private VPARepository vpaRepository;
     private PasswordEncoder passwordEncoder;
@@ -36,7 +38,7 @@ public class TransactionServiceImpl implements TransactionService{
     private RewardService rewardService;
     private final EmailServiceImpl emailServiceImpl;
 
-    public TransactionServiceImpl(TransactionFailServiceImpl tFail, PasswordEncoder passwordEncoder, TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository, RewardService rewardService, EmailServiceImpl emailServiceImpl) {
+    public TransactionServiceImpl(BankAccountRepository bankAccountRepository, TransactionFailServiceImpl tFail, PasswordEncoder passwordEncoder, TransactionRepository transactionRepository, BankAccountServiceImpl bankAccountService, VPARepository vpaRepository, RewardService rewardService, EmailServiceImpl emailServiceImpl) {
         this.transactionRepository = transactionRepository;
         this.bankAccountService = bankAccountService;
         this.vpaRepository = vpaRepository;
@@ -44,6 +46,7 @@ public class TransactionServiceImpl implements TransactionService{
         this.tFail = tFail;
         this.rewardService = rewardService;
         this.emailServiceImpl = emailServiceImpl;
+        this.bankAccountRepository = bankAccountRepository;
     }
 
     @Transactional
@@ -81,10 +84,19 @@ public class TransactionServiceImpl implements TransactionService{
 
         // 3. Validation
         validateTransactionRequest(payer, request);
+        BankAccount  payerAccount;
+        BankAccount payeeAccount;
+        if(payer.getId() < payee.getId()){
+            payerAccount = getValidatedAccount(request,payer,payee,payer);
+            payeeAccount = getValidatedAccount(request,payer,payee,payee);
 
-        // 4. Resolve Bank Accounts
-        BankAccount payerAccount = getValidatedAccount(request,payer,payee,payer);
-        BankAccount payeeAccount = getValidatedAccount(request,payer,payee,payee);
+        }
+        else{
+
+             payeeAccount = getValidatedAccount(request,payer,payee,payee);
+             payerAccount = getValidatedAccount(request,payer,payee,payer);
+        }
+
 
         // 5. Balance Check
         if (payerAccount.getBalance() < request.getAmount()) {
@@ -180,12 +192,24 @@ public class TransactionServiceImpl implements TransactionService{
 
     private BankAccount getValidatedAccount(TransactionRequest request, User payer, User payee, User user) throws AccountNotLinkedException {
 
-        BankAccount account = bankAccountService.getBankAccount(user.getVpa().getVpaId());
-        if (account == null) {
-            tFail.saveFailedTransaction(request.getIdempotencyKey(),payer,payee, request.getAmount(), "Account of user "+user.getId()+" is not linked");
+        // 1. Verify that the user actually has a bank account object attached
+        if (user.getBankAccount() == null) {
+            tFail.saveFailedTransaction(
+                    request.getIdempotencyKey(),
+                    payer,
+                    payee,
+                    request.getAmount(),
+                    "Account of user " + user.getId() + " is not linked"
+            );
             throw new AccountNotLinkedException("Account of user " + user.getId() + " not linked");
         }
-        return account;
+
+        // 2. Extract the primary key ID of the bank account
+        Long bankAccountId = user.getBankAccount().getId();
+
+        // 3. Query the DB using the account's ID to execute a SELECT ... FOR UPDATE
+        return bankAccountRepository.findByIdForUpdate(bankAccountId)
+                .orElseThrow(() -> new AccountNotLinkedException("Bank account record not found in database for ID: " + bankAccountId));
     }
 
     private void executeMoneyTransfer(BankAccount payerAcc, BankAccount payeeAcc, Double amount) {
