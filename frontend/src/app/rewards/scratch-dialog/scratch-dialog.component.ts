@@ -182,6 +182,7 @@ export class ScratchDialogComponent implements OnInit, AfterViewInit, OnDestroy 
         this.isRevealed = true;
       }
     });
+    
   }
 
   private launchConfetti(): void {

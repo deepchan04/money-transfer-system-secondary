@@ -8,6 +8,7 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import { PostService } from '../service/post.service';
 import { ScratchDialogComponent } from './scratch-dialog/scratch-dialog.component';
+import { RewardService } from '../service/reward.service';
 
 export interface ScratchCard {
   id: number;
@@ -49,7 +50,8 @@ export class RewardsComponent implements OnInit {
 
   constructor(
     private postService: PostService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private rewardService: RewardService
   ) {}
 
   ngOnInit(): void {
@@ -129,7 +131,7 @@ export class RewardsComponent implements OnInit {
           };
         }
 
-        window.dispatchEvent(new Event('rewardsUpdated'));
+        this.rewardService.refreshRewardCount();
       }
     });
   }
