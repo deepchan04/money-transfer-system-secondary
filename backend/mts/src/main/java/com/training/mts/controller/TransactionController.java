@@ -27,9 +27,15 @@ public class TransactionController {
     public ResponseEntity<TransactionDTO> initiatePayment(@RequestBody TransactionRequest transactionRequest)
             throws IncorrectPasswordException, AccountNotLinkedException {
 
-        TransactionDTO transactionDto = transactionService.initiatePayment(transactionRequest);
-        analyticsServiceImpl.triggerSnowflakeSync();
-        return new ResponseEntity<>(transactionDto, HttpStatus.CREATED);
+        try {
+            TransactionDTO transactionDto = transactionService.initiatePayment(transactionRequest);
+            return new ResponseEntity<>(transactionDto, HttpStatus.CREATED);
+        }
+        finally{
+            analyticsServiceImpl.triggerSnowflakeSync();
+        }
+
+
     }
 
     @GetMapping("/gettranslog")

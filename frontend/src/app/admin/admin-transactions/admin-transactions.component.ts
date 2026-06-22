@@ -78,7 +78,7 @@ export class AdminTransactionsComponent implements OnInit {
                 this.updatePagination();
                 this.isLoading = false;
 
-                console.log('All transactions loaded:', this.allTransactions.length);
+                
             },
             error: (err) => {
                 console.error('Error loading transactions:', err);

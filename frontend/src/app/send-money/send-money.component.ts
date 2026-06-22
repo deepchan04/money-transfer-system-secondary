@@ -83,7 +83,6 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     const user = this.authService.getCurrentUser();
     if (user) {
       this.currentUser = user;
-      console.log('Current user:', this.currentUser);
     }
 
    
@@ -123,7 +122,6 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     // Set the search query to display the selected user
     this.searchQuery = `${user.name} (${user.vpaId || user.phoneNumber})`;
     this.filteredUsers = [];
-    console.log('Selected user:', user);
   }
 
   /**
@@ -194,7 +192,6 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
       transactionType: transactionType
     };
 
-    console.log('Payment Request:', paymentRequest);
 
     this.isProcessing = true;
     this.isSuccess = true;
@@ -202,7 +199,6 @@ export class SendMoneyComponent implements OnInit, OnDestroy {
     // Make actual API call
     this.postService.makePayment(paymentRequest).subscribe({
       next: (response) => {
-        console.log('Payment Response:', response);
 
         // Check if payment was successful
         if (response.status === 'SUCCESS') {

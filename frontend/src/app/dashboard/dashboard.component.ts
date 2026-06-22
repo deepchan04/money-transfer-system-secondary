@@ -239,10 +239,7 @@ export class DashboardComponent implements OnInit {
         // Generate monthly spending data
         this.generateMonthlySpending();
 
-        console.log('Transactions loaded:', this.transactions);
-        console.log('Current month spent:', this.currentMonthSpent);
-        console.log('Spending breakdown:', this.spendingBreakdown);
-        console.log('Monthly spending:', this.monthlySpending);
+
 
         this.isLoading = false;
       },

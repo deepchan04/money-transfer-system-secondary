@@ -53,8 +53,7 @@ export class NavbarComponent implements OnInit {
       this.unscratchedRewardsCount = count;
     });
     this.currentUrl = this.router.url;
-    if(this.router.url !== '/'){
-    this.rewardService.refreshRewardCount();}
+
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
       if (user) {
@@ -62,6 +61,8 @@ export class NavbarComponent implements OnInit {
       this.userRole = user.role || '';
       this.isAccountActive = user.appStatus === 'ACTIVE';
       this.bankAccountLinked = user.bankAccountLinked;
+          if(this.router.url !== '/' && this.router.url!=='/admin-dashboard' && this.bankAccountLinked ){
+    this.rewardService.refreshRewardCount();}
           if (!this.rewardLoaded) {
       this.rewardLoaded = true;
       

@@ -214,8 +214,7 @@ export class AdminDashboardComponent implements OnInit {
                 this.calculateStats(regularUsers);
 
                 this.isLoading = false;
-                console.log('Users loaded:', this.users);
-                console.log('Stats:', this.stats);
+                
             },
             error: (err) => {
                 console.error('Error loading users:', err);
@@ -242,13 +241,7 @@ export class AdminDashboardComponent implements OnInit {
                 this.calculateTransactionStats(apiTransactions);
 
                 this.isLoadingTransactions = false;
-                console.log('Transactions loaded:', this.recentTransactions);
-                console.log('Transaction stats:', {
-                    total: this.stats.totalTransactions,
-                    today: this.stats.todayTransactions,
-                    totalVolume: this.stats.totalVolume,
-                    todayVolume: this.stats.todayVolume
-                });
+              
             },
             error: (err) => {
                 console.error('Error loading transactions:', err);
@@ -322,9 +315,7 @@ export class AdminDashboardComponent implements OnInit {
         // Blocked users - all users whose status is NOT 'ACTIVE'
         this.stats.blockedUsers = apiUsers.filter(user => user.appStatus !== 'ACTIVE').length;
 
-        console.log('Total Users:', this.stats.totalUsers);
-        console.log('Active Users:', this.stats.activeUsers);
-        console.log('Blocked Users:', this.stats.blockedUsers);
+
         
         // Verification: totalUsers should equal activeUsers + blockedUsers
         const verification = this.stats.activeUsers + this.stats.blockedUsers;
@@ -457,8 +448,7 @@ export class AdminDashboardComponent implements OnInit {
         
         this.postService.changeUserStatus(user.vpaId, newStatus).subscribe({
             next: (response) => {
-                console.log('Status changed successfully:', response);
-                console.log('Updated stats:', this.stats);
+                
                 
                 // Reload users to ensure consistency
                 this.postService.getAdminUsers().subscribe({
@@ -471,8 +461,7 @@ export class AdminDashboardComponent implements OnInit {
 
                         this.calculateStats(regularUsers);
 
-                        console.log('Users reloaded:', this.users);
-                        console.log('Stats:', this.stats);
+                        
                     },
                     error: (err) => {
                         console.error('Error reloading users:', err);

@@ -61,7 +61,7 @@ export class AuthSyncService {
             sessionStorage.clear();
             this.logoutSubject.next();
           } else {
-            console.log('Different user login detected. Ignoring cross-tab logout.');
+            
           }
           break;
 

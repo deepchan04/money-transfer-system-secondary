@@ -71,7 +71,7 @@ export class AuthService {
   saveUserAndToken(user: any, token: string): void {
     this.currentUserSubject.next(user);
     sessionStorage.setItem('token', token);
-    console.log("Broadcast")
+  
     this.authSyncService.broadcastSelectiveLogout(user.id);
   }
 

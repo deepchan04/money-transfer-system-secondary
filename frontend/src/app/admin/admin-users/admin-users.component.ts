@@ -104,7 +104,7 @@ export class AdminUsersComponent implements OnInit {
                 this.updatePagination();
 
                 this.isLoading = false;
-                console.log('Users loaded:', this.allUsers);
+              
             },
             error: (err) => {
                 console.error('Error loading users:', err);
@@ -167,7 +167,7 @@ export class AdminUsersComponent implements OnInit {
         
         this.postService.changeUserStatus(user.vpaId, newStatus).subscribe({
             next: (response) => {
-                console.log('Status changed successfully:', response);
+                
                 // Reload users to get fresh data from server
                 this.loadUsers();
             },
