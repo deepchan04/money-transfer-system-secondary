@@ -71,7 +71,7 @@ export class AuthService {
   saveUserAndToken(user: any, token: string): void {
     this.currentUserSubject.next(user);
     sessionStorage.setItem('token', token);
-    this.authSyncService.broadcastLogin(token);
+    this.authSyncService.broadcastSelectiveLogout(user.id);
   }
 
   // Explicitly set the current user (e.g. after login)
@@ -116,7 +116,7 @@ export class AuthService {
     
     if (!token) {
       this.currentUserSubject.next(null);
-      this.authSyncService.requestToken();
+      //this.authSyncService.requestToken();
       return Promise.resolve(null);
     }
 
