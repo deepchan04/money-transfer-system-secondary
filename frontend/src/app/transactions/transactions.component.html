@@ -82,7 +82,7 @@
 
       <!-- Transactions Table -->
       <div class="table-container" *ngIf="!isLoading && filteredTransactions.length > 0">
-        <table mat-table [dataSource]="filteredTransactions" class="transactions-table">
+        <table mat-table [dataSource]="dataSource" class="transactions-table">
 
           <!-- Date Column -->
           <ng-container matColumnDef="date">
@@ -139,6 +139,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="transaction-row"></tr>
 
         </table>
+        
 
         <!-- Results Summary -->
         <div class="results-summary">

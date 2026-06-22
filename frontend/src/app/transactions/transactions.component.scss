@@ -275,6 +275,13 @@ mat-card {
 // Table Container
 .table-container {
   overflow-x: auto;
+  .mat-mdc-paginator-page-size-select {
+    color: white;}
+
+      .transactions-pag{
+      color:#e2e8f0;
+      background: transparent;
+    }
 
   .transactions-table {
     width: 100%;
@@ -299,6 +306,8 @@ mat-card {
       padding: 1.25rem 1.5rem;
       border-bottom: 1px solid rgba(71, 85, 105, 0.1);
     }
+
+
 
     // Row Hover
     .transaction-row {

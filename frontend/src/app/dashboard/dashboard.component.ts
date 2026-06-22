@@ -79,7 +79,7 @@ export class DashboardComponent implements OnInit {
     this.user = this.authService.getCurrentUser();
     if (this.user) {
       this.hasBankAccount = !!this.user.bankAccount;
-      console.log(this.hasBankAccount);
+      
 
       // Check if account is active
       this.isAccountActive = this.user.appStatus === 'ACTIVE';
@@ -227,8 +227,8 @@ export class DashboardComponent implements OnInit {
         this.allTransactions = transformedTransactions
           .sort((a, b) => new Date(b.transactionTime).getTime() - new Date(a.transactionTime).getTime());
 
-        // Top 10 for display
-        this.transactions = this.allTransactions.slice(0, 10);
+        // Top 5 for display
+        this.transactions = this.allTransactions.slice(0, 5);
 
         // Calculate current month spending
         this.calculateCurrentMonthSpent();

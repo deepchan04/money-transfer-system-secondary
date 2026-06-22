@@ -12,7 +12,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PostService } from '../services/post.service';
-
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { ViewChild } from '@angular/core';
 interface Transaction {
   date: string;
   time: string;
@@ -45,7 +47,8 @@ import { AuthService } from '../services/auth.service';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   templateUrl: './transactions.component.html',
   styleUrls: ['./transactions.component.scss']
@@ -56,6 +59,16 @@ export class TransactionsComponent implements OnInit {
   filteredTransactions: Transaction[] = [];
   isLoading = false;
   user: any;
+  dataSource = new MatTableDataSource<Transaction>([]);
+  @ViewChild(MatPaginator) set matPaginator(paginator: MatPaginator) {
+    if (paginator) {
+      this.dataSource.paginator = paginator;
+      
+      // Fixes an Angular timing bug where the paginator shows 
+      // page 0 instead of updating the length metrics dynamically
+      this.dataSource._updateChangeSubscription(); 
+    }
+  }
 
   // Filter properties
   searchQuery = '';
@@ -149,6 +162,7 @@ export class TransactionsComponent implements OnInit {
         this.isLoading = false;
         this.transactions = [];
         this.filteredTransactions = [];
+        this.dataSource.data = [];
       }
     });
   }
@@ -180,8 +194,9 @@ export class TransactionsComponent implements OnInit {
 
     // Apply sorting
     filtered = this.sortTransactions(filtered);
-
+    this.dataSource.data = filtered;
     this.filteredTransactions = filtered;
+    
   }
 
   sortTransactions(transactions: Transaction[]): Transaction[] {
