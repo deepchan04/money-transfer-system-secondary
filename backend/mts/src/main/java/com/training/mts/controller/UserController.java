@@ -5,7 +5,6 @@ import com.training.mts.dto.UserResponse;
 import com.training.mts.dto.GetBalanceRequest;
 import com.training.mts.exceptions.AccountNotLinkedException;
 import com.training.mts.exceptions.IncorrectPasswordException;
-import com.training.mts.model.User;
 import com.training.mts.service.UserServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -10,10 +10,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import { Router, RouterModule } from '@angular/router';
-import { PostService } from '../service/post.service';
+import { PostService } from '../services/post.service';
 import { interval, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { RewardService } from '../service/reward.service';
+import { RewardService } from '../services/reward.service';
 
 @Component({
   selector: 'app-send-money',

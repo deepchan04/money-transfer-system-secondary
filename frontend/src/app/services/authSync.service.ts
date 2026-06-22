@@ -1,6 +1,6 @@
 import { Injectable, Injector,  inject } from '@angular/core';
 import { Subject } from 'rxjs'; // Note: Cleaned up the internal/Subject import path
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class AuthSyncService {
 
   constructor(private injector: Injector) {
     this.channel.onmessage = (event) => {
-      // 2. SAFETY CHECK: Ignore messages if they somehow came from this exact tab
+      
       if (event.data.senderTabId === this.tabId) {
         return;
       }

@@ -57,6 +57,36 @@ class BankAccountServiceImplTest {
     }
 
     @Test
+    void linkBankAccount_accountLinkedToAnotherUser_shouldThrowException() {
+
+        // given
+        User otherUser = new User();
+        otherUser.setId(999L);
+
+        BankAccount existingAccount = new BankAccount();
+        existingAccount.setAccountNumber("123456");
+        existingAccount.setAccountPassword("accpass");
+
+        when(vpaRepository.findByVpaId("diya@upi"))
+                .thenReturn(Optional.of(vpa));
+
+        when(bankAccountRepository.findByAccountNumber("123456"))
+                .thenReturn(existingAccount);
+
+        when(userRepository.findByBankAccount(existingAccount))
+                .thenReturn(Optional.of(otherUser)); // 🔥 DIFFERENT OWNER
+
+        // when + then
+        assertThrows(AccountLinkedException.class, () ->
+                bankAccountService.linkBankAccount(
+                        "diya@upi",
+                        "123456",
+                        "accpass"
+                )
+        );
+    }
+
+    @Test
     void linkBankAccount_success() {
 
         when(vpaRepository.findByVpaId("diya@upi"))

@@ -11,7 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 
 interface ApiUser {
     id: number;

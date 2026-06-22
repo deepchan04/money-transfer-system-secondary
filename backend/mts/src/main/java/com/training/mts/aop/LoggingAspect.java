@@ -23,26 +23,31 @@ public class LoggingAspect {
     @Before("serviceLayer()")
     public void logMethodCall(JoinPoint joinPoint) {
 
-        logger.info("Entering method: {} with arguments: {}",
-                joinPoint.getSignature().toShortString(),
-                Arrays.toString(joinPoint.getArgs()));
+        if(logger.isInfoEnabled()){
+            logger.info("Entering method: {} with arguments: {}",
+                    joinPoint.getSignature().toShortString(),
+                    Arrays.toString(joinPoint.getArgs()));
+        }
+
     }
 
     @AfterReturning(pointcut = "serviceLayer()", returning = "result")
     public void logMethodSuccess(JoinPoint joinPoint, Object result) {
-
+        if(logger.isInfoEnabled()){
         logger.info("Method executed successfully: {} | Returned: {}",
                 joinPoint.getSignature().toShortString(),
-                result);
+                result);}
     }
 
     @AfterThrowing(pointcut = "serviceLayer()", throwing = "ex")
     public void logMethodException(JoinPoint joinPoint, Exception ex) {
 
+        if(logger.isErrorEnabled()){
         logger.error("Exception in method: {} | Message: {} | Arguments: {}",
                 joinPoint.getSignature().toShortString(),
                 ex.getMessage(),
                 Arrays.toString(joinPoint.getArgs()),
                 ex);
+    }
     }
 }

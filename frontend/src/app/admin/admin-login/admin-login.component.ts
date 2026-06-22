@@ -6,9 +6,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 import { MatIconModule } from '@angular/material/icon';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'app-admin-login',
@@ -53,13 +53,6 @@ export class AdminLoginComponent {
             return;
         }
 
-        // Check if user is already logged in from another tab
-        const existingToken = sessionStorage.getItem('token');
-        if (existingToken) {
-            console.log('Admin already logged in from another tab, redirecting to admin dashboard');
-            this.router.navigate(['/admin-dashboard']);
-            return;
-        }
 
         // Validate password length
         if (this.password.length < 6) {
@@ -79,14 +72,14 @@ export class AdminLoginComponent {
 
         this.postService.loginUser(loginData).subscribe({
             next: (response) => {
-                console.log('Admin login successful', response);
+                
                 if (response.token) {
                     sessionStorage.setItem('token', response.token);
 
                     // Fetch user details
                     this.postService.findByPhone(this.phoneNumber).subscribe({
                         next: (user) => {
-                            console.log('Admin details fetched:', user);
+                            
                             this.authService.setCurrentUser(user);
                             // Redirect to admin dashboard
                             this.router.navigate(['/admin-dashboard']);

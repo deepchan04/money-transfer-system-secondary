@@ -16,7 +16,7 @@ public class UserResponse {
     
     private BankAccountResponse bankAccount;
 
-    public UserResponse() {}
+
 
     public static UserResponse from(User user) {
         if (user == null) return null;

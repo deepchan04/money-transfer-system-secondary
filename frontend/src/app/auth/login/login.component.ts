@@ -6,12 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Observable } from 'rxjs/internal/Observable';
-import { ServerStatusService } from '../../service/server-status.service';
+import { ServerStatusService } from '../../services/server-status.service';
 
 @Component({
   selector: 'app-login',

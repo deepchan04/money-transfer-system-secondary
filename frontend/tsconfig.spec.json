@@ -1,15 +1,21 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
+    "moduleResolution": "bundler",
     "types": [
-      "jasmine"
-    ]
+      "jest", "node"
+    ],
+    "esModuleInterop": true,
   },
   "include": [
     "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "src/setup-jest.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out-tsc",
+    "src/test.ts" // Only exclude the old Karma test.ts file if it's still lingering
   ]
 }

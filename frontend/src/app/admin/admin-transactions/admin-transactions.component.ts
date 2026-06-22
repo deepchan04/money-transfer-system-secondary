@@ -10,7 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 
 interface Transaction {
     id: number;

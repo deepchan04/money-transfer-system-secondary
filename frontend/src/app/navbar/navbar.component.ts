@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,10 +7,10 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule, NavigationEnd } from '@angular/router';
-import { PostService } from '../service/post.service';
+import { PostService } from '../services/post.service';
 import { filter } from 'rxjs/operators';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { RewardService } from '../service/reward.service';
+import { RewardService } from '../services/reward.service';
 
 @Component({
   selector: 'app-navbar',

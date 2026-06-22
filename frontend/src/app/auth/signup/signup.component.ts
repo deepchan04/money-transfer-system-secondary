@@ -5,8 +5,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { PostService, UserData } from '../../service/post.service';
+import { AuthService } from '../../services/auth.service';
+import { PostService, UserData } from '../../services/post.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

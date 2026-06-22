@@ -1,17 +1,24 @@
 package com.training.mts.service;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 
+
 @Service
 public class EmailServiceImpl implements EmailService {
+    private static final Logger logger = LoggerFactory.getLogger(EmailServiceImpl.class);
 
-    @Autowired
     private JavaMailSender mailSender;
+
+    public EmailServiceImpl(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
+
 
     @Async
     public void sendEmail(String to, String subject, String htmlBody) {
@@ -33,8 +40,10 @@ public class EmailServiceImpl implements EmailService {
             // 4. Send the email
             mailSender.send(message);
         } catch (Exception e) {
-            System.err.println(
-                    "Failed to send email to " + to + ": " + e.getMessage());
+            if(logger.isErrorEnabled()){
+                logger.error("Failed to send email to: {}" , e.getMessage());
+            }
+
         }
     }
 }

@@ -14,7 +14,6 @@ import com.training.mts.repository.TransactionRepository;
 import com.training.mts.enums.TransactionStatus;
 
 import com.training.mts.repository.VPARepository;
-import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -100,12 +99,12 @@ public class TransactionServiceImpl implements TransactionService{
         rewardService.awardPointsForTransaction(savedTx);
         String accountNumber = payer.getBankAccount().getAccountNumber(); // Use your actual getter here
         String amount = String.valueOf(request.getAmount());
-        String payee_vpa = payee.getVpa().getVpaId();
+        String payeevpa = payee.getVpa().getVpaId();
         String date = LocalDate.now().toString();
         String payerName = payer.getName();
 
 
-        String payerHtml = getPayerEmailTemplate(amount, accountNumber, payee_vpa, date);
+        String payerHtml = getPayerEmailTemplate(amount, accountNumber, payeevpa, date);
         emailServiceImpl.sendEmail(payer.getEmail(), "MTS - Debit Alert", payerHtml);
 
         // Generate and send Credit alert to Payee

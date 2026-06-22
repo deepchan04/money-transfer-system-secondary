@@ -6,9 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
-import { PostService } from '../service/post.service';
+import { PostService } from '../services/post.service';
 import { ScratchDialogComponent } from './scratch-dialog/scratch-dialog.component';
-import { RewardService } from '../service/reward.service';
+import { RewardService } from '../services/reward.service';
 
 export interface ScratchCard {
   id: number;

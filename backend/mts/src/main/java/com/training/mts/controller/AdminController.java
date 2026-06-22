@@ -2,7 +2,6 @@ package com.training.mts.controller;
 
 import com.training.mts.dto.ChangeStatusRequest;
 import com.training.mts.model.Transaction;
-import com.training.mts.model.User;
 import com.training.mts.dto.UserResponse;
 import com.training.mts.service.AdminServiceImpl;
 

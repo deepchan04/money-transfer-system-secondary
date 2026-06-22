@@ -2,13 +2,16 @@ package com.training.mts.service;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+
 @Service
 public class AnalyticsServiceImpl implements AnalyticsService {
+    private static final Logger logger = LoggerFactory.getLogger(AnalyticsServiceImpl.class);
 
     @Async
     public void triggerSnowflakeSync() {
@@ -26,18 +29,18 @@ public class AnalyticsServiceImpl implements AnalyticsService {
 
             // 3. Read the output from the script (Log it to your console)
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println("SYNC_LOG: " + line);
-                }
+
+                reader.lines().forEach(line -> {});
             }
 
             // 4. Wait for completion and return success status
-            int exitCode = process.waitFor();
+            process.waitFor();
 
 
         } catch (IOException | InterruptedException e) {
-            System.err.println("Failed to execute sync script: " + e.getMessage());
+            if(logger.isErrorEnabled()) {
+                logger.error("Failed to execute sync script: {}" , e.getMessage());
+            }
             Thread.currentThread().interrupt();
 
         }

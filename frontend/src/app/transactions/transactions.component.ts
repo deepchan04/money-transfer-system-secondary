@@ -11,7 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PostService } from '../service/post.service';
+import { PostService } from '../services/post.service';
 
 interface Transaction {
   date: string;
@@ -28,7 +28,7 @@ interface Transaction {
   note: string;
 }
 
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-transactions',

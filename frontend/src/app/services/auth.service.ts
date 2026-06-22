@@ -1,7 +1,7 @@
 import { Injectable, signal} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {AuthSyncService} from "../service/authSyncService";
+import {AuthSyncService} from "./authSync.service";
 import { BehaviorSubject, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -71,11 +71,13 @@ export class AuthService {
   saveUserAndToken(user: any, token: string): void {
     this.currentUserSubject.next(user);
     sessionStorage.setItem('token', token);
+    console.log("Broadcast")
     this.authSyncService.broadcastSelectiveLogout(user.id);
   }
 
   // Explicitly set the current user (e.g. after login)
   setCurrentUser(user: any): void {
+    this.authSyncService.broadcastSelectiveLogout(user.id);   
     this.currentUserSubject.next(user);
   }
 

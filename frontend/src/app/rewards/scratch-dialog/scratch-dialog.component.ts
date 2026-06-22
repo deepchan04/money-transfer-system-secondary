@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 import { ScratchCard } from '../rewards.component';
 
 export interface ScratchDialogData {

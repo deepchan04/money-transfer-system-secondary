@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { HttpInterceptorFn } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
+import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 function isTokenExpired(token: string): boolean {

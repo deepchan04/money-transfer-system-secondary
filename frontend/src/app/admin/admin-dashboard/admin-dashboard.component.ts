@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
-import { PostService } from '../../service/post.service';
+import { PostService } from '../../services/post.service';
 
 interface Transaction {
     id: number;

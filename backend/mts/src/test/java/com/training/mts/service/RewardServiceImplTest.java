@@ -15,7 +15,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -70,10 +69,10 @@ class RewardServiceImplTest {
     @Test
     void awardPointsForTransaction_failedTransaction() {
 
-        Transaction transaction = new Transaction();
-        transaction.setStatus(TransactionStatus.FAILED);
+        Transaction newtransaction = new Transaction();
+        newtransaction.setStatus(TransactionStatus.FAILED);
 
-        rewardService.awardPointsForTransaction(transaction);
+        rewardService.awardPointsForTransaction(newtransaction);
 
         verifyNoInteractions(userRepository);
     }
