@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
 
   // Calculate successful transaction count
   getSuccessfulCount(): number {
-    return this.allTransactions.filter(t => t.status === 'SUCCESS' && t.type === 'debit').length;
+    return this.allTransactions.filter(t =>  t.status === 'SUCCESS' && t.type === 'debit').length;
   }
 
   // Calculate success rate percentage
@@ -202,7 +202,7 @@ export class DashboardComponent implements OnInit {
         }
 
         if (response.debits && Array.isArray(response.debits) && response.debits.length > 0) {
-          this.moneySent = true;
+          this.moneySent = response.debits.some((debit: any) => debit.status === 'SUCCESS');
         }
 
         // Transform transactions using VPA IDs
