@@ -1479,3 +1479,84 @@ com.training.mts.exceptions.AccountNotActiveException: Account of user deepakcha
 2026-06-23 00:43:26 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2026-06-23 00:43:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2026-06-23 00:43:26 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-06-23 09:06:45 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 9.0.1.Final
+2026-06-23 09:06:45 [main] INFO  com.training.mts.MtsApplication - Starting MtsApplication using Java 17.0.12 with PID 10852 (C:\Users\user\Desktop\Projects\money-transfer-system-secondary\backend\mts\target\classes started by user in C:\Users\user\Desktop\Projects\money-transfer-system-secondary\backend\mts)
+2026-06-23 09:06:45 [main] INFO  com.training.mts.MtsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-23 09:06:46 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-23 09:06:46 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 131 ms. Found 5 JPA repository interfaces.
+2026-06-23 09:06:47 [main] INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-23 09:06:47 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-23 09:06:47 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-23 09:06:47 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.15]
+2026-06-23 09:06:47 [main] INFO  org.springframework.boot.web.context.servlet.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1837 ms
+2026-06-23 09:06:47 [main] INFO  org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-06-23 09:06:47 [main] INFO  org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.1.Final
+2026-06-23 09:06:48 [main] INFO  org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-23 09:06:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-23 09:06:48 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7bebad0d
+2026-06-23 09:06:48 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-23 09:06:48 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-23 09:06:48 [main] INFO  org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/mts?createDatabaseIfNotExist=true]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.43
+	Default catalog/schema: mts/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-23 09:06:49 [main] INFO  org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-23 09:06:49 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 09:06:50 [main] INFO  org.springframework.data.jpa.repository.query.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-23 09:06:51 [main] INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2026-06-23 09:06:51 [main] WARN  org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 09:06:52 [main] DEBUG org.springframework.security.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-06-23 09:06:52 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-23 09:06:52 [main] INFO  org.springframework.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-06-23 09:06:52 [main] INFO  com.training.mts.MtsApplication - Started MtsApplication in 7.375 seconds (process running for 7.761)
+2026-06-23 09:14:13 [http-nio-8080-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-23 09:14:13 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-23 09:14:13 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-06-23 09:14:13 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/register
+2026-06-23 09:14:13 [http-nio-8080-exec-1] WARN  org.springframework.web.servlet.handler.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/auth/register' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-06-23 09:14:13 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/register
+2026-06-23 09:14:13 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-23 09:14:13 [http-nio-8080-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/register
+2026-06-23 09:14:13 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.createUser(..) with arguments: [Nethra, 9090909090, nethra295391@gmail.com, Barca1]
+2026-06-23 09:14:14 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Entering method: VPAServiceImpl.generateVPAId(..) with arguments: [User{id=2, name='Nethra', vpa=null}]
+2026-06-23 09:14:14 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: VPAServiceImpl.generateVPAId(..) | Returned: nethra29539190902@mts
+2026-06-23 09:14:14 [http-nio-8080-exec-2] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.createUser(..) | Returned: User{id=2, name='Nethra', vpa=com.training.mts.model.VPA@7acc8bc1}
+2026-06-23 09:14:23 [http-nio-8080-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /auth/login
+2026-06-23 09:14:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-23 09:14:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-23 09:14:23 [http-nio-8080-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-23 09:14:24 [http-nio-8080-exec-4] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-23 09:14:24 [http-nio-8080-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9090909090
+2026-06-23 09:14:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9090909090
+2026-06-23 09:14:24 [http-nio-8080-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9090909090
+2026-06-23 09:14:24 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9090909090]
+2026-06-23 09:14:24 [http-nio-8080-exec-6] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=2, name='Nethra', vpa=com.training.mts.model.VPA@371ea2b5}
+2026-06-23 09:15:25 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/register
+2026-06-23 09:15:25 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-23 09:15:25 [http-nio-8080-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/register
+2026-06-23 09:15:25 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.createUser(..) with arguments: [Saradha, 9191919191, saradha@gmail.com, Barca2]
+2026-06-23 09:15:25 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Entering method: VPAServiceImpl.generateVPAId(..) with arguments: [User{id=3, name='Saradha', vpa=null}]
+2026-06-23 09:15:25 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: VPAServiceImpl.generateVPAId(..) | Returned: saradha91913@mts
+2026-06-23 09:15:25 [http-nio-8080-exec-8] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.createUser(..) | Returned: User{id=3, name='Saradha', vpa=com.training.mts.model.VPA@6b9c34ba}
+2026-06-23 09:15:33 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /auth/login
+2026-06-23 09:15:33 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.authentication.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2026-06-23 09:15:33 [http-nio-8080-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /auth/login
+2026-06-23 09:15:33 [http-nio-8080-exec-9] DEBUG org.springframework.security.authentication.dao.DaoAuthenticationProvider - Authenticated user
+2026-06-23 09:15:33 [http-nio-8080-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing OPTIONS /users/findByPhone?phoneNumber=9191919191
+2026-06-23 09:15:33 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /users/findByPhone?phoneNumber=9191919191
+2026-06-23 09:15:33 [http-nio-8080-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /users/findByPhone?phoneNumber=9191919191
+2026-06-23 09:15:33 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Entering method: UserServiceImpl.getUserByPhoneNumber(..) with arguments: [9191919191]
+2026-06-23 09:15:33 [http-nio-8080-exec-1] INFO  com.training.mts.aop.LoggingAspect - Method executed successfully: UserServiceImpl.getUserByPhoneNumber(..) | Returned: User{id=3, name='Saradha', vpa=com.training.mts.model.VPA@140dca65}
+2026-06-23 09:15:55 [SpringApplicationShutdownHook] INFO  org.springframework.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-23 09:15:55 [tomcat-shutdown] INFO  org.springframework.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-23 09:15:55 [SpringApplicationShutdownHook] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-23 09:15:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-06-23 09:15:55 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

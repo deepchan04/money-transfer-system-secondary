@@ -66,8 +66,11 @@ export class AuthSyncService {
           break;
 
         case 'LOGOUT':
-          sessionStorage.clear();
-          this.logoutSubject.next();
+          if (currentUser && sessionStorage.getItem('token') === event.data.targetUserId) {
+            sessionStorage.clear();
+            this.logoutSubject.next();
+          } 
+
           break;
       }
     };
@@ -97,10 +100,11 @@ export class AuthSyncService {
     });
   }
 
-  broadcastLogout() {
+  broadcastLogout(token: string | null) {
     this.channel.postMessage({
       type: 'LOGOUT',
-      senderTabId: this.tabId
+      senderTabId: this.tabId,
+      targetUserId: token
     });
   }
 }

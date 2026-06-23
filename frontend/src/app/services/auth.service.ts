@@ -94,8 +94,9 @@ export class AuthService {
   // Logout method to clear memory and sessionStorage
   logout(): void {
     this.currentUserSubject.next(null);
+    this.authSyncService.broadcastLogout(sessionStorage.getItem('token'));
     sessionStorage.removeItem('token');
-    this.authSyncService.broadcastLogout();
+    
     this.router.navigate(['/']);
   }
 
